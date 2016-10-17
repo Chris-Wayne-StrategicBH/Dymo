@@ -1,0 +1,1622 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TIER_PVBH" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SRVCOSTIER;Initial Catalog=TIER_PVBH;User ID=TIER" SettingsObjectName="DPGPP.Properties.Settings" SettingsPropertyName="TIER_PVBHConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.FD__CLIENTS" Member="FD__CLIENTs">
+    <Type Name="FD__CLIENT">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DOB" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Fullname" Type="System.String" DbType="VarChar(68)" CanBeNull="true" />
+      <Column Name="NameF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NameL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__HISTORY_PHY" Member="FD__HISTORY_PHies" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__HISTORY_PHY" />
+      <Association Name="FD__CLIENT_FD__PSYCH_EVAL" Member="FD__PSYCH_EVALs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__PSYCH_EVAL" />
+      <Association Name="FD__CLIENT_FD__Intake_Assess" Member="FD__Intake_Assesses" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__Intake_Assess" />
+      <Association Name="FD__CLIENT_FD__NURSING" Member="FD__NURSINGs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__NURSING" />
+      <Association Name="FD__CLIENT_FD__PROGRAM_CLIENT" Member="FD__PROGRAM_CLIENTs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__PROGRAM_CLIENT" />
+      <Association Name="FD__CLIENT_FD__CONTACTNOTE" Member="FD__CONTACTNOTEs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__CONTACTNOTE" />
+      <Association Name="FD__CLIENT_FD__PHYSGEN" Member="FD__PHYSGENs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__PHYSGEN" />
+      <Association Name="FD__CLIENT_FD__MED_HISTORY" Member="FD__MED_HISTORies" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__MED_HISTORY" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__HISTORY_PHYS" Member="FD__HISTORY_PHies">
+    <Type Name="FD__HISTORY_PHY">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ABDOMINAL_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ABDOMINAL_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ALCOHOL_ABUSE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ALLERGY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ANEMIA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ANKLE_CLONUS_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ANKLE_CLONUS_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ANKLE_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ANKLE_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="APPEAR_ABDOMEN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_BREASTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_CARDIOVAS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_CHEST" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_Ears" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_EXTREMITIES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_EYES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_GENITALIA" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_Mouth" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_MUSCULOSKEL" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_NECK" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_NOSE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_PERIPH_VASC" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_Pharynx" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_SKIN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="APPEAR_SKULL" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BABINSKI_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="BABINSKI_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="BICEP_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="BICEP_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREMASTERIC_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CREMASTERIC_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DENTAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DIABETES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DRUG_ABUSE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENDOCRINE_DISORD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EYES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenNutStatus" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="GI" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HEART_DISEASE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HOFFMAN_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="HOFFMAN_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="HYPERTENSION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IMPRESS_SUMMARY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INJURIES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="KNEE_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="KNEE_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="LIVER_DISEASE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LUNG_DISEASE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MAJOR_PHYS_DISAB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MAJOR_PHYS_SPECIF" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MAJOR_SURJ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NEOPLASM" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NERV_SYS_GENRL" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="NERV_SYS_LYMPH" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="NERV_SYS_RECTUM" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="OTHER_ISSUES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="RADIAL_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RADIAL_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RENAL_DISEASE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SENSORIUM1" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STROKE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TODAY_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TREATMENT_RECOMM" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TRICEP_LEFT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TRICEP_RIGHT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="No_Meds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FamilyHistory" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OtherMedHx" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OtherMedHxDesc" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="ChargeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LOS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NoteType" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="POSKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceReq_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TIMEStop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="APPEAR_Genitourinary" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Chief_Complaint" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="History_Present_Illness" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SocialHistory" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Eyes" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Cardiovascular" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Cardiovascular_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_EarNose" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_EarNose_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Endocine_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Endocrine" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Eyes_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Gastrointestinal" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Gastrointestinal_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_GenitalFemale" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_GenitalFemale_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_GenitalMale" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_GenitalMale_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Hematologic" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Hematologic_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_MouthThroat" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_MouthThroat_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Musculoskeletal" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Musculoskeletal_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Neurological" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Neurological_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Psychiatric" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Respiratory" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Respiratory_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_SkinBreast" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Urinary" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Review_Urinary_Other" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Review_Eyes_Test" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Review_AdditionalComments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__HISTORY_PHY" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PSYCH_EVAL" Member="FD__PSYCH_EVALs">
+    <Type Name="FD__PSYCH_EVAL">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CURRENT_MEDS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DIAG_CHANGE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EMOTIONAL_TONE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Evaluation_Type" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="GEN_BEHAVIOR" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INS_JUDGEMENT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MEDICAL_HIST" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MENTAL_TREND" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MOTOR_ACT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ORIENTATION" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="SUMMARY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="THOUGHT_STREAM" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TODAY_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Treatment_Recommendation1" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="StaffName" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="EvalType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiefCompaint" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateDocPhys" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateTimePhys" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EstLengthofStay" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="IDP_HOME" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IDP_LLC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IDP_OTHER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IDP_OTHER_REASON" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="IDP_PLACEMENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InitialPlanOfCare" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JUSTI_1_DEPRESSION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_2_DANTOSELF" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_3_EMOTIONAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_4_SP_DRUG" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_5_FAILURE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_5_INABILITY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_OTHER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="JUSTI_OTHER_REASON" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PatientAssets" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PHYS_CERTIFIED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PRECIPITATING_EVENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SocialHistory" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PastPsychotropic" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Psychiatric" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SubstanceAbuse" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PHYS_NOTIFIED_STAFFKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LOS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="NoteType" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="PgmKey7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POSKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceReq_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey7" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TIMEStop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Abstract" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Perceptiveness" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Proverbs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Similarities" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Affect" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Cooperative" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Guarded" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Withdrawn" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Concentration" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Concentration_HowTested" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="General_Appearance" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="General_Appearance_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Insight" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Intelligence" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Intelligence_AveragePer_Fund" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Intelligence_AveragePer_Vocabulary" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Intelligence_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Judgment" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Mood" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Motor_Activity" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Motor_Activity_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Orientation_HowTested" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Orientation_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Perception_Describer" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Auditory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Tactile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Visual" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Recent_Memory" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Recent_Memory_HowTested" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Remote_Memory" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Remote_Memory_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Speech" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ThoughContent_Describe" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ThoughContent_Homicidal_Ideations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Homicidal_Plan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Paucity" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Suicidal_Ideations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Suicidal_Plan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Delusions" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Grandiose" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Obsessions" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Paranoid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Somatic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Blocking" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Flight" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_GoalDirected" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_LooseAssociations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Tangential" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Thought_Process_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="No_Meds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="MSE_Narrative" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Mood_Angry" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Anxious" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Depressed" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Elevated" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Euphoric" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Irritable" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Labile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Normal" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EOR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__PSYCH_EVAL" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__Intake_Assess" Member="FD__Intake_Assesses">
+    <Type Name="FD__Intake_Assess">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ADL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Aneroxia_Nervosas" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Binging" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Bulimia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments_COmmResr" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments_FamHist" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments_Func_Status" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments_Nutritional" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Comments_VocaEduc" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Current_Employment" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Diabetes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Education_Training" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Explain_Other_ED" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Gain_30Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gain_6Mos" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="History_of_Presenting_Problem" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Housing_Shelters" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hypertensive_Disorder" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hypoglycemia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IntakeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Intake_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="In_Home_Care" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Level_Education" Type="System.String" DbType="VarChar(35)" CanBeNull="true" />
+      <Column Name="Life_Skills" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loss_30Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Loss_6Mos" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="No_known_eating_problems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="No_Meds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="No_Med_Problems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Obesity" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Other_ED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Presenting_Prob" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Public_Aid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Religious_Groups" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Social_Clubs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SOCIAL_FUNC" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SPEECH_Lang_Hearing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Summary_Recommendations" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Support_Groups" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TIME_IN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TIME_OUT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Transportation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="YMCA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Admission_Packet" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Treatment_Contract" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Admit" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NotAppropriateAdmit" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SCANNED1" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ALCOHOL_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="ALCOHOL_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ALCOHOL_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="CAFFINE_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="CAFFINE_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CAFFINE_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="COCAINE_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="COCAINE_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="COCAINE_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="HALLUCINOGENS_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="HALLUCINOGENS_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="HALLUCINOGENS_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="HighestGrade" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MARIJUANA_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="MARIJUANA_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="MARIJUANA_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="OPIODS_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="OPIODS_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="OPIODS_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="OTHER_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="OTHER_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="OTHER_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="OTHER_SUBSTANCE" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="PCP_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="PCP_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PCP_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="PREVIOUS_TX" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="PREVIOUS_TX_WHEN" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="STIMULANTS_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="STIMULANTS_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="STIMULANTS_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="TOBACCO_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="TOBACCO_LAST" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TOBACCO_PAST" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WhenPrevTx" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EPISODEKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="INTAKE_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Next_UR_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="URType" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="BedKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjAdmitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjAdmitTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjDeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjDischargeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProjBedKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjFacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProjPgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PsychStaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LOC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EthnicityCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Marital_Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RaceCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaritalStatusCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Daily_Eating_Habits" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HOMICIDAL" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SUICIDAL" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SmokingStatusCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SMOKE_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="LangPriCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaritalHx" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SexOrientation" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="AbilityParent" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="AbilityParentDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Auditory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Awake" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="AwakeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="BehaviorChange" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="BehaviorChangeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="BehaviorChangeOther" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="BehaviorOther" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="BehaviorOtherDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Binge" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="BingeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Bizarre" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="BizarreDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Command" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="CommandExp" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="CurrentEmployment" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Delusions" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="DelusionsDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="DifficultSleep" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="DifficultSleepDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="EarlyWake" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="EarlyWakeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="EmoSupport" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EmploymentHx" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ExcessExercise" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ExcessExerciseDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FamilyWilling" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FinancialProbs" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="FinancialProbsDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FreqWeighing" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="Halluncinate" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="HalluncinateDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="HxWithdrawal" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Hygiene" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="HygieneDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="IllnessAffectHx" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="IllnessAffectHxDesc" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Issues" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Laxative" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="LaxativeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="LearningDisability" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="LivingArrange" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="LongestSober" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="LossEnergy" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="LossEnergyDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="MilitaryBranch" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="MilitaryService" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="NoMenses" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="NoMensesDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="NotSleeping" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="NotSleepingDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OCBehavior" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OCBehaviorDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OCThoughts" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OCThoughtsDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Olfactory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OtherAnxiety" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OtherAnxietyDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OtherAnxietyExp" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="OtherEat" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OtherEatDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OtherEatExp" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="OtherPsychosis" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OtherPsychosisDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OtherPsychosisExp" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="OtherSleep" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OtherSleepDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="OtherSleepExp" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="Overeating" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="OvereatingDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PanicAttack" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="PanicAttackDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Paranoid" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ParanoidDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PhysicalIllness" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ProblemsWork" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ProblemsWorkDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Psychiatric" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Purge" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="PurgeDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Relationships" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SleepAllDay" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="SleepAllDayDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SocialWithdrawal" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="SocialWithdrawalDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="SubstanceAbuse" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Tactile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TraumaticEvent" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UsualSleep" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="UsualSleepDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="VictimHx" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Visual" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="VisualChk" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="VisualDesc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="WhenSober" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DeptKeyWL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKeyWL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionSource" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="LegalStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AdmissionType" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="UR" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="AdmittingStaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AttendingStaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NotAdmitCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReasonNotAdmit" Type="System.String" DbType="VarChar(254)" CanBeNull="true" />
+      <Column Name="Readmit" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__Intake_Assess" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__NURSING" Member="FD__NURSINGs">
+    <Type Name="FD__NURSING">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AANACA_INVOLV" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ALCOHOL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ALC_DRUG_EXPLAIN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ALLERGIES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="APICAL_RATE" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="APPEARANCE" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="APPETITE_LOSS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ART_LIMBS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BREATH_SHORT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BREATH_SOUND" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="CAFFEINE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CARDIAC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CARDIO_EXPLAIN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CHEST_PAIN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CHEST_SYMM" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="CHEWING" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="COCAINE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CONSTIPATION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COUGH" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DEFORMITY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DETOX_TREATMENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DIABETES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DIARRHEA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DIZZINESS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EATING_DISORD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ELIMINATION_EXPLAIN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EXPERIENCED_DTS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EXPLAIN_RESPIR" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EXPLANATION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EXTREMITY_PAIN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FALLS_HISTORY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FOOD_ASSISTANCE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FREQ_URIN" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GAIT" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="GLASSES_DENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GRIPS" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="HEMORRHOIDS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HIS_PRES_PROB" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HYPERTENSION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IMMED_PROBLEMS_NEEDS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IMMUNIZATION_INCOMPL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="INCONTINENCE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="INFECTIOUS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IRREG_RHYTHM" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="KIDNEY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LIMITATION_EDUCATION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LIVER_DISEASE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MARIJUANA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MEDICAL_HIST" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MEDS_COMPLIANT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MUSCULOSKELETAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NAUSEA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NECK_VEINS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NEUROLOGICAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NEURO_PROB_EXPLAIN" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NORMAL_WEIGHT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOT_COMPLIANT_MEDS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NO_MOVE_EXTREMITIES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NUMBNESS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NUTRITION_PROBLEMS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NUTRI_PROBLEMS_EXPL" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OTHER_DRUGS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OTHER_ELIMIN_PROB" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="OTHER_EXPLANATION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OTHER_PROBLEM" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PACEMAKER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PAIN_ON_URINATION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PALPITATIONS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PEDAL_PULSE" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="PERLA" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="POSTURE" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="RASHES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SEIZURES" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SEX_FUNC_CHANGE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SLEEP_PATTERN" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="SPECIALDIET" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="SPECIAL_DIET" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPECIAL_DIET_REQ" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="STD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="STRENGTHS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="STRESSORS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SUMMARY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SURGERY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SYNCOPE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TOBACCO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TODAY_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ULCER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WEAKNESS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WEIGHT_CHANGE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WHEEZING" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WITHDRAWAL_SYMP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffName" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HairColor" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="EyeColor" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="OTHER_MARKS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PIERCINGS" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="TATTOO" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="No_Meds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="No_Med_Problems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DSFamilyMember" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DSFriend" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DSOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DSParent" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DSPatient" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FamilyMemberCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FriendCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OtherCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AbnormalPAPTest" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AlcoholAbuse" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Anemia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AnkylosingSpondylitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Arthritis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Asthma" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BDDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BDOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BDOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Blindness" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BloodTransfusions" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BoneFracture" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BreastCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BreastLump" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BreastTendernes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Cancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CarpalTunnelSyndrome" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CerebralPalsy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CerliacDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CervicalCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CHF" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChickenPox" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Chlamydia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChronicJointInjury" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ChronicKidneyDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClottingDisorder" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ColdSores" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CongenitalDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CongenitalHeartDefect" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Contacts" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COPD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CVDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CVOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CVOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Deaf" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Dentures" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DetailsMentalIllness" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DetailsSubAbuse" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DiabetesTypeI" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DiabetesTypeII" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENDDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Endometriosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENDOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENDOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EnlargedProstate" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENTDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENTOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ENTOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EyesDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EyesOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FamnilyHistoryOther" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="FHArthritis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHAsthma" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHLiverDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHSeizures" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FHStroke" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Fibromyalgia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GAConstipation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GAeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GallBladderDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GAOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GAther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenitalHerpes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenitalWarts" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenitourinaryDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenitourinaryOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GenitourinaryOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Glasses" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Glaucoma" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Gonorrhea" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Gout" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="GSTDExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HeadConcussion" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HearingAides" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HearingLoss" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HeartAttack" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HeartDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HeartMurmur" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HepatitisA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HepatitisB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HepatitisC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HerniatedDisk" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HerpesZosteShingles" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HighBloodPressure" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HighCholesterol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HistoryTuberculosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HNDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HNOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HNOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HNSeizures" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hyperthyroid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hypothyroid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Impaired" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Impotence" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="INDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="INOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IrritableBowelSyndrome" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ISDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ISLupus" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ISOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="KidneyDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="KidneyInfection" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="KidneyStones" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LactoseIntolerant" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LastBM" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LastBMExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LastMenstrualPeriod" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LastMenstrualPeriodExplain" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Leukemia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LiverDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LungsDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LungsOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LungsOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LymeDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Lymphoma" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Meningitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MenstrualIrregularities" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MentalIllness" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MetabolicSyndrome" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MigraineHeadaches" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mononucleosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MRDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MROther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MROtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MRSA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MRSTDExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="MUDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MultipleSclerosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MUOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MUOtherExpalin" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Narcolepsy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Obesity" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Osteoporosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="OvarianCysts" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PalpitationsArrythmia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PelvicInfection" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PenileDischarge" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Pneumonia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PolycysticOvaryDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PositiveTB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PositiveTB1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PriorAdmission" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ProstateCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Prostatectomy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentAnkleSprains" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentBackPain" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentBladderInfections" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentBronchitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentHeadaches" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentHeartburn" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentNoseBleeds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentSinusInfections" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentStrepThroat" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentTendonitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentTonsillitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RecurrentVaginalInfections" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RheumatoidArthritis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Scoliosis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SeasonalAllergies" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SickleCellDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SleepApnea" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="STDs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StressFractures" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Stroke" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SubstanceAbuse" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TB" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TesticularCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThyroidCancer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThyroidNodule" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThyroidProblems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TMJProblems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="UlcerativeColitis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ulcers" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ulder" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="UponAdmission" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="V" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WithinNormalLimits" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Appetite" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DietNutritionOther" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DifficultyChewing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DifficultySwallowing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DNOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DNSpecialDiet" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DTDeniesHistory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PoorAppetit5Days" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PoorAppetite" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SpecifySpecialDiet" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="UnintentionalWeightLoss" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BedTime" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DifficultyFallingAsleep" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DifficultyStayingAsleep" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EarlyMorningWakening" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FrequentAwakening" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HelpsSleep" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Naps" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Nightmares" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NoProblems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NumberHours" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="SleepRestComments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Ambulatory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BedRest" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Cane" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CoordinationBalance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Crutches" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DecreasedEndurance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="None" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NoProblemsNoted" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Prosthesis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RestrictedWeightBearing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TransferAssistance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TypeProsthesis" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnsteadyGait" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Walker" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Wheelchair" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="WithAssistance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Bathing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Cooking" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Dressing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Driving" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Eating" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Grooming" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NoAssistance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AdmissionGeneralOrder" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CrohnsDisease" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TODAY_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Chief_Compllaint" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SocialAssessment" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AllergryVal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__NURSING" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__DISCHARGE_SUMMARY" Member="FD__DISCHARGE_SUMMARies">
+    <Type Name="FD__DISCHARGE_SUMMARY">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AfterCare" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ChiefComplaint" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Information" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Labs" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LegalStatus" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PresentIllness" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TierSign" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign2" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="WitnessDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PatientDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="suicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="homicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="homcide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__DISCHARGE_AFTERCARE" Member="FD__DISCHARGE_AFTERCAREs">
+    <Type Name="FD__DISCHARGE_AFTERCARE">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityDAP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityDCOrders" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityHP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityIFS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityLabs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityMAR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityOther" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityOtherDesc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FacilityPsychEval" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FacilityRX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeDAP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeIFS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeOther1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeOther1Desc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HomeOther2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeOther2Desc" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="HomeRX" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Interactions" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Meds" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Nutrition" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SideEffects" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GuardianDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PatientDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganizationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TierSign" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign2" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign3" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign4" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign5" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign6" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign7" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TierSign8" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="homicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="suicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="homcide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="HomeSafetyPlan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PROGRAM_CLIENT" Member="FD__PROGRAM_CLIENTs">
+    <Type Name="FD__PROGRAM_CLIENT">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmitTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Create_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date_Admit_Program" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date_Discharged_Program" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date_Form" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date_Transferred" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DischTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LEGlStat" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="Number_of_Days" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramAdmit_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Program_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Program_Status" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="TransferFacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransferProgramCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Transferred_Program" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgramTransferedTo" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="BEDID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionVisitType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SourceOfAdmission" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Proj_Discharge" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DischargeTypeDesc" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PsychStaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramAdmitDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DischargeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DischargeTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgramAdmissionDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ProgramDischargeDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BedKeyTransfer" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="A06_A07_Transfer" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="A01_Admit" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PriorityAdmissionCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SourceAdmissionCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PatientStatusCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__PROGRAM_CLIENT" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PHYSICIAN_DISCHARGE_SUMMARY" Member="FD__PHYSICIAN_DISCHARGE_SUMMARies">
+    <Type Name="FD__PHYSICIAN_DISCHARGE_SUMMARY">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccessToCommRes" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AnticipatedIssues" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BriefHistory" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DischargeCondition" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DischargeDisposition" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DischargeMentalStatus" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EducationalNeeds" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FamilyRelationships" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Labs_NA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhysicalNeeds" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Prognosis" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Recommendations" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SocialNeeds" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TreatmentCourse" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NbrPsychoMeds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PM_chk_1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PM_chk_2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PM_chk_3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PM_chk_4" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PM_Other" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="suicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="homicide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="homcide" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__MEDICAL_STATUS" Member="FD__MEDICAL_STATUS">
+    <Type Name="FD__MEDICAL_STATUS">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Status" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Time_Status" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Assessment_Time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Neuro_Pupils_Equal_Reactive" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Pupil_Size" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Patient_Awake" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Patient_Oriented" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Speech_Clear" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Gait_Steady" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Neuro_Grips_Equal" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Respiratory_Labored" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Respiratory_Shortness_Of_Breath" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Respiratory_Cough" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Respiratory_Cough_Comments" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Cardiac_Heart_Regular" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Cardiac_Lower_Pulses" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Cardiac_Edema" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Cardiac_Edema_Comments" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Gastro_Bowel_Sounds" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Gastro_Abdomen_Soft" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Gastro_BM" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Gastro_BM_Comments" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Gastro_Nausea" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Genitourinary_Voided" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Genitourinary_Voided_Comments" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Skin_Intact" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Skin_Bruises" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Musculoskeletal_Move" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Pain" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Pain_Comments" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pain_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Decline" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Shift" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Shift_Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FallRiskScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__INITIAL_CONTACT" Member="FD__INITIAL_CONTACTs">
+    <Type Name="FD__INITIAL_CONTACT">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateService" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InitialContact" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReferralNameF" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="ReferralNameL" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="Referral_Phone" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganizationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChargeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PSYCHIATRIC_PROGRESS_NOTE" Member="FD__PSYCHIATRIC_PROGRESS_NOTEs">
+    <Type Name="FD__PSYCHIATRIC_PROGRESS_NOTE">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdditionalHS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Asso_1_Tan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Asso_2_Cir" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_1_Coop" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_1_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_2_Dis" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_2_Gua" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_3_Dro" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_3_Neg" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Att_4_Sus" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_1_None" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_2_Pre" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_2_Pre_Ex" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AT_3_Aud" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_3_Aud_Ex" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AT_4_Visual" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_4_Visual_Ex" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AT_5_Del" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_5_Del_Ex" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="AT_6_SIHI" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AT_6_SIHI_Ex" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="ChargeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChiefComplaint" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comprehensive" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DateService" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fluency" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Gait_1_Ata" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Gait_2_Shu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Gait_3_Sto" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Gait_4_Ste" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Gait_5_Dev" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_1_Loc" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_2_Qua" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_3_Sev" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_4_Dur" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_5_Tim" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_6_Con" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_7_Fac" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HPI_8_Sign" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hygiene" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Insight_1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Insight_2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Insight_3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Insight_4" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Judgement_1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Judgement_2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Judgement_3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Judgement_4" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LOS" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Mass_1_Well" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mass_2_Atrophy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mass_3_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MC_FundofKnow" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="MC_Immediate" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="MC_Recent" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="MC_Remote" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="MedChanges" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Mood_10_Mod" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_11_Lib" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_12_Angry" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_13_Apa" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_14_Eut" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_15_Dep" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_16_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_16_Other_Ex" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Mood_1_Calm" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_2_Anxious" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_3_Eup" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_4_Dy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_5_Con" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_6_Incon" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_7_Expnd" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_8_Const" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_9_Irr" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_1_Dysk" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_2_Tremor" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_3_Rapid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_4_Slow" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_5_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Move_5_Other_Ex" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Naming" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="NoteKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Orders_1_Labs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Orders_2_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Orders_3_NoNew" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PFSH_Text" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POSKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Progress" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ProgressNoteKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rationale" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Repetition" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Risks_5" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="ROS_10_Res" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_11_Pain" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_1_Con" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_2_Hee" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_3_GIGU" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_4_Neu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_5_Hema" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_6_End" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_7_Skin" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_8_Mus" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ROS_9_Car" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ServiceReq_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Speech_1_Pre" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_2_Art" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_3_Spo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_4_Slo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_5_Soft" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_6_App" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_7_Dys" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_8_Rep" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffName" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="StatedAge" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Stature" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Strengths_1_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Strengths_2_Weak" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TC_1_Real" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TC_2_Pre" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TC_3_Pau" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TC_4_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TC_4_Other_Ex" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TIMEStop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Tone_1_Spastic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Tone_2_Flaccid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Tone_3_Rigid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Tone_4_Tone" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_10_Tan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_11_Blo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_1_Log" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_2_Lin" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_3_Goal" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_4_Ill" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_5_Loose" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_6_Slow" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_7_Ab" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_8_Pre" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TP_9_Cir" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Vocabulary" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Weight" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VOIDED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DATEVOIDED" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Risks_1" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Risks_2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Risks_3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Risks_4" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Risks_5_Ex" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Orient_1_Person" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Orient_2_Place" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Orient_3_Time" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_10_Loud" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_9_Rap" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NoteType" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="Diagnosis" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="HOMICIDAL" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="SelfHarm" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="SUICIDAL" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Risks_6" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Perceptiveness" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Proverbs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_NormalPer_Similarities" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Abstract_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Affect" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Cooperative" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Guarded" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="AttitudeBehavior_Withdrawn" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Concentration" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Concentration_HowTested" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="General_Appearance" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="General_Appearance_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Insight" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Intelligence" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Intelligence_AveragePer_Fund" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Intelligence_AveragePer_Vocabulary" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Intelligence_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Judgment" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Mood_Angry" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Anxious" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Depressed" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Elevated" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Euphoric" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Irritable" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Labile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Mood_Normal" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Motor_Activity" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Motor_Activity_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Orientation" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Orientation_HowTested" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Orientation_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Perception_Describer" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Auditory" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Tactile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_Hallucinations_Visual" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Perception_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Recent_Memory" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Recent_Memory_HowTested" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Remote_Memory" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Remote_Memory_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Speech" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Speech_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ThoughContent_Describe" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ThoughContent_Homicidal_Ideations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Homicidal_Plan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Paucity" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Suicidal_Ideations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughContent_Suicidal_Plan" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Delusions" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Grandiose" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Obsessions" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Paranoid" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_Somatic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtContent_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Blocking" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Flight" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_GoalDirected" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_LooseAssociations" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_Tangential" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ThoughtProcess_WNL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Thought_Process_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Date_Service" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DxShow" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__GENERALNOTE" Member="FD__GENERALNOTEs">
+    <Type Name="FD__GENERALNOTE">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChargeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DATESERVICE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PGMADMISSIONKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PGMKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeStop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ServiceReq_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__SOAP_NOTE" Member="FD__SOAP_NOTEs">
+    <Type Name="FD__SOAP_NOTE">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Assessment" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FamilyKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MTPKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectiveID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ObjectiveNote" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Plan_DAP" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Subjective" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TIME_OUT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Time_Prog" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServiceReq_Code" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteDescipline" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="TypeofNote" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="VOIDED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DATEVOIDED" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POSKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProcKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__CONTACTNOTE" Member="FD__CONTACTNOTEs">
+    <Type Name="FD__CONTACTNOTE">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Chargekey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ContactPhone" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="DateService" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NOTE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PreadmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelationshipCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RelationshipKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeEnd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DispoStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Scheduler_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoteKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VOIDED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DATEVOIDED" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrganizationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__CONTACTNOTE" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PHYSGEN" Member="FD__PHYSGENs">
+    <Type Name="FD__PHYSGEN">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Noted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATE_ORDER" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Order_Noted" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Time_Noted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Verbal_Order" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="EXPLAIN_OTHR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="OrderTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderSpecCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKeyOrderedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKeyTakenBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ordered_by" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+      <Column Name="OrderSpecs" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Physicianorderingadmit" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Roster_Name" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="StaffKeyNotedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DESCRIP" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="FULLNAME" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="SSN" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="ReadBack" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="DCDateVerified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DCRationaleCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DCReadback" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="DCTimeVerified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DCVerbalOrder" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="DCVerified" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DCVerifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Discontinued" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffKeyDCBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DCDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DCOtherRationale" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Duration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DurationInt" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="GeneralFrequency" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="GeneralFrequencyCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STARTDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Friday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Monday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Saturday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Sunday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Thursday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Tuesday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Wednesday" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="EPISODEKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Order_Verified" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Date_Verified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Time_Verified" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StaffKeyVerifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Assessment" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LegalSatusKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LegalStatus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Observation" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ObservationKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Oxygen" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="OxygenKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DCDateNoted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DCNoted" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DCNotedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DCTimeNoted" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__PHYSGEN" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__MED_HISTORY" Member="FD__MED_HISTORies">
+    <Type Name="FD__MED_HISTORY">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicantKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Today" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateBegun" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateComplete" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DCD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Dosage" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Dosage1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DrugName1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacilityKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MedCODE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MedOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PhysicianNameF" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="PhysicianNameL" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Reason" Type="System.String" DbType="VarChar(111)" CanBeNull="true" />
+      <Column Name="RELKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Units" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DOSE1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="med_freq" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ROUTE" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="FreqCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HomeWith" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HomeWithDesc" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="MedCart" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PtMedStorage" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedLocation" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Compliant" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="NDC" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__MED_HISTORY" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PSYCHOSOCIAL_PLAN" Member="FD__PSYCHOSOCIAL_PLANs">
+    <Type Name="FD__PSYCHOSOCIAL_PLAN">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aff_Support" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AttendingChurch" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Church" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IllnessAffectsLife" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Life_How" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Live_10_Partial" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_11_AfterCare" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_12_FamilyTherapy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_13_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_13_OtherDescrip" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Live_1_Home" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_2_WithFamily" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_3_NursingHome" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_4_GroupHome" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_5_Followup" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_6_FosterCare" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_7_NeedsPlacement" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_8_ResTreatment" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Live_9_IntensiveOP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PatientGoals" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PsychosocialUpdate" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ReligionName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Religious_1_Aff" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SignificantOtherGoals" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Strengths" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TODAY_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Weakness" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FullnameRel" Type="System.String" DbType="VarChar(42)" CanBeNull="true" />
+      <Column Name="RELKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NameF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NameL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Relationship" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
