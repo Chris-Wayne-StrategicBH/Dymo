@@ -64,7 +64,9 @@ namespace DPGPP
       [Description("SD - Administered Meds History 20130410.rpt")]
       ADMINISTERED_MEDICATION_HISTORY,
       [Description("SD - Psychosocial Plan 20120521.rpt")]
-      UPDATED_COMPREHENSIVE_ASSESSMENT
+      UPDATED_COMPREHENSIVE_ASSESSMENT,
+      [Description("SD - Psychosocial Plan 20120521.rpt")]
+      EVALUATION_OF_RISK
    }
 
    public enum CRYSTALREPORTTYPES
