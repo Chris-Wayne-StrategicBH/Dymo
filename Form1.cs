@@ -86,67 +86,6 @@ namespace DPGPP
 
       }
 
-      /*
-      private void PrintReport(RptInterface rpt)
-      {
-         Tables CrTables;
-         ReportDocument cryRpt = new ReportDocument();
-         ConnectionInfo crConnectionInfo = new ConnectionInfo();
-         TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
-
-         crConnectionInfo.ServerName = "srvcostier";
-         crConnectionInfo.DatabaseName = "TIER_PVBH";
-         crConnectionInfo.UserID = "TIER";
-         crConnectionInfo.Password = "38$bH125";
-
-         cryRpt.Load(rpt.Path);
-         switch (rpt.reportType)
-         {
-            case CRYSTALREPORTTYPES.OP__DOCID:
-               cryRpt.SetParameterValue("OP__DOCID", rpt.Get_OP__DOCID());
-               break;
-            case CRYSTALREPORTTYPES.CLIENTKEY_ADMISSIONKEY:
-               cryRpt.SetParameterValue("ClientKey", rpt.Get_ClientKey());
-               cryRpt.SetParameterValue("AdmissionKey", rpt.Get_AdmissionKey());
-               break;
-            case CRYSTALREPORTTYPES.OP__DOCID_ADMISSIONKEY0:
-               cryRpt.SetParameterValue("OP__DOCID", rpt.Get_OP__DOCID());
-               cryRpt.SetParameterValue("AdmissionKey", 0);
-               break;
-            case CRYSTALREPORTTYPES.STARTDATE_ENDDATE:
-               cryRpt.SetParameterValue("AdmissionKey", rpt.Get_AdmissionKey());
-               cryRpt.SetParameterValue("StartDate", rpt.Get_StartDate());
-               cryRpt.SetParameterValue("EndDate", rpt.Get_EndDate());
-               break;
-         }
-         
-         CrTables = cryRpt.Database.Tables;
-
-         foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
-         {
-            crtablelogoninfo = CrTable.LogOnInfo;
-            crtablelogoninfo.ConnectionInfo = crConnectionInfo;
-            CrTable.ApplyLogOnInfo(crtablelogoninfo);
-         }
-
-         // Select the printer and print
-         cryRpt.PrintOptions.PrinterDuplex = (PrinterDuplex) printerSettings.Duplex; // 1 sided ?
-         cryRpt.PrintOptions.PrinterName = printerSettings.PrinterName;
-         cryRpt.PrintToPrinter(1, false, 0, 0);
-
-         cryRpt.Close();
-         cryRpt.Clone();
-         cryRpt.Dispose();
-         cryRpt = null;
-         GC.Collect();
-         GC.WaitForPendingFinalizers();
-
-         //crystalReportViewer1.ReportSource = cryRpt;
-         //crystalReportViewer1.Refresh();
-         //crystalReportViewer1.PrintReport();
-
-      }
-       */
       private void PrepareTree()
       {
          TreeNode RootNode = new TreeNode();
@@ -251,6 +190,7 @@ namespace DPGPP
 
       }
 
+      // traverse the tree instead of this mess!
       private void Print_Reports()
       {
          TreeNode parentNode, rootNode = null;
