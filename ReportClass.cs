@@ -80,7 +80,7 @@ namespace DPGPP
       ADMINISTERED_MEDICATION_HISTORY,
       [Description("SD - Psychosocial Plan 20120521.rpt")]
       UPDATED_COMPREHENSIVE_ASSESSMENT,
-      [Description("SD - Psychosocial Plan 20120521.rpt")]
+      [Description("SD - Initial Assesment of Risk 20120806.rpt")]
       EVALUATION_OF_RISK
    }
 
@@ -274,6 +274,7 @@ namespace DPGPP
             case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
             case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
             case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
+            case CRYSTALREPORTS.EVALUATION_OF_RISK:
                return new GeneralRpt(inPath, OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:

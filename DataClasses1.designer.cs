@@ -84,6 +84,9 @@ namespace DPGPP
     partial void InsertFD__PSYCHOSOCIAL_PLAN(FD__PSYCHOSOCIAL_PLAN instance);
     partial void UpdateFD__PSYCHOSOCIAL_PLAN(FD__PSYCHOSOCIAL_PLAN instance);
     partial void DeleteFD__PSYCHOSOCIAL_PLAN(FD__PSYCHOSOCIAL_PLAN instance);
+    partial void InsertFD__INITIAL_ASSESSMENT_OF_RISK(FD__INITIAL_ASSESSMENT_OF_RISK instance);
+    partial void UpdateFD__INITIAL_ASSESSMENT_OF_RISK(FD__INITIAL_ASSESSMENT_OF_RISK instance);
+    partial void DeleteFD__INITIAL_ASSESSMENT_OF_RISK(FD__INITIAL_ASSESSMENT_OF_RISK instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -257,6 +260,14 @@ namespace DPGPP
 			get
 			{
 				return this.GetTable<FD__PSYCHOSOCIAL_PLAN>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FD__INITIAL_ASSESSMENT_OF_RISK> FD__INITIAL_ASSESSMENT_OF_RISKs
+		{
+			get
+			{
+				return this.GetTable<FD__INITIAL_ASSESSMENT_OF_RISK>();
 			}
 		}
 	}
@@ -38176,6 +38187,2948 @@ namespace DPGPP
 					this._Relationship = value;
 					this.SendPropertyChanged("Relationship");
 					this.OnRelationshipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Voided", DbType="Char(1)")]
+		public System.Nullable<char> Voided
+		{
+			get
+			{
+				return this._Voided;
+			}
+			set
+			{
+				if ((this._Voided != value))
+				{
+					this.OnVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._Voided = value;
+					this.SendPropertyChanged("Voided");
+					this.OnVoidedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateVoided", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateVoided
+		{
+			get
+			{
+				return this._DateVoided;
+			}
+			set
+			{
+				if ((this._DateVoided != value))
+				{
+					this.OnDateVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._DateVoided = value;
+					this.SendPropertyChanged("DateVoided");
+					this.OnDateVoidedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__INITIAL_ASSESSMENT_OF_RISK")]
+	public partial class FD__INITIAL_ASSESSMENT_OF_RISK : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private System.Nullable<char> _Age19to45;
+		
+		private System.Nullable<char> _AlcoholDrugUse;
+		
+		private System.Nullable<char> _BluntedAffect;
+		
+		private System.Nullable<char> _BorderlinePersonality;
+		
+		private System.Nullable<char> _BorderlinePersonalityDisorder;
+		
+		private System.Nullable<char> _CalmAfterDepression;
+		
+		private System.Nullable<char> _CapacityRealityTesting;
+		
+		private System.Nullable<char> _ChildrenHome;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private System.Nullable<char> _COG_FUNC_AWARE_TIME;
+		
+		private System.Nullable<char> _CommandHallucinations;
+		
+		private System.Nullable<char> _CompromiseSelfDefense;
+		
+		private System.Nullable<System.DateTime> _Date_Status;
+		
+		private string _DelusionalContent;
+		
+		private System.Nullable<char> _DevelopmentallyChallenged;
+		
+		private System.Nullable<char> _ECTRecipients;
+		
+		private System.Nullable<int> _EpisodeKey;
+		
+		private System.Nullable<char> _Family;
+		
+		private System.Nullable<char> _FamilySuicide;
+		
+		private System.Nullable<char> _Financial;
+		
+		private System.Nullable<char> _Friend;
+		
+		private System.Nullable<char> _Frustration;
+		
+		private System.Nullable<char> _HealthProfessional;
+		
+		private System.Nullable<char> _HeavyAlcoholDrug;
+		
+		private string _HistoryHomicidalIdeation;
+		
+		private System.Nullable<char> _HistorySchizophrenia;
+		
+		private string _HistorySuicidalIdeation;
+		
+		private string _HomicidalIdeation;
+		
+		private string _HomicidalRisk;
+		
+		private System.Nullable<char> _HomicideCommandHallucinations;
+		
+		private System.Nullable<char> _HomicideOrganicBrainSyndrome;
+		
+		private string _HomicideRiskFactorsComments;
+		
+		private System.Nullable<char> _Hopelessness;
+		
+		private string _IdeationRepetitive;
+		
+		private System.Nullable<char> _InformantOther;
+		
+		private System.Nullable<char> _InformantPatient;
+		
+		private System.Nullable<char> _LegalDifficulties;
+		
+		private string _LethalIntent;
+		
+		private System.Nullable<char> _LossEmployment;
+		
+		private System.Nullable<char> _MajorDepression;
+		
+		private System.Nullable<char> _MaritalStatus;
+		
+		private System.Nullable<char> _MentalRetardation;
+		
+		private System.Nullable<char> _NoHistoryViolence;
+		
+		private string _OrderCreated;
+		
+		private System.Nullable<char> _OrganicBrainSyndrome;
+		
+		private System.Nullable<char> _OrganizedLethalIntent;
+		
+		private System.Nullable<char> _ParanoidIdeation;
+		
+		private string _PatientConealingEvidence;
+		
+		private string _PERCEP_HALLUC_OTHER_EXPLN;
+		
+		private System.Nullable<int> _PgmAdmissionKey;
+		
+		private System.Nullable<int> _PgmKey;
+		
+		private string _PhysicalHarm;
+		
+		private System.Nullable<char> _PositiveCopingSkills;
+		
+		private System.Nullable<char> _PositiveRelationships;
+		
+		private System.Nullable<char> _PossessionWeapons;
+		
+		private System.Nullable<char> _PreviousHstoryVolence;
+		
+		private System.Nullable<char> _ProblemsSignificantOthers;
+		
+		private string _ProtectiveFactorsComments;
+		
+		private System.Nullable<char> _RapidMoodShifts;
+		
+		private System.Nullable<char> _Religiousprohibition;
+		
+		private System.Nullable<char> _SchoolDifficulties;
+		
+		private string _Sec3UnitStaffNotified;
+		
+		private string _Sec4UnitStaffNotified;
+		
+		private string _SectionICommnets;
+		
+		private string _SectionIICommnets;
+		
+		private string _SectionVCommnets;
+		
+		private System.Nullable<char> _SenseResponsibilityFamily;
+		
+		private System.Nullable<char> _SevereAnxiety;
+		
+		private System.Nullable<char> _SevereInsomnia;
+		
+		private System.Nullable<char> _SevereWorry;
+		
+		private System.Nullable<char> _SocialSupport;
+		
+		private System.Nullable<char> _SocialSupports;
+		
+		private string _SpecificPlan;
+		
+		private System.Nullable<char> _Spirituality;
+		
+		private System.Nullable<int> _StaffKey;
+		
+		private System.Nullable<char> _SuccessfulResponsesStress;
+		
+		private string _SuicidalIdeation;
+		
+		private string _SuicidalRisk;
+		
+		private string _SuicideRiskFactorsComments;
+		
+		private string _SummaryEvalComments;
+		
+		private string _TypeInitRisk;
+		
+		private string _TypeReason;
+		
+		private System.Nullable<char> _UpredictableBehavior;
+		
+		private System.Nullable<char> _VictimSexualAbuse;
+		
+		private System.Nullable<char> _ViolenceTowardOthers;
+		
+		private System.Nullable<char> _ViolentSocialEnvironment;
+		
+		private string _VulnerabilityRisk;
+		
+		private System.Nullable<char> _WeaponPossession;
+		
+		private string _WhoOther;
+		
+		private System.Nullable<int> _AssessmentKey;
+		
+		private string _DutyToWarn;
+		
+		private string _HowContacted;
+		
+		private string _IntendedVictim;
+		
+		private string _IntendedVictimWho;
+		
+		private System.Nullable<char> _PoliceNotified;
+		
+		private System.Nullable<System.DateTime> _Assessment_Time;
+		
+		private string _FamilysupportSystem;
+		
+		private System.Nullable<int> _InquiryKey;
+		
+		private System.Nullable<char> _No_Meds;
+		
+		private System.Nullable<char> _No_Med_Problems;
+		
+		private string _Presenting_Problem;
+		
+		private string _PREV_TREAT;
+		
+		private string _SummaryofFindings;
+		
+		private System.Nullable<System.DateTime> _DATE_LAST_HOSP_VST;
+		
+		private System.Nullable<System.DateTime> _DATE_LAST_PHYS_VST;
+		
+		private string _PhysicianAddress;
+		
+		private string _PhysicianCity;
+		
+		private System.Nullable<int> _CredentialCode;
+		
+		private string _PhysicianNameF;
+		
+		private string _PhysicianNameL;
+		
+		private string _PhysicianPhone;
+		
+		private string _PhysicianState;
+		
+		private string _PhysicianZip;
+		
+		private System.Nullable<System.DateTime> _MiniStatusEffDate;
+		
+		private string _PhysicianCredentials;
+		
+		private System.Nullable<char> _Voided;
+		
+		private System.Nullable<System.DateTime> _DateVoided;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOP__DOCIDChanging(int value);
+    partial void OnOP__DOCIDChanged();
+    partial void OnOP__PARENTIDChanging(System.Nullable<int> value);
+    partial void OnOP__PARENTIDChanged();
+    partial void OnOP__FOLDERIDChanging(System.Nullable<int> value);
+    partial void OnOP__FOLDERIDChanged();
+    partial void OnAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnAdmissionKeyChanged();
+    partial void OnAge19to45Changing(System.Nullable<char> value);
+    partial void OnAge19to45Changed();
+    partial void OnAlcoholDrugUseChanging(System.Nullable<char> value);
+    partial void OnAlcoholDrugUseChanged();
+    partial void OnBluntedAffectChanging(System.Nullable<char> value);
+    partial void OnBluntedAffectChanged();
+    partial void OnBorderlinePersonalityChanging(System.Nullable<char> value);
+    partial void OnBorderlinePersonalityChanged();
+    partial void OnBorderlinePersonalityDisorderChanging(System.Nullable<char> value);
+    partial void OnBorderlinePersonalityDisorderChanged();
+    partial void OnCalmAfterDepressionChanging(System.Nullable<char> value);
+    partial void OnCalmAfterDepressionChanged();
+    partial void OnCapacityRealityTestingChanging(System.Nullable<char> value);
+    partial void OnCapacityRealityTestingChanged();
+    partial void OnChildrenHomeChanging(System.Nullable<char> value);
+    partial void OnChildrenHomeChanged();
+    partial void OnClientKeyChanging(System.Nullable<int> value);
+    partial void OnClientKeyChanged();
+    partial void OnCOG_FUNC_AWARE_TIMEChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_AWARE_TIMEChanged();
+    partial void OnCommandHallucinationsChanging(System.Nullable<char> value);
+    partial void OnCommandHallucinationsChanged();
+    partial void OnCompromiseSelfDefenseChanging(System.Nullable<char> value);
+    partial void OnCompromiseSelfDefenseChanged();
+    partial void OnDate_StatusChanging(System.Nullable<System.DateTime> value);
+    partial void OnDate_StatusChanged();
+    partial void OnDelusionalContentChanging(string value);
+    partial void OnDelusionalContentChanged();
+    partial void OnDevelopmentallyChallengedChanging(System.Nullable<char> value);
+    partial void OnDevelopmentallyChallengedChanged();
+    partial void OnECTRecipientsChanging(System.Nullable<char> value);
+    partial void OnECTRecipientsChanged();
+    partial void OnEpisodeKeyChanging(System.Nullable<int> value);
+    partial void OnEpisodeKeyChanged();
+    partial void OnFamilyChanging(System.Nullable<char> value);
+    partial void OnFamilyChanged();
+    partial void OnFamilySuicideChanging(System.Nullable<char> value);
+    partial void OnFamilySuicideChanged();
+    partial void OnFinancialChanging(System.Nullable<char> value);
+    partial void OnFinancialChanged();
+    partial void OnFriendChanging(System.Nullable<char> value);
+    partial void OnFriendChanged();
+    partial void OnFrustrationChanging(System.Nullable<char> value);
+    partial void OnFrustrationChanged();
+    partial void OnHealthProfessionalChanging(System.Nullable<char> value);
+    partial void OnHealthProfessionalChanged();
+    partial void OnHeavyAlcoholDrugChanging(System.Nullable<char> value);
+    partial void OnHeavyAlcoholDrugChanged();
+    partial void OnHistoryHomicidalIdeationChanging(string value);
+    partial void OnHistoryHomicidalIdeationChanged();
+    partial void OnHistorySchizophreniaChanging(System.Nullable<char> value);
+    partial void OnHistorySchizophreniaChanged();
+    partial void OnHistorySuicidalIdeationChanging(string value);
+    partial void OnHistorySuicidalIdeationChanged();
+    partial void OnHomicidalIdeationChanging(string value);
+    partial void OnHomicidalIdeationChanged();
+    partial void OnHomicidalRiskChanging(string value);
+    partial void OnHomicidalRiskChanged();
+    partial void OnHomicideCommandHallucinationsChanging(System.Nullable<char> value);
+    partial void OnHomicideCommandHallucinationsChanged();
+    partial void OnHomicideOrganicBrainSyndromeChanging(System.Nullable<char> value);
+    partial void OnHomicideOrganicBrainSyndromeChanged();
+    partial void OnHomicideRiskFactorsCommentsChanging(string value);
+    partial void OnHomicideRiskFactorsCommentsChanged();
+    partial void OnHopelessnessChanging(System.Nullable<char> value);
+    partial void OnHopelessnessChanged();
+    partial void OnIdeationRepetitiveChanging(string value);
+    partial void OnIdeationRepetitiveChanged();
+    partial void OnInformantOtherChanging(System.Nullable<char> value);
+    partial void OnInformantOtherChanged();
+    partial void OnInformantPatientChanging(System.Nullable<char> value);
+    partial void OnInformantPatientChanged();
+    partial void OnLegalDifficultiesChanging(System.Nullable<char> value);
+    partial void OnLegalDifficultiesChanged();
+    partial void OnLethalIntentChanging(string value);
+    partial void OnLethalIntentChanged();
+    partial void OnLossEmploymentChanging(System.Nullable<char> value);
+    partial void OnLossEmploymentChanged();
+    partial void OnMajorDepressionChanging(System.Nullable<char> value);
+    partial void OnMajorDepressionChanged();
+    partial void OnMaritalStatusChanging(System.Nullable<char> value);
+    partial void OnMaritalStatusChanged();
+    partial void OnMentalRetardationChanging(System.Nullable<char> value);
+    partial void OnMentalRetardationChanged();
+    partial void OnNoHistoryViolenceChanging(System.Nullable<char> value);
+    partial void OnNoHistoryViolenceChanged();
+    partial void OnOrderCreatedChanging(string value);
+    partial void OnOrderCreatedChanged();
+    partial void OnOrganicBrainSyndromeChanging(System.Nullable<char> value);
+    partial void OnOrganicBrainSyndromeChanged();
+    partial void OnOrganizedLethalIntentChanging(System.Nullable<char> value);
+    partial void OnOrganizedLethalIntentChanged();
+    partial void OnParanoidIdeationChanging(System.Nullable<char> value);
+    partial void OnParanoidIdeationChanged();
+    partial void OnPatientConealingEvidenceChanging(string value);
+    partial void OnPatientConealingEvidenceChanged();
+    partial void OnPERCEP_HALLUC_OTHER_EXPLNChanging(string value);
+    partial void OnPERCEP_HALLUC_OTHER_EXPLNChanged();
+    partial void OnPgmAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnPgmAdmissionKeyChanged();
+    partial void OnPgmKeyChanging(System.Nullable<int> value);
+    partial void OnPgmKeyChanged();
+    partial void OnPhysicalHarmChanging(string value);
+    partial void OnPhysicalHarmChanged();
+    partial void OnPositiveCopingSkillsChanging(System.Nullable<char> value);
+    partial void OnPositiveCopingSkillsChanged();
+    partial void OnPositiveRelationshipsChanging(System.Nullable<char> value);
+    partial void OnPositiveRelationshipsChanged();
+    partial void OnPossessionWeaponsChanging(System.Nullable<char> value);
+    partial void OnPossessionWeaponsChanged();
+    partial void OnPreviousHstoryVolenceChanging(System.Nullable<char> value);
+    partial void OnPreviousHstoryVolenceChanged();
+    partial void OnProblemsSignificantOthersChanging(System.Nullable<char> value);
+    partial void OnProblemsSignificantOthersChanged();
+    partial void OnProtectiveFactorsCommentsChanging(string value);
+    partial void OnProtectiveFactorsCommentsChanged();
+    partial void OnRapidMoodShiftsChanging(System.Nullable<char> value);
+    partial void OnRapidMoodShiftsChanged();
+    partial void OnReligiousprohibitionChanging(System.Nullable<char> value);
+    partial void OnReligiousprohibitionChanged();
+    partial void OnSchoolDifficultiesChanging(System.Nullable<char> value);
+    partial void OnSchoolDifficultiesChanged();
+    partial void OnSec3UnitStaffNotifiedChanging(string value);
+    partial void OnSec3UnitStaffNotifiedChanged();
+    partial void OnSec4UnitStaffNotifiedChanging(string value);
+    partial void OnSec4UnitStaffNotifiedChanged();
+    partial void OnSectionICommnetsChanging(string value);
+    partial void OnSectionICommnetsChanged();
+    partial void OnSectionIICommnetsChanging(string value);
+    partial void OnSectionIICommnetsChanged();
+    partial void OnSectionVCommnetsChanging(string value);
+    partial void OnSectionVCommnetsChanged();
+    partial void OnSenseResponsibilityFamilyChanging(System.Nullable<char> value);
+    partial void OnSenseResponsibilityFamilyChanged();
+    partial void OnSevereAnxietyChanging(System.Nullable<char> value);
+    partial void OnSevereAnxietyChanged();
+    partial void OnSevereInsomniaChanging(System.Nullable<char> value);
+    partial void OnSevereInsomniaChanged();
+    partial void OnSevereWorryChanging(System.Nullable<char> value);
+    partial void OnSevereWorryChanged();
+    partial void OnSocialSupportChanging(System.Nullable<char> value);
+    partial void OnSocialSupportChanged();
+    partial void OnSocialSupportsChanging(System.Nullable<char> value);
+    partial void OnSocialSupportsChanged();
+    partial void OnSpecificPlanChanging(string value);
+    partial void OnSpecificPlanChanged();
+    partial void OnSpiritualityChanging(System.Nullable<char> value);
+    partial void OnSpiritualityChanged();
+    partial void OnStaffKeyChanging(System.Nullable<int> value);
+    partial void OnStaffKeyChanged();
+    partial void OnSuccessfulResponsesStressChanging(System.Nullable<char> value);
+    partial void OnSuccessfulResponsesStressChanged();
+    partial void OnSuicidalIdeationChanging(string value);
+    partial void OnSuicidalIdeationChanged();
+    partial void OnSuicidalRiskChanging(string value);
+    partial void OnSuicidalRiskChanged();
+    partial void OnSuicideRiskFactorsCommentsChanging(string value);
+    partial void OnSuicideRiskFactorsCommentsChanged();
+    partial void OnSummaryEvalCommentsChanging(string value);
+    partial void OnSummaryEvalCommentsChanged();
+    partial void OnTypeInitRiskChanging(string value);
+    partial void OnTypeInitRiskChanged();
+    partial void OnTypeReasonChanging(string value);
+    partial void OnTypeReasonChanged();
+    partial void OnUpredictableBehaviorChanging(System.Nullable<char> value);
+    partial void OnUpredictableBehaviorChanged();
+    partial void OnVictimSexualAbuseChanging(System.Nullable<char> value);
+    partial void OnVictimSexualAbuseChanged();
+    partial void OnViolenceTowardOthersChanging(System.Nullable<char> value);
+    partial void OnViolenceTowardOthersChanged();
+    partial void OnViolentSocialEnvironmentChanging(System.Nullable<char> value);
+    partial void OnViolentSocialEnvironmentChanged();
+    partial void OnVulnerabilityRiskChanging(string value);
+    partial void OnVulnerabilityRiskChanged();
+    partial void OnWeaponPossessionChanging(System.Nullable<char> value);
+    partial void OnWeaponPossessionChanged();
+    partial void OnWhoOtherChanging(string value);
+    partial void OnWhoOtherChanged();
+    partial void OnAssessmentKeyChanging(System.Nullable<int> value);
+    partial void OnAssessmentKeyChanged();
+    partial void OnDutyToWarnChanging(string value);
+    partial void OnDutyToWarnChanged();
+    partial void OnHowContactedChanging(string value);
+    partial void OnHowContactedChanged();
+    partial void OnIntendedVictimChanging(string value);
+    partial void OnIntendedVictimChanged();
+    partial void OnIntendedVictimWhoChanging(string value);
+    partial void OnIntendedVictimWhoChanged();
+    partial void OnPoliceNotifiedChanging(System.Nullable<char> value);
+    partial void OnPoliceNotifiedChanged();
+    partial void OnAssessment_TimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnAssessment_TimeChanged();
+    partial void OnFamilysupportSystemChanging(string value);
+    partial void OnFamilysupportSystemChanged();
+    partial void OnInquiryKeyChanging(System.Nullable<int> value);
+    partial void OnInquiryKeyChanged();
+    partial void OnNo_MedsChanging(System.Nullable<char> value);
+    partial void OnNo_MedsChanged();
+    partial void OnNo_Med_ProblemsChanging(System.Nullable<char> value);
+    partial void OnNo_Med_ProblemsChanged();
+    partial void OnPresenting_ProblemChanging(string value);
+    partial void OnPresenting_ProblemChanged();
+    partial void OnPREV_TREATChanging(string value);
+    partial void OnPREV_TREATChanged();
+    partial void OnSummaryofFindingsChanging(string value);
+    partial void OnSummaryofFindingsChanged();
+    partial void OnDATE_LAST_HOSP_VSTChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_LAST_HOSP_VSTChanged();
+    partial void OnDATE_LAST_PHYS_VSTChanging(System.Nullable<System.DateTime> value);
+    partial void OnDATE_LAST_PHYS_VSTChanged();
+    partial void OnPhysicianAddressChanging(string value);
+    partial void OnPhysicianAddressChanged();
+    partial void OnPhysicianCityChanging(string value);
+    partial void OnPhysicianCityChanged();
+    partial void OnCredentialCodeChanging(System.Nullable<int> value);
+    partial void OnCredentialCodeChanged();
+    partial void OnPhysicianNameFChanging(string value);
+    partial void OnPhysicianNameFChanged();
+    partial void OnPhysicianNameLChanging(string value);
+    partial void OnPhysicianNameLChanged();
+    partial void OnPhysicianPhoneChanging(string value);
+    partial void OnPhysicianPhoneChanged();
+    partial void OnPhysicianStateChanging(string value);
+    partial void OnPhysicianStateChanged();
+    partial void OnPhysicianZipChanging(string value);
+    partial void OnPhysicianZipChanged();
+    partial void OnMiniStatusEffDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnMiniStatusEffDateChanged();
+    partial void OnPhysicianCredentialsChanging(string value);
+    partial void OnPhysicianCredentialsChanged();
+    partial void OnVoidedChanging(System.Nullable<char> value);
+    partial void OnVoidedChanged();
+    partial void OnDateVoidedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateVoidedChanged();
+    #endregion
+		
+		public FD__INITIAL_ASSESSMENT_OF_RISK()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this.OnOP__DOCIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__DOCID = value;
+					this.SendPropertyChanged("OP__DOCID");
+					this.OnOP__DOCIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this.OnOP__PARENTIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__PARENTID = value;
+					this.SendPropertyChanged("OP__PARENTID");
+					this.OnOP__PARENTIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this.OnOP__FOLDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__FOLDERID = value;
+					this.SendPropertyChanged("OP__FOLDERID");
+					this.OnOP__FOLDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this.OnAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionKey = value;
+					this.SendPropertyChanged("AdmissionKey");
+					this.OnAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age19to45", DbType="Char(1)")]
+		public System.Nullable<char> Age19to45
+		{
+			get
+			{
+				return this._Age19to45;
+			}
+			set
+			{
+				if ((this._Age19to45 != value))
+				{
+					this.OnAge19to45Changing(value);
+					this.SendPropertyChanging();
+					this._Age19to45 = value;
+					this.SendPropertyChanged("Age19to45");
+					this.OnAge19to45Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AlcoholDrugUse", DbType="Char(1)")]
+		public System.Nullable<char> AlcoholDrugUse
+		{
+			get
+			{
+				return this._AlcoholDrugUse;
+			}
+			set
+			{
+				if ((this._AlcoholDrugUse != value))
+				{
+					this.OnAlcoholDrugUseChanging(value);
+					this.SendPropertyChanging();
+					this._AlcoholDrugUse = value;
+					this.SendPropertyChanged("AlcoholDrugUse");
+					this.OnAlcoholDrugUseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BluntedAffect", DbType="Char(1)")]
+		public System.Nullable<char> BluntedAffect
+		{
+			get
+			{
+				return this._BluntedAffect;
+			}
+			set
+			{
+				if ((this._BluntedAffect != value))
+				{
+					this.OnBluntedAffectChanging(value);
+					this.SendPropertyChanging();
+					this._BluntedAffect = value;
+					this.SendPropertyChanged("BluntedAffect");
+					this.OnBluntedAffectChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BorderlinePersonality", DbType="Char(1)")]
+		public System.Nullable<char> BorderlinePersonality
+		{
+			get
+			{
+				return this._BorderlinePersonality;
+			}
+			set
+			{
+				if ((this._BorderlinePersonality != value))
+				{
+					this.OnBorderlinePersonalityChanging(value);
+					this.SendPropertyChanging();
+					this._BorderlinePersonality = value;
+					this.SendPropertyChanged("BorderlinePersonality");
+					this.OnBorderlinePersonalityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BorderlinePersonalityDisorder", DbType="Char(1)")]
+		public System.Nullable<char> BorderlinePersonalityDisorder
+		{
+			get
+			{
+				return this._BorderlinePersonalityDisorder;
+			}
+			set
+			{
+				if ((this._BorderlinePersonalityDisorder != value))
+				{
+					this.OnBorderlinePersonalityDisorderChanging(value);
+					this.SendPropertyChanging();
+					this._BorderlinePersonalityDisorder = value;
+					this.SendPropertyChanged("BorderlinePersonalityDisorder");
+					this.OnBorderlinePersonalityDisorderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CalmAfterDepression", DbType="Char(1)")]
+		public System.Nullable<char> CalmAfterDepression
+		{
+			get
+			{
+				return this._CalmAfterDepression;
+			}
+			set
+			{
+				if ((this._CalmAfterDepression != value))
+				{
+					this.OnCalmAfterDepressionChanging(value);
+					this.SendPropertyChanging();
+					this._CalmAfterDepression = value;
+					this.SendPropertyChanged("CalmAfterDepression");
+					this.OnCalmAfterDepressionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CapacityRealityTesting", DbType="Char(1)")]
+		public System.Nullable<char> CapacityRealityTesting
+		{
+			get
+			{
+				return this._CapacityRealityTesting;
+			}
+			set
+			{
+				if ((this._CapacityRealityTesting != value))
+				{
+					this.OnCapacityRealityTestingChanging(value);
+					this.SendPropertyChanging();
+					this._CapacityRealityTesting = value;
+					this.SendPropertyChanged("CapacityRealityTesting");
+					this.OnCapacityRealityTestingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChildrenHome", DbType="Char(1)")]
+		public System.Nullable<char> ChildrenHome
+		{
+			get
+			{
+				return this._ChildrenHome;
+			}
+			set
+			{
+				if ((this._ChildrenHome != value))
+				{
+					this.OnChildrenHomeChanging(value);
+					this.SendPropertyChanging();
+					this._ChildrenHome = value;
+					this.SendPropertyChanged("ChildrenHome");
+					this.OnChildrenHomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					this.OnClientKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ClientKey = value;
+					this.SendPropertyChanged("ClientKey");
+					this.OnClientKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_AWARE_TIME", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_AWARE_TIME
+		{
+			get
+			{
+				return this._COG_FUNC_AWARE_TIME;
+			}
+			set
+			{
+				if ((this._COG_FUNC_AWARE_TIME != value))
+				{
+					this.OnCOG_FUNC_AWARE_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_AWARE_TIME = value;
+					this.SendPropertyChanged("COG_FUNC_AWARE_TIME");
+					this.OnCOG_FUNC_AWARE_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CommandHallucinations", DbType="Char(1)")]
+		public System.Nullable<char> CommandHallucinations
+		{
+			get
+			{
+				return this._CommandHallucinations;
+			}
+			set
+			{
+				if ((this._CommandHallucinations != value))
+				{
+					this.OnCommandHallucinationsChanging(value);
+					this.SendPropertyChanging();
+					this._CommandHallucinations = value;
+					this.SendPropertyChanged("CommandHallucinations");
+					this.OnCommandHallucinationsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompromiseSelfDefense", DbType="Char(1)")]
+		public System.Nullable<char> CompromiseSelfDefense
+		{
+			get
+			{
+				return this._CompromiseSelfDefense;
+			}
+			set
+			{
+				if ((this._CompromiseSelfDefense != value))
+				{
+					this.OnCompromiseSelfDefenseChanging(value);
+					this.SendPropertyChanging();
+					this._CompromiseSelfDefense = value;
+					this.SendPropertyChanged("CompromiseSelfDefense");
+					this.OnCompromiseSelfDefenseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date_Status", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date_Status
+		{
+			get
+			{
+				return this._Date_Status;
+			}
+			set
+			{
+				if ((this._Date_Status != value))
+				{
+					this.OnDate_StatusChanging(value);
+					this.SendPropertyChanging();
+					this._Date_Status = value;
+					this.SendPropertyChanged("Date_Status");
+					this.OnDate_StatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelusionalContent", DbType="VarChar(3)")]
+		public string DelusionalContent
+		{
+			get
+			{
+				return this._DelusionalContent;
+			}
+			set
+			{
+				if ((this._DelusionalContent != value))
+				{
+					this.OnDelusionalContentChanging(value);
+					this.SendPropertyChanging();
+					this._DelusionalContent = value;
+					this.SendPropertyChanged("DelusionalContent");
+					this.OnDelusionalContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DevelopmentallyChallenged", DbType="Char(1)")]
+		public System.Nullable<char> DevelopmentallyChallenged
+		{
+			get
+			{
+				return this._DevelopmentallyChallenged;
+			}
+			set
+			{
+				if ((this._DevelopmentallyChallenged != value))
+				{
+					this.OnDevelopmentallyChallengedChanging(value);
+					this.SendPropertyChanging();
+					this._DevelopmentallyChallenged = value;
+					this.SendPropertyChanged("DevelopmentallyChallenged");
+					this.OnDevelopmentallyChallengedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ECTRecipients", DbType="Char(1)")]
+		public System.Nullable<char> ECTRecipients
+		{
+			get
+			{
+				return this._ECTRecipients;
+			}
+			set
+			{
+				if ((this._ECTRecipients != value))
+				{
+					this.OnECTRecipientsChanging(value);
+					this.SendPropertyChanging();
+					this._ECTRecipients = value;
+					this.SendPropertyChanged("ECTRecipients");
+					this.OnECTRecipientsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EpisodeKey", DbType="Int")]
+		public System.Nullable<int> EpisodeKey
+		{
+			get
+			{
+				return this._EpisodeKey;
+			}
+			set
+			{
+				if ((this._EpisodeKey != value))
+				{
+					this.OnEpisodeKeyChanging(value);
+					this.SendPropertyChanging();
+					this._EpisodeKey = value;
+					this.SendPropertyChanged("EpisodeKey");
+					this.OnEpisodeKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Family", DbType="Char(1)")]
+		public System.Nullable<char> Family
+		{
+			get
+			{
+				return this._Family;
+			}
+			set
+			{
+				if ((this._Family != value))
+				{
+					this.OnFamilyChanging(value);
+					this.SendPropertyChanging();
+					this._Family = value;
+					this.SendPropertyChanged("Family");
+					this.OnFamilyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FamilySuicide", DbType="Char(1)")]
+		public System.Nullable<char> FamilySuicide
+		{
+			get
+			{
+				return this._FamilySuicide;
+			}
+			set
+			{
+				if ((this._FamilySuicide != value))
+				{
+					this.OnFamilySuicideChanging(value);
+					this.SendPropertyChanging();
+					this._FamilySuicide = value;
+					this.SendPropertyChanged("FamilySuicide");
+					this.OnFamilySuicideChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Financial", DbType="Char(1)")]
+		public System.Nullable<char> Financial
+		{
+			get
+			{
+				return this._Financial;
+			}
+			set
+			{
+				if ((this._Financial != value))
+				{
+					this.OnFinancialChanging(value);
+					this.SendPropertyChanging();
+					this._Financial = value;
+					this.SendPropertyChanged("Financial");
+					this.OnFinancialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Friend", DbType="Char(1)")]
+		public System.Nullable<char> Friend
+		{
+			get
+			{
+				return this._Friend;
+			}
+			set
+			{
+				if ((this._Friend != value))
+				{
+					this.OnFriendChanging(value);
+					this.SendPropertyChanging();
+					this._Friend = value;
+					this.SendPropertyChanged("Friend");
+					this.OnFriendChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Frustration", DbType="Char(1)")]
+		public System.Nullable<char> Frustration
+		{
+			get
+			{
+				return this._Frustration;
+			}
+			set
+			{
+				if ((this._Frustration != value))
+				{
+					this.OnFrustrationChanging(value);
+					this.SendPropertyChanging();
+					this._Frustration = value;
+					this.SendPropertyChanged("Frustration");
+					this.OnFrustrationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HealthProfessional", DbType="Char(1)")]
+		public System.Nullable<char> HealthProfessional
+		{
+			get
+			{
+				return this._HealthProfessional;
+			}
+			set
+			{
+				if ((this._HealthProfessional != value))
+				{
+					this.OnHealthProfessionalChanging(value);
+					this.SendPropertyChanging();
+					this._HealthProfessional = value;
+					this.SendPropertyChanged("HealthProfessional");
+					this.OnHealthProfessionalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HeavyAlcoholDrug", DbType="Char(1)")]
+		public System.Nullable<char> HeavyAlcoholDrug
+		{
+			get
+			{
+				return this._HeavyAlcoholDrug;
+			}
+			set
+			{
+				if ((this._HeavyAlcoholDrug != value))
+				{
+					this.OnHeavyAlcoholDrugChanging(value);
+					this.SendPropertyChanging();
+					this._HeavyAlcoholDrug = value;
+					this.SendPropertyChanged("HeavyAlcoholDrug");
+					this.OnHeavyAlcoholDrugChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HistoryHomicidalIdeation", DbType="VarChar(3)")]
+		public string HistoryHomicidalIdeation
+		{
+			get
+			{
+				return this._HistoryHomicidalIdeation;
+			}
+			set
+			{
+				if ((this._HistoryHomicidalIdeation != value))
+				{
+					this.OnHistoryHomicidalIdeationChanging(value);
+					this.SendPropertyChanging();
+					this._HistoryHomicidalIdeation = value;
+					this.SendPropertyChanged("HistoryHomicidalIdeation");
+					this.OnHistoryHomicidalIdeationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HistorySchizophrenia", DbType="Char(1)")]
+		public System.Nullable<char> HistorySchizophrenia
+		{
+			get
+			{
+				return this._HistorySchizophrenia;
+			}
+			set
+			{
+				if ((this._HistorySchizophrenia != value))
+				{
+					this.OnHistorySchizophreniaChanging(value);
+					this.SendPropertyChanging();
+					this._HistorySchizophrenia = value;
+					this.SendPropertyChanged("HistorySchizophrenia");
+					this.OnHistorySchizophreniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HistorySuicidalIdeation", DbType="VarChar(3)")]
+		public string HistorySuicidalIdeation
+		{
+			get
+			{
+				return this._HistorySuicidalIdeation;
+			}
+			set
+			{
+				if ((this._HistorySuicidalIdeation != value))
+				{
+					this.OnHistorySuicidalIdeationChanging(value);
+					this.SendPropertyChanging();
+					this._HistorySuicidalIdeation = value;
+					this.SendPropertyChanged("HistorySuicidalIdeation");
+					this.OnHistorySuicidalIdeationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomicidalIdeation", DbType="VarChar(3)")]
+		public string HomicidalIdeation
+		{
+			get
+			{
+				return this._HomicidalIdeation;
+			}
+			set
+			{
+				if ((this._HomicidalIdeation != value))
+				{
+					this.OnHomicidalIdeationChanging(value);
+					this.SendPropertyChanging();
+					this._HomicidalIdeation = value;
+					this.SendPropertyChanged("HomicidalIdeation");
+					this.OnHomicidalIdeationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomicidalRisk", DbType="VarChar(25)")]
+		public string HomicidalRisk
+		{
+			get
+			{
+				return this._HomicidalRisk;
+			}
+			set
+			{
+				if ((this._HomicidalRisk != value))
+				{
+					this.OnHomicidalRiskChanging(value);
+					this.SendPropertyChanging();
+					this._HomicidalRisk = value;
+					this.SendPropertyChanged("HomicidalRisk");
+					this.OnHomicidalRiskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomicideCommandHallucinations", DbType="Char(1)")]
+		public System.Nullable<char> HomicideCommandHallucinations
+		{
+			get
+			{
+				return this._HomicideCommandHallucinations;
+			}
+			set
+			{
+				if ((this._HomicideCommandHallucinations != value))
+				{
+					this.OnHomicideCommandHallucinationsChanging(value);
+					this.SendPropertyChanging();
+					this._HomicideCommandHallucinations = value;
+					this.SendPropertyChanged("HomicideCommandHallucinations");
+					this.OnHomicideCommandHallucinationsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomicideOrganicBrainSyndrome", DbType="Char(1)")]
+		public System.Nullable<char> HomicideOrganicBrainSyndrome
+		{
+			get
+			{
+				return this._HomicideOrganicBrainSyndrome;
+			}
+			set
+			{
+				if ((this._HomicideOrganicBrainSyndrome != value))
+				{
+					this.OnHomicideOrganicBrainSyndromeChanging(value);
+					this.SendPropertyChanging();
+					this._HomicideOrganicBrainSyndrome = value;
+					this.SendPropertyChanged("HomicideOrganicBrainSyndrome");
+					this.OnHomicideOrganicBrainSyndromeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomicideRiskFactorsComments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string HomicideRiskFactorsComments
+		{
+			get
+			{
+				return this._HomicideRiskFactorsComments;
+			}
+			set
+			{
+				if ((this._HomicideRiskFactorsComments != value))
+				{
+					this.OnHomicideRiskFactorsCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._HomicideRiskFactorsComments = value;
+					this.SendPropertyChanged("HomicideRiskFactorsComments");
+					this.OnHomicideRiskFactorsCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hopelessness", DbType="Char(1)")]
+		public System.Nullable<char> Hopelessness
+		{
+			get
+			{
+				return this._Hopelessness;
+			}
+			set
+			{
+				if ((this._Hopelessness != value))
+				{
+					this.OnHopelessnessChanging(value);
+					this.SendPropertyChanging();
+					this._Hopelessness = value;
+					this.SendPropertyChanged("Hopelessness");
+					this.OnHopelessnessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdeationRepetitive", DbType="VarChar(3)")]
+		public string IdeationRepetitive
+		{
+			get
+			{
+				return this._IdeationRepetitive;
+			}
+			set
+			{
+				if ((this._IdeationRepetitive != value))
+				{
+					this.OnIdeationRepetitiveChanging(value);
+					this.SendPropertyChanging();
+					this._IdeationRepetitive = value;
+					this.SendPropertyChanged("IdeationRepetitive");
+					this.OnIdeationRepetitiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformantOther", DbType="Char(1)")]
+		public System.Nullable<char> InformantOther
+		{
+			get
+			{
+				return this._InformantOther;
+			}
+			set
+			{
+				if ((this._InformantOther != value))
+				{
+					this.OnInformantOtherChanging(value);
+					this.SendPropertyChanging();
+					this._InformantOther = value;
+					this.SendPropertyChanged("InformantOther");
+					this.OnInformantOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InformantPatient", DbType="Char(1)")]
+		public System.Nullable<char> InformantPatient
+		{
+			get
+			{
+				return this._InformantPatient;
+			}
+			set
+			{
+				if ((this._InformantPatient != value))
+				{
+					this.OnInformantPatientChanging(value);
+					this.SendPropertyChanging();
+					this._InformantPatient = value;
+					this.SendPropertyChanged("InformantPatient");
+					this.OnInformantPatientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegalDifficulties", DbType="Char(1)")]
+		public System.Nullable<char> LegalDifficulties
+		{
+			get
+			{
+				return this._LegalDifficulties;
+			}
+			set
+			{
+				if ((this._LegalDifficulties != value))
+				{
+					this.OnLegalDifficultiesChanging(value);
+					this.SendPropertyChanging();
+					this._LegalDifficulties = value;
+					this.SendPropertyChanged("LegalDifficulties");
+					this.OnLegalDifficultiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LethalIntent", DbType="VarChar(3)")]
+		public string LethalIntent
+		{
+			get
+			{
+				return this._LethalIntent;
+			}
+			set
+			{
+				if ((this._LethalIntent != value))
+				{
+					this.OnLethalIntentChanging(value);
+					this.SendPropertyChanging();
+					this._LethalIntent = value;
+					this.SendPropertyChanged("LethalIntent");
+					this.OnLethalIntentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LossEmployment", DbType="Char(1)")]
+		public System.Nullable<char> LossEmployment
+		{
+			get
+			{
+				return this._LossEmployment;
+			}
+			set
+			{
+				if ((this._LossEmployment != value))
+				{
+					this.OnLossEmploymentChanging(value);
+					this.SendPropertyChanging();
+					this._LossEmployment = value;
+					this.SendPropertyChanged("LossEmployment");
+					this.OnLossEmploymentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MajorDepression", DbType="Char(1)")]
+		public System.Nullable<char> MajorDepression
+		{
+			get
+			{
+				return this._MajorDepression;
+			}
+			set
+			{
+				if ((this._MajorDepression != value))
+				{
+					this.OnMajorDepressionChanging(value);
+					this.SendPropertyChanging();
+					this._MajorDepression = value;
+					this.SendPropertyChanged("MajorDepression");
+					this.OnMajorDepressionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaritalStatus", DbType="Char(1)")]
+		public System.Nullable<char> MaritalStatus
+		{
+			get
+			{
+				return this._MaritalStatus;
+			}
+			set
+			{
+				if ((this._MaritalStatus != value))
+				{
+					this.OnMaritalStatusChanging(value);
+					this.SendPropertyChanging();
+					this._MaritalStatus = value;
+					this.SendPropertyChanged("MaritalStatus");
+					this.OnMaritalStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MentalRetardation", DbType="Char(1)")]
+		public System.Nullable<char> MentalRetardation
+		{
+			get
+			{
+				return this._MentalRetardation;
+			}
+			set
+			{
+				if ((this._MentalRetardation != value))
+				{
+					this.OnMentalRetardationChanging(value);
+					this.SendPropertyChanging();
+					this._MentalRetardation = value;
+					this.SendPropertyChanged("MentalRetardation");
+					this.OnMentalRetardationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoHistoryViolence", DbType="Char(1)")]
+		public System.Nullable<char> NoHistoryViolence
+		{
+			get
+			{
+				return this._NoHistoryViolence;
+			}
+			set
+			{
+				if ((this._NoHistoryViolence != value))
+				{
+					this.OnNoHistoryViolenceChanging(value);
+					this.SendPropertyChanging();
+					this._NoHistoryViolence = value;
+					this.SendPropertyChanged("NoHistoryViolence");
+					this.OnNoHistoryViolenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderCreated", DbType="VarChar(3)")]
+		public string OrderCreated
+		{
+			get
+			{
+				return this._OrderCreated;
+			}
+			set
+			{
+				if ((this._OrderCreated != value))
+				{
+					this.OnOrderCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._OrderCreated = value;
+					this.SendPropertyChanged("OrderCreated");
+					this.OnOrderCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrganicBrainSyndrome", DbType="Char(1)")]
+		public System.Nullable<char> OrganicBrainSyndrome
+		{
+			get
+			{
+				return this._OrganicBrainSyndrome;
+			}
+			set
+			{
+				if ((this._OrganicBrainSyndrome != value))
+				{
+					this.OnOrganicBrainSyndromeChanging(value);
+					this.SendPropertyChanging();
+					this._OrganicBrainSyndrome = value;
+					this.SendPropertyChanged("OrganicBrainSyndrome");
+					this.OnOrganicBrainSyndromeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrganizedLethalIntent", DbType="Char(1)")]
+		public System.Nullable<char> OrganizedLethalIntent
+		{
+			get
+			{
+				return this._OrganizedLethalIntent;
+			}
+			set
+			{
+				if ((this._OrganizedLethalIntent != value))
+				{
+					this.OnOrganizedLethalIntentChanging(value);
+					this.SendPropertyChanging();
+					this._OrganizedLethalIntent = value;
+					this.SendPropertyChanged("OrganizedLethalIntent");
+					this.OnOrganizedLethalIntentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParanoidIdeation", DbType="Char(1)")]
+		public System.Nullable<char> ParanoidIdeation
+		{
+			get
+			{
+				return this._ParanoidIdeation;
+			}
+			set
+			{
+				if ((this._ParanoidIdeation != value))
+				{
+					this.OnParanoidIdeationChanging(value);
+					this.SendPropertyChanging();
+					this._ParanoidIdeation = value;
+					this.SendPropertyChanged("ParanoidIdeation");
+					this.OnParanoidIdeationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientConealingEvidence", DbType="VarChar(3)")]
+		public string PatientConealingEvidence
+		{
+			get
+			{
+				return this._PatientConealingEvidence;
+			}
+			set
+			{
+				if ((this._PatientConealingEvidence != value))
+				{
+					this.OnPatientConealingEvidenceChanging(value);
+					this.SendPropertyChanging();
+					this._PatientConealingEvidence = value;
+					this.SendPropertyChanged("PatientConealingEvidence");
+					this.OnPatientConealingEvidenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_OTHER_EXPLN", DbType="VarChar(40)")]
+		public string PERCEP_HALLUC_OTHER_EXPLN
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_OTHER_EXPLN;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_OTHER_EXPLN != value))
+				{
+					this.OnPERCEP_HALLUC_OTHER_EXPLNChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_OTHER_EXPLN = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_OTHER_EXPLN");
+					this.OnPERCEP_HALLUC_OTHER_EXPLNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PgmAdmissionKey
+		{
+			get
+			{
+				return this._PgmAdmissionKey;
+			}
+			set
+			{
+				if ((this._PgmAdmissionKey != value))
+				{
+					this.OnPgmAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmAdmissionKey = value;
+					this.SendPropertyChanged("PgmAdmissionKey");
+					this.OnPgmAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmKey", DbType="Int")]
+		public System.Nullable<int> PgmKey
+		{
+			get
+			{
+				return this._PgmKey;
+			}
+			set
+			{
+				if ((this._PgmKey != value))
+				{
+					this.OnPgmKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmKey = value;
+					this.SendPropertyChanged("PgmKey");
+					this.OnPgmKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicalHarm", DbType="VarChar(3)")]
+		public string PhysicalHarm
+		{
+			get
+			{
+				return this._PhysicalHarm;
+			}
+			set
+			{
+				if ((this._PhysicalHarm != value))
+				{
+					this.OnPhysicalHarmChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicalHarm = value;
+					this.SendPropertyChanged("PhysicalHarm");
+					this.OnPhysicalHarmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositiveCopingSkills", DbType="Char(1)")]
+		public System.Nullable<char> PositiveCopingSkills
+		{
+			get
+			{
+				return this._PositiveCopingSkills;
+			}
+			set
+			{
+				if ((this._PositiveCopingSkills != value))
+				{
+					this.OnPositiveCopingSkillsChanging(value);
+					this.SendPropertyChanging();
+					this._PositiveCopingSkills = value;
+					this.SendPropertyChanged("PositiveCopingSkills");
+					this.OnPositiveCopingSkillsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PositiveRelationships", DbType="Char(1)")]
+		public System.Nullable<char> PositiveRelationships
+		{
+			get
+			{
+				return this._PositiveRelationships;
+			}
+			set
+			{
+				if ((this._PositiveRelationships != value))
+				{
+					this.OnPositiveRelationshipsChanging(value);
+					this.SendPropertyChanging();
+					this._PositiveRelationships = value;
+					this.SendPropertyChanged("PositiveRelationships");
+					this.OnPositiveRelationshipsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PossessionWeapons", DbType="Char(1)")]
+		public System.Nullable<char> PossessionWeapons
+		{
+			get
+			{
+				return this._PossessionWeapons;
+			}
+			set
+			{
+				if ((this._PossessionWeapons != value))
+				{
+					this.OnPossessionWeaponsChanging(value);
+					this.SendPropertyChanging();
+					this._PossessionWeapons = value;
+					this.SendPropertyChanged("PossessionWeapons");
+					this.OnPossessionWeaponsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreviousHstoryVolence", DbType="Char(1)")]
+		public System.Nullable<char> PreviousHstoryVolence
+		{
+			get
+			{
+				return this._PreviousHstoryVolence;
+			}
+			set
+			{
+				if ((this._PreviousHstoryVolence != value))
+				{
+					this.OnPreviousHstoryVolenceChanging(value);
+					this.SendPropertyChanging();
+					this._PreviousHstoryVolence = value;
+					this.SendPropertyChanged("PreviousHstoryVolence");
+					this.OnPreviousHstoryVolenceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProblemsSignificantOthers", DbType="Char(1)")]
+		public System.Nullable<char> ProblemsSignificantOthers
+		{
+			get
+			{
+				return this._ProblemsSignificantOthers;
+			}
+			set
+			{
+				if ((this._ProblemsSignificantOthers != value))
+				{
+					this.OnProblemsSignificantOthersChanging(value);
+					this.SendPropertyChanging();
+					this._ProblemsSignificantOthers = value;
+					this.SendPropertyChanged("ProblemsSignificantOthers");
+					this.OnProblemsSignificantOthersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProtectiveFactorsComments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string ProtectiveFactorsComments
+		{
+			get
+			{
+				return this._ProtectiveFactorsComments;
+			}
+			set
+			{
+				if ((this._ProtectiveFactorsComments != value))
+				{
+					this.OnProtectiveFactorsCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._ProtectiveFactorsComments = value;
+					this.SendPropertyChanged("ProtectiveFactorsComments");
+					this.OnProtectiveFactorsCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RapidMoodShifts", DbType="Char(1)")]
+		public System.Nullable<char> RapidMoodShifts
+		{
+			get
+			{
+				return this._RapidMoodShifts;
+			}
+			set
+			{
+				if ((this._RapidMoodShifts != value))
+				{
+					this.OnRapidMoodShiftsChanging(value);
+					this.SendPropertyChanging();
+					this._RapidMoodShifts = value;
+					this.SendPropertyChanged("RapidMoodShifts");
+					this.OnRapidMoodShiftsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Religiousprohibition", DbType="Char(1)")]
+		public System.Nullable<char> Religiousprohibition
+		{
+			get
+			{
+				return this._Religiousprohibition;
+			}
+			set
+			{
+				if ((this._Religiousprohibition != value))
+				{
+					this.OnReligiousprohibitionChanging(value);
+					this.SendPropertyChanging();
+					this._Religiousprohibition = value;
+					this.SendPropertyChanged("Religiousprohibition");
+					this.OnReligiousprohibitionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SchoolDifficulties", DbType="Char(1)")]
+		public System.Nullable<char> SchoolDifficulties
+		{
+			get
+			{
+				return this._SchoolDifficulties;
+			}
+			set
+			{
+				if ((this._SchoolDifficulties != value))
+				{
+					this.OnSchoolDifficultiesChanging(value);
+					this.SendPropertyChanging();
+					this._SchoolDifficulties = value;
+					this.SendPropertyChanged("SchoolDifficulties");
+					this.OnSchoolDifficultiesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sec3UnitStaffNotified", DbType="VarChar(3)")]
+		public string Sec3UnitStaffNotified
+		{
+			get
+			{
+				return this._Sec3UnitStaffNotified;
+			}
+			set
+			{
+				if ((this._Sec3UnitStaffNotified != value))
+				{
+					this.OnSec3UnitStaffNotifiedChanging(value);
+					this.SendPropertyChanging();
+					this._Sec3UnitStaffNotified = value;
+					this.SendPropertyChanged("Sec3UnitStaffNotified");
+					this.OnSec3UnitStaffNotifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sec4UnitStaffNotified", DbType="VarChar(3)")]
+		public string Sec4UnitStaffNotified
+		{
+			get
+			{
+				return this._Sec4UnitStaffNotified;
+			}
+			set
+			{
+				if ((this._Sec4UnitStaffNotified != value))
+				{
+					this.OnSec4UnitStaffNotifiedChanging(value);
+					this.SendPropertyChanging();
+					this._Sec4UnitStaffNotified = value;
+					this.SendPropertyChanged("Sec4UnitStaffNotified");
+					this.OnSec4UnitStaffNotifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionICommnets", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SectionICommnets
+		{
+			get
+			{
+				return this._SectionICommnets;
+			}
+			set
+			{
+				if ((this._SectionICommnets != value))
+				{
+					this.OnSectionICommnetsChanging(value);
+					this.SendPropertyChanging();
+					this._SectionICommnets = value;
+					this.SendPropertyChanged("SectionICommnets");
+					this.OnSectionICommnetsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionIICommnets", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SectionIICommnets
+		{
+			get
+			{
+				return this._SectionIICommnets;
+			}
+			set
+			{
+				if ((this._SectionIICommnets != value))
+				{
+					this.OnSectionIICommnetsChanging(value);
+					this.SendPropertyChanging();
+					this._SectionIICommnets = value;
+					this.SendPropertyChanged("SectionIICommnets");
+					this.OnSectionIICommnetsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SectionVCommnets", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SectionVCommnets
+		{
+			get
+			{
+				return this._SectionVCommnets;
+			}
+			set
+			{
+				if ((this._SectionVCommnets != value))
+				{
+					this.OnSectionVCommnetsChanging(value);
+					this.SendPropertyChanging();
+					this._SectionVCommnets = value;
+					this.SendPropertyChanged("SectionVCommnets");
+					this.OnSectionVCommnetsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SenseResponsibilityFamily", DbType="Char(1)")]
+		public System.Nullable<char> SenseResponsibilityFamily
+		{
+			get
+			{
+				return this._SenseResponsibilityFamily;
+			}
+			set
+			{
+				if ((this._SenseResponsibilityFamily != value))
+				{
+					this.OnSenseResponsibilityFamilyChanging(value);
+					this.SendPropertyChanging();
+					this._SenseResponsibilityFamily = value;
+					this.SendPropertyChanged("SenseResponsibilityFamily");
+					this.OnSenseResponsibilityFamilyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SevereAnxiety", DbType="Char(1)")]
+		public System.Nullable<char> SevereAnxiety
+		{
+			get
+			{
+				return this._SevereAnxiety;
+			}
+			set
+			{
+				if ((this._SevereAnxiety != value))
+				{
+					this.OnSevereAnxietyChanging(value);
+					this.SendPropertyChanging();
+					this._SevereAnxiety = value;
+					this.SendPropertyChanged("SevereAnxiety");
+					this.OnSevereAnxietyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SevereInsomnia", DbType="Char(1)")]
+		public System.Nullable<char> SevereInsomnia
+		{
+			get
+			{
+				return this._SevereInsomnia;
+			}
+			set
+			{
+				if ((this._SevereInsomnia != value))
+				{
+					this.OnSevereInsomniaChanging(value);
+					this.SendPropertyChanging();
+					this._SevereInsomnia = value;
+					this.SendPropertyChanged("SevereInsomnia");
+					this.OnSevereInsomniaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SevereWorry", DbType="Char(1)")]
+		public System.Nullable<char> SevereWorry
+		{
+			get
+			{
+				return this._SevereWorry;
+			}
+			set
+			{
+				if ((this._SevereWorry != value))
+				{
+					this.OnSevereWorryChanging(value);
+					this.SendPropertyChanging();
+					this._SevereWorry = value;
+					this.SendPropertyChanged("SevereWorry");
+					this.OnSevereWorryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSupport", DbType="Char(1)")]
+		public System.Nullable<char> SocialSupport
+		{
+			get
+			{
+				return this._SocialSupport;
+			}
+			set
+			{
+				if ((this._SocialSupport != value))
+				{
+					this.OnSocialSupportChanging(value);
+					this.SendPropertyChanging();
+					this._SocialSupport = value;
+					this.SendPropertyChanged("SocialSupport");
+					this.OnSocialSupportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SocialSupports", DbType="Char(1)")]
+		public System.Nullable<char> SocialSupports
+		{
+			get
+			{
+				return this._SocialSupports;
+			}
+			set
+			{
+				if ((this._SocialSupports != value))
+				{
+					this.OnSocialSupportsChanging(value);
+					this.SendPropertyChanging();
+					this._SocialSupports = value;
+					this.SendPropertyChanged("SocialSupports");
+					this.OnSocialSupportsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SpecificPlan", DbType="VarChar(3)")]
+		public string SpecificPlan
+		{
+			get
+			{
+				return this._SpecificPlan;
+			}
+			set
+			{
+				if ((this._SpecificPlan != value))
+				{
+					this.OnSpecificPlanChanging(value);
+					this.SendPropertyChanging();
+					this._SpecificPlan = value;
+					this.SendPropertyChanged("SpecificPlan");
+					this.OnSpecificPlanChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Spirituality", DbType="Char(1)")]
+		public System.Nullable<char> Spirituality
+		{
+			get
+			{
+				return this._Spirituality;
+			}
+			set
+			{
+				if ((this._Spirituality != value))
+				{
+					this.OnSpiritualityChanging(value);
+					this.SendPropertyChanging();
+					this._Spirituality = value;
+					this.SendPropertyChanged("Spirituality");
+					this.OnSpiritualityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffKey", DbType="Int")]
+		public System.Nullable<int> StaffKey
+		{
+			get
+			{
+				return this._StaffKey;
+			}
+			set
+			{
+				if ((this._StaffKey != value))
+				{
+					this.OnStaffKeyChanging(value);
+					this.SendPropertyChanging();
+					this._StaffKey = value;
+					this.SendPropertyChanged("StaffKey");
+					this.OnStaffKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SuccessfulResponsesStress", DbType="Char(1)")]
+		public System.Nullable<char> SuccessfulResponsesStress
+		{
+			get
+			{
+				return this._SuccessfulResponsesStress;
+			}
+			set
+			{
+				if ((this._SuccessfulResponsesStress != value))
+				{
+					this.OnSuccessfulResponsesStressChanging(value);
+					this.SendPropertyChanging();
+					this._SuccessfulResponsesStress = value;
+					this.SendPropertyChanged("SuccessfulResponsesStress");
+					this.OnSuccessfulResponsesStressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SuicidalIdeation", DbType="VarChar(3)")]
+		public string SuicidalIdeation
+		{
+			get
+			{
+				return this._SuicidalIdeation;
+			}
+			set
+			{
+				if ((this._SuicidalIdeation != value))
+				{
+					this.OnSuicidalIdeationChanging(value);
+					this.SendPropertyChanging();
+					this._SuicidalIdeation = value;
+					this.SendPropertyChanged("SuicidalIdeation");
+					this.OnSuicidalIdeationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SuicidalRisk", DbType="VarChar(25)")]
+		public string SuicidalRisk
+		{
+			get
+			{
+				return this._SuicidalRisk;
+			}
+			set
+			{
+				if ((this._SuicidalRisk != value))
+				{
+					this.OnSuicidalRiskChanging(value);
+					this.SendPropertyChanging();
+					this._SuicidalRisk = value;
+					this.SendPropertyChanged("SuicidalRisk");
+					this.OnSuicidalRiskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SuicideRiskFactorsComments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SuicideRiskFactorsComments
+		{
+			get
+			{
+				return this._SuicideRiskFactorsComments;
+			}
+			set
+			{
+				if ((this._SuicideRiskFactorsComments != value))
+				{
+					this.OnSuicideRiskFactorsCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._SuicideRiskFactorsComments = value;
+					this.SendPropertyChanged("SuicideRiskFactorsComments");
+					this.OnSuicideRiskFactorsCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SummaryEvalComments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SummaryEvalComments
+		{
+			get
+			{
+				return this._SummaryEvalComments;
+			}
+			set
+			{
+				if ((this._SummaryEvalComments != value))
+				{
+					this.OnSummaryEvalCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._SummaryEvalComments = value;
+					this.SendPropertyChanged("SummaryEvalComments");
+					this.OnSummaryEvalCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeInitRisk", DbType="VarChar(36)")]
+		public string TypeInitRisk
+		{
+			get
+			{
+				return this._TypeInitRisk;
+			}
+			set
+			{
+				if ((this._TypeInitRisk != value))
+				{
+					this.OnTypeInitRiskChanging(value);
+					this.SendPropertyChanging();
+					this._TypeInitRisk = value;
+					this.SendPropertyChanged("TypeInitRisk");
+					this.OnTypeInitRiskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TypeReason", DbType="VarChar(15)")]
+		public string TypeReason
+		{
+			get
+			{
+				return this._TypeReason;
+			}
+			set
+			{
+				if ((this._TypeReason != value))
+				{
+					this.OnTypeReasonChanging(value);
+					this.SendPropertyChanging();
+					this._TypeReason = value;
+					this.SendPropertyChanged("TypeReason");
+					this.OnTypeReasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpredictableBehavior", DbType="Char(1)")]
+		public System.Nullable<char> UpredictableBehavior
+		{
+			get
+			{
+				return this._UpredictableBehavior;
+			}
+			set
+			{
+				if ((this._UpredictableBehavior != value))
+				{
+					this.OnUpredictableBehaviorChanging(value);
+					this.SendPropertyChanging();
+					this._UpredictableBehavior = value;
+					this.SendPropertyChanged("UpredictableBehavior");
+					this.OnUpredictableBehaviorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VictimSexualAbuse", DbType="Char(1)")]
+		public System.Nullable<char> VictimSexualAbuse
+		{
+			get
+			{
+				return this._VictimSexualAbuse;
+			}
+			set
+			{
+				if ((this._VictimSexualAbuse != value))
+				{
+					this.OnVictimSexualAbuseChanging(value);
+					this.SendPropertyChanging();
+					this._VictimSexualAbuse = value;
+					this.SendPropertyChanged("VictimSexualAbuse");
+					this.OnVictimSexualAbuseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViolenceTowardOthers", DbType="Char(1)")]
+		public System.Nullable<char> ViolenceTowardOthers
+		{
+			get
+			{
+				return this._ViolenceTowardOthers;
+			}
+			set
+			{
+				if ((this._ViolenceTowardOthers != value))
+				{
+					this.OnViolenceTowardOthersChanging(value);
+					this.SendPropertyChanging();
+					this._ViolenceTowardOthers = value;
+					this.SendPropertyChanged("ViolenceTowardOthers");
+					this.OnViolenceTowardOthersChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ViolentSocialEnvironment", DbType="Char(1)")]
+		public System.Nullable<char> ViolentSocialEnvironment
+		{
+			get
+			{
+				return this._ViolentSocialEnvironment;
+			}
+			set
+			{
+				if ((this._ViolentSocialEnvironment != value))
+				{
+					this.OnViolentSocialEnvironmentChanging(value);
+					this.SendPropertyChanging();
+					this._ViolentSocialEnvironment = value;
+					this.SendPropertyChanged("ViolentSocialEnvironment");
+					this.OnViolentSocialEnvironmentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VulnerabilityRisk", DbType="VarChar(25)")]
+		public string VulnerabilityRisk
+		{
+			get
+			{
+				return this._VulnerabilityRisk;
+			}
+			set
+			{
+				if ((this._VulnerabilityRisk != value))
+				{
+					this.OnVulnerabilityRiskChanging(value);
+					this.SendPropertyChanging();
+					this._VulnerabilityRisk = value;
+					this.SendPropertyChanged("VulnerabilityRisk");
+					this.OnVulnerabilityRiskChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeaponPossession", DbType="Char(1)")]
+		public System.Nullable<char> WeaponPossession
+		{
+			get
+			{
+				return this._WeaponPossession;
+			}
+			set
+			{
+				if ((this._WeaponPossession != value))
+				{
+					this.OnWeaponPossessionChanging(value);
+					this.SendPropertyChanging();
+					this._WeaponPossession = value;
+					this.SendPropertyChanged("WeaponPossession");
+					this.OnWeaponPossessionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WhoOther", DbType="VarChar(100)")]
+		public string WhoOther
+		{
+			get
+			{
+				return this._WhoOther;
+			}
+			set
+			{
+				if ((this._WhoOther != value))
+				{
+					this.OnWhoOtherChanging(value);
+					this.SendPropertyChanging();
+					this._WhoOther = value;
+					this.SendPropertyChanged("WhoOther");
+					this.OnWhoOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssessmentKey", DbType="Int")]
+		public System.Nullable<int> AssessmentKey
+		{
+			get
+			{
+				return this._AssessmentKey;
+			}
+			set
+			{
+				if ((this._AssessmentKey != value))
+				{
+					this.OnAssessmentKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AssessmentKey = value;
+					this.SendPropertyChanged("AssessmentKey");
+					this.OnAssessmentKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DutyToWarn", DbType="VarChar(3)")]
+		public string DutyToWarn
+		{
+			get
+			{
+				return this._DutyToWarn;
+			}
+			set
+			{
+				if ((this._DutyToWarn != value))
+				{
+					this.OnDutyToWarnChanging(value);
+					this.SendPropertyChanging();
+					this._DutyToWarn = value;
+					this.SendPropertyChanged("DutyToWarn");
+					this.OnDutyToWarnChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HowContacted", DbType="VarChar(100)")]
+		public string HowContacted
+		{
+			get
+			{
+				return this._HowContacted;
+			}
+			set
+			{
+				if ((this._HowContacted != value))
+				{
+					this.OnHowContactedChanging(value);
+					this.SendPropertyChanging();
+					this._HowContacted = value;
+					this.SendPropertyChanged("HowContacted");
+					this.OnHowContactedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntendedVictim", DbType="VarChar(3)")]
+		public string IntendedVictim
+		{
+			get
+			{
+				return this._IntendedVictim;
+			}
+			set
+			{
+				if ((this._IntendedVictim != value))
+				{
+					this.OnIntendedVictimChanging(value);
+					this.SendPropertyChanging();
+					this._IntendedVictim = value;
+					this.SendPropertyChanged("IntendedVictim");
+					this.OnIntendedVictimChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntendedVictimWho", DbType="VarChar(125)")]
+		public string IntendedVictimWho
+		{
+			get
+			{
+				return this._IntendedVictimWho;
+			}
+			set
+			{
+				if ((this._IntendedVictimWho != value))
+				{
+					this.OnIntendedVictimWhoChanging(value);
+					this.SendPropertyChanging();
+					this._IntendedVictimWho = value;
+					this.SendPropertyChanged("IntendedVictimWho");
+					this.OnIntendedVictimWhoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PoliceNotified", DbType="Char(1)")]
+		public System.Nullable<char> PoliceNotified
+		{
+			get
+			{
+				return this._PoliceNotified;
+			}
+			set
+			{
+				if ((this._PoliceNotified != value))
+				{
+					this.OnPoliceNotifiedChanging(value);
+					this.SendPropertyChanging();
+					this._PoliceNotified = value;
+					this.SendPropertyChanged("PoliceNotified");
+					this.OnPoliceNotifiedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Assessment_Time", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Assessment_Time
+		{
+			get
+			{
+				return this._Assessment_Time;
+			}
+			set
+			{
+				if ((this._Assessment_Time != value))
+				{
+					this.OnAssessment_TimeChanging(value);
+					this.SendPropertyChanging();
+					this._Assessment_Time = value;
+					this.SendPropertyChanged("Assessment_Time");
+					this.OnAssessment_TimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FamilysupportSystem", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string FamilysupportSystem
+		{
+			get
+			{
+				return this._FamilysupportSystem;
+			}
+			set
+			{
+				if ((this._FamilysupportSystem != value))
+				{
+					this.OnFamilysupportSystemChanging(value);
+					this.SendPropertyChanging();
+					this._FamilysupportSystem = value;
+					this.SendPropertyChanged("FamilysupportSystem");
+					this.OnFamilysupportSystemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InquiryKey", DbType="Int")]
+		public System.Nullable<int> InquiryKey
+		{
+			get
+			{
+				return this._InquiryKey;
+			}
+			set
+			{
+				if ((this._InquiryKey != value))
+				{
+					this.OnInquiryKeyChanging(value);
+					this.SendPropertyChanging();
+					this._InquiryKey = value;
+					this.SendPropertyChanged("InquiryKey");
+					this.OnInquiryKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_No_Meds", DbType="Char(1)")]
+		public System.Nullable<char> No_Meds
+		{
+			get
+			{
+				return this._No_Meds;
+			}
+			set
+			{
+				if ((this._No_Meds != value))
+				{
+					this.OnNo_MedsChanging(value);
+					this.SendPropertyChanging();
+					this._No_Meds = value;
+					this.SendPropertyChanged("No_Meds");
+					this.OnNo_MedsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_No_Med_Problems", DbType="Char(1)")]
+		public System.Nullable<char> No_Med_Problems
+		{
+			get
+			{
+				return this._No_Med_Problems;
+			}
+			set
+			{
+				if ((this._No_Med_Problems != value))
+				{
+					this.OnNo_Med_ProblemsChanging(value);
+					this.SendPropertyChanging();
+					this._No_Med_Problems = value;
+					this.SendPropertyChanged("No_Med_Problems");
+					this.OnNo_Med_ProblemsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Presenting_Problem", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Presenting_Problem
+		{
+			get
+			{
+				return this._Presenting_Problem;
+			}
+			set
+			{
+				if ((this._Presenting_Problem != value))
+				{
+					this.OnPresenting_ProblemChanging(value);
+					this.SendPropertyChanging();
+					this._Presenting_Problem = value;
+					this.SendPropertyChanged("Presenting_Problem");
+					this.OnPresenting_ProblemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PREV_TREAT", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string PREV_TREAT
+		{
+			get
+			{
+				return this._PREV_TREAT;
+			}
+			set
+			{
+				if ((this._PREV_TREAT != value))
+				{
+					this.OnPREV_TREATChanging(value);
+					this.SendPropertyChanging();
+					this._PREV_TREAT = value;
+					this.SendPropertyChanged("PREV_TREAT");
+					this.OnPREV_TREATChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SummaryofFindings", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SummaryofFindings
+		{
+			get
+			{
+				return this._SummaryofFindings;
+			}
+			set
+			{
+				if ((this._SummaryofFindings != value))
+				{
+					this.OnSummaryofFindingsChanging(value);
+					this.SendPropertyChanging();
+					this._SummaryofFindings = value;
+					this.SendPropertyChanged("SummaryofFindings");
+					this.OnSummaryofFindingsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_LAST_HOSP_VST", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_LAST_HOSP_VST
+		{
+			get
+			{
+				return this._DATE_LAST_HOSP_VST;
+			}
+			set
+			{
+				if ((this._DATE_LAST_HOSP_VST != value))
+				{
+					this.OnDATE_LAST_HOSP_VSTChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_LAST_HOSP_VST = value;
+					this.SendPropertyChanged("DATE_LAST_HOSP_VST");
+					this.OnDATE_LAST_HOSP_VSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DATE_LAST_PHYS_VST", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DATE_LAST_PHYS_VST
+		{
+			get
+			{
+				return this._DATE_LAST_PHYS_VST;
+			}
+			set
+			{
+				if ((this._DATE_LAST_PHYS_VST != value))
+				{
+					this.OnDATE_LAST_PHYS_VSTChanging(value);
+					this.SendPropertyChanging();
+					this._DATE_LAST_PHYS_VST = value;
+					this.SendPropertyChanged("DATE_LAST_PHYS_VST");
+					this.OnDATE_LAST_PHYS_VSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianAddress", DbType="VarChar(100)")]
+		public string PhysicianAddress
+		{
+			get
+			{
+				return this._PhysicianAddress;
+			}
+			set
+			{
+				if ((this._PhysicianAddress != value))
+				{
+					this.OnPhysicianAddressChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianAddress = value;
+					this.SendPropertyChanged("PhysicianAddress");
+					this.OnPhysicianAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianCity", DbType="VarChar(50)")]
+		public string PhysicianCity
+		{
+			get
+			{
+				return this._PhysicianCity;
+			}
+			set
+			{
+				if ((this._PhysicianCity != value))
+				{
+					this.OnPhysicianCityChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianCity = value;
+					this.SendPropertyChanged("PhysicianCity");
+					this.OnPhysicianCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CredentialCode", DbType="Int")]
+		public System.Nullable<int> CredentialCode
+		{
+			get
+			{
+				return this._CredentialCode;
+			}
+			set
+			{
+				if ((this._CredentialCode != value))
+				{
+					this.OnCredentialCodeChanging(value);
+					this.SendPropertyChanging();
+					this._CredentialCode = value;
+					this.SendPropertyChanged("CredentialCode");
+					this.OnCredentialCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianNameF", DbType="VarChar(20)")]
+		public string PhysicianNameF
+		{
+			get
+			{
+				return this._PhysicianNameF;
+			}
+			set
+			{
+				if ((this._PhysicianNameF != value))
+				{
+					this.OnPhysicianNameFChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianNameF = value;
+					this.SendPropertyChanged("PhysicianNameF");
+					this.OnPhysicianNameFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianNameL", DbType="VarChar(20)")]
+		public string PhysicianNameL
+		{
+			get
+			{
+				return this._PhysicianNameL;
+			}
+			set
+			{
+				if ((this._PhysicianNameL != value))
+				{
+					this.OnPhysicianNameLChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianNameL = value;
+					this.SendPropertyChanged("PhysicianNameL");
+					this.OnPhysicianNameLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianPhone", DbType="VarChar(13)")]
+		public string PhysicianPhone
+		{
+			get
+			{
+				return this._PhysicianPhone;
+			}
+			set
+			{
+				if ((this._PhysicianPhone != value))
+				{
+					this.OnPhysicianPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianPhone = value;
+					this.SendPropertyChanged("PhysicianPhone");
+					this.OnPhysicianPhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianState", DbType="VarChar(2)")]
+		public string PhysicianState
+		{
+			get
+			{
+				return this._PhysicianState;
+			}
+			set
+			{
+				if ((this._PhysicianState != value))
+				{
+					this.OnPhysicianStateChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianState = value;
+					this.SendPropertyChanged("PhysicianState");
+					this.OnPhysicianStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianZip", DbType="VarChar(10)")]
+		public string PhysicianZip
+		{
+			get
+			{
+				return this._PhysicianZip;
+			}
+			set
+			{
+				if ((this._PhysicianZip != value))
+				{
+					this.OnPhysicianZipChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianZip = value;
+					this.SendPropertyChanged("PhysicianZip");
+					this.OnPhysicianZipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiniStatusEffDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> MiniStatusEffDate
+		{
+			get
+			{
+				return this._MiniStatusEffDate;
+			}
+			set
+			{
+				if ((this._MiniStatusEffDate != value))
+				{
+					this.OnMiniStatusEffDateChanging(value);
+					this.SendPropertyChanging();
+					this._MiniStatusEffDate = value;
+					this.SendPropertyChanged("MiniStatusEffDate");
+					this.OnMiniStatusEffDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhysicianCredentials", DbType="VarChar(3)")]
+		public string PhysicianCredentials
+		{
+			get
+			{
+				return this._PhysicianCredentials;
+			}
+			set
+			{
+				if ((this._PhysicianCredentials != value))
+				{
+					this.OnPhysicianCredentialsChanging(value);
+					this.SendPropertyChanging();
+					this._PhysicianCredentials = value;
+					this.SendPropertyChanged("PhysicianCredentials");
+					this.OnPhysicianCredentialsChanged();
 				}
 			}
 		}
