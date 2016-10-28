@@ -430,6 +430,18 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetFallRiskEval(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__FALL_RISK>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.DateDoc});
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 

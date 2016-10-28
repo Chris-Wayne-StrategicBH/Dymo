@@ -1744,4 +1744,85 @@
       <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FD__FALL_RISK" Member="FD__FALL_RISKs">
+    <Type Name="FD__FALL_RISK">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ASSESSMENTKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FULLNAME" Type="System.String" DbType="VarChar(42)" CanBeNull="true" />
+      <Column Name="HxNo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HxRestraint" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="HxYes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LvlMild" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LvlMod" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LvlNot" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LvlProfound" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LvlSevere" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedAntianxiety" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedAntidepress" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedAntidiabetic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedAntipsychotic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedAntyhyper" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedCardiac" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedDiuretics" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedHypnotic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedIMAnalgesics" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedLithium" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MedPOAnalgesics" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobAmp" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobAppliance" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobLt" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobNeuro" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobNoProb" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobPara" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobQuad" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MobRt" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenAnxiety" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenAphasia" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenBlind" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenCombative" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenDeaf" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenDizzy" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenHallucinate" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenHardHear" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenImpulsive" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenMod" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenNeglect" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenNoProb" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenOccasion" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenOccImp" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenPoor" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenPoorAbility" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenPoorVision" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SenSevere" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TtlLevel" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TtlScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PGMKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PGMADMISSIONKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FallRiskComments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Score1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Score2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Score3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Score4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Score5" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Score6" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrevScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bracelet" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="BedAlarms" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FallMat" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FamInv" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PatEd" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NonSlipFootwear" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="LapBelt" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Rassist" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

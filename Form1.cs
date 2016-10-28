@@ -183,6 +183,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetEvaluationOfRisk(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.FALL_RISK_EVALUATION:
+                  resultList = new List<Result>(Accessor.GetFallRiskEval(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }
@@ -241,6 +245,7 @@ namespace DPGPP
                   case CRYSTALREPORTS.SOAP_NOTE:
                   case CRYSTALREPORTS.CONTACT_NOTE:
                   case CRYSTALREPORTS.GENERAL_ORDER:
+                  case CRYSTALREPORTS.FALL_RISK_EVALUATION:
                      // Find Parent Node
                      parentNode = FindNode(rpt.ToString(), rootNode);
                      if (parentNode == null)

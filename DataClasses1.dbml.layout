@@ -172,5 +172,11 @@
         <elementListCompartment Id="84118129-682b-4262-ab22-6d377c8fc9ac" absoluteBounds="0.89000000000000012, 4.96, 1.9700000000000002, 23.517862955729164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="32ed7d51-8f18-4a1a-aae6-32a30411125d" isExpanded="false" absoluteBounds="3.125, 4.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/FD__FALL_RISK" />
+      <nestedChildShapes>
+        <elementListCompartment Id="51568880-2d70-4f95-a873-3dec9f71c9a8" absoluteBounds="3.1399999999999997, 4.96, 1.9700000000000002, 15.056599934895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

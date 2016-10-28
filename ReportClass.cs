@@ -81,7 +81,9 @@ namespace DPGPP
       [Description("SD - Psychosocial Plan 20120521.rpt")]
       UPDATED_COMPREHENSIVE_ASSESSMENT,
       [Description("SD - Initial Assesment of Risk 20120806.rpt")]
-      EVALUATION_OF_RISK
+      EVALUATION_OF_RISK,
+      [Description("SD - Fall Risk  Assessment 20160609.rpt")]
+      FALL_RISK_EVALUATION
    }
 
    public enum CRYSTALREPORTTYPES
@@ -282,6 +284,7 @@ namespace DPGPP
             case CRYSTALREPORTS.SOAP_NOTE:
             case CRYSTALREPORTS.CONTACT_NOTE:
             case CRYSTALREPORTS.GENERAL_ORDER:
+            case CRYSTALREPORTS.FALL_RISK_EVALUATION:
                return new GeneralRpt(inPath, OP__DOCID, "WTF");
             case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
