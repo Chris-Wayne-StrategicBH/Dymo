@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Reflection;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.Drawing.Printing;
 
 namespace DPGPP
 {
@@ -17,13 +20,28 @@ namespace DPGPP
       public const int ENDDATE_INDEX = 2; // 
       public const int FULLNAME_INDEX = 2; // ?
       public const int NOT_USED = 9999; // indicates not used
-      public const string CURRENT_PRINTER = @"\\srvcosad1\Medical Records Printer";
+      public const PrinterDuplex DEFAULT_PRINTER_DUPLEX = PrinterDuplex.Simplex;
+      public const string DEFAULT_PRINTER_NAME = @"\\srvcosad1\Medical Records Printer";
+      public const string DEFAULT_DB_SERVER_NAME = "srvcostier";
+      public const string DEFAULT_DB_NAME = "TIER_PVBH";
+      public const string DEFAULT_DB_USER = "TIER";
+      public const string DEFAULT_DB_PASSWORD = "38$bH125";
 
       // Set this path to your reports
       //public const string REPORT_BASE_PATH = @"C:\tier-work\c#\test\test1\Reports";
       public const string REPORT_BASE_PATH = @"\\srvcosad1\share\DPGPP\Reports";
 
    }
+
+   public static class Globals
+   {
+      public static PrinterDuplex duplex = Constants.DEFAULT_PRINTER_DUPLEX;
+      public static string name = Constants.DEFAULT_PRINTER_NAME;
+      public static int mClientKey;
+      public static int mAdmissionKey;
+      public static DateTime mStartDate, mEndDate;
+   }
+
    // using the enum name itself to identify nodes in treeview
    // using the description to provide the report file name
    public enum CRYSTALREPORTS
@@ -82,7 +100,7 @@ namespace DPGPP
    }
 
    // using reflection to get description values of enums
-   public static class ReportInterface
+   public static class ReportTranslation
    {
       public static string GetFileName(Enum value)
       {
@@ -102,243 +120,471 @@ namespace DPGPP
       }
    }
 
-   /*
-   public class CrystalParams
+   public abstract class CrystalParamsGeneric
    {
       private string mName;
       public string name
       {
-         get
-         {
-            return this.mName;
-         }
-         set
-         {
-            this.mName = value;
-         }
+         get { return this.mName; }
+         set { this.mName = value; }
       }
-      private int mVal;
-      public int paramval
-      {
-         get
-         {
-            return this.mVal;
-         }
-         set
-         {
-            this.mVal = value;
-         }
-      }
+      public abstract object GetParamValue();
+   
    }
 
-   
+   public class CrystalParams<T> : CrystalParamsGeneric
+   {
+      public T paramval {get; set;}
+      public override object GetParamValue()
+      {
+         return(paramval);
+      }
+
+   }
+
+   public class CrystalParamsInt : CrystalParams<int>
+   {
+   }
+
+   public class CrystalParamsDate : CrystalParams<DateTime>
+   {  
+   }
+
    public abstract class ReportClass
    {
       string mPath;
       public string Path
       {
-         get
-         {
-            return this.mPath;
-         }
-         set
-         {
-            this.mPath = value;
-         }
+         get { return this.mPath; }
+         set { this.mPath = value; }
       }
-      public List<CrystalParams> param = new List<CrystalParams>();
-
+      public List<CrystalParamsGeneric> param = new List<CrystalParamsGeneric>();
       public ReportClass(string inPath)
       {
          mPath = inPath;
       }
-      public void AddParam(string inPath, int inVal)
-      {
-         param.Add(new CrystalParams { name = inPath, paramval = inVal });
-      }
+      abstract public void PrintCrystalReport();
    }
 
-   public class FacesheetRpt : ReportClass
+   public class GeneralRpt : ReportClass
    {
-      public FacesheetRpt(string inPath, int clientKey, int admissionKey) : base(inPath)
-      {
-         base.AddParam("ClientKey", clientKey);
-         base.AddParam("AdmissionKey", admissionKey);
-      }
-   }
-
-   public class DateRangeRpt : ReportClass
-   {
-      public DateRangeRpt(string inPath, int admissionKey, DateTime startdate, DateTime enddate)
-         : base(inPath)
-      {
-         base.AddParam("AdmissionKey", admissionKey);
-         //base.AddParam("StartDate", startdate);
-         //base.AddParam("EndDate", enddate);
-      }
-   }
-
-   public class OtherRpt : ReportClass
-   {
-      public OtherRpt(string inPath) : base(inPath)
-      {
-      }
-      public void AddParam(string inName, int inValue)
-      {
-         base.AddParam(inName, inValue);
-
-      }
-   }
-
-
-    */
-   public class CrystalParams2
-   {
-      private int mOP__DOCID;
-      public int OP__DOCID
-      {
-         get
-         {
-            return this.mOP__DOCID;
-         }
-         set
-         {
-            this.mOP__DOCID = value;
-         }
-      }
-      private int mClientKey;
-      public int ClientKey
-      {
-         get
-         {
-            return this.mClientKey;
-         }
-         set
-         {
-            this.mClientKey = value;
-         }
-      }
-      private int mAdmissionKey;
-      public int AdmissionKey
-      {
-         get
-         {
-            return this.mAdmissionKey;
-         }
-         set
-         {
-            this.mAdmissionKey = value;
-         }
-      }
-      private DateTime mStartDate;
-      public DateTime StartDate
-      {
-         get
-         {
-            return this.mStartDate;
-         }
-         set
-         {
-            this.mStartDate = value;
-         }
-      }
-      private DateTime mEndDate;
-      public DateTime EndDate
-      {
-         get
-         {
-            return this.mEndDate;
-         }
-         set
-         {
-            this.mEndDate = value;
-         }
-      }
-   }
-      
-
-   public abstract class ReportClassGeneric
-   {
-      string mPath;
-      public string Path
-      {
-         get
-         {
-            return this.mPath;
-         }
-         set
-         {
-            this.mPath = value;
-         }
-      }
-      CRYSTALREPORTTYPES mReportType;
-      public CRYSTALREPORTTYPES reportType
-      {
-         get { return this.mReportType; }
-         set { this.mReportType = value; }
-      }
-
-      public ReportClassGeneric(string inPath)
-      {
-         mPath = inPath;
-      }
-   }
-
-   public class RptInterface : ReportClassGeneric
-   {
-      CrystalParams2 cr = new CrystalParams2();
-      
       //This type of report requires a ClientKey and an AdmissionKey for parameters
-      public RptInterface(string inPath, int clientkey, int admissionKey)
+      private GeneralRpt(string inPath, int clientKey, int admissionKey)
          : base(inPath)
       {
-         cr.ClientKey = clientkey;
-         cr.AdmissionKey = admissionKey;
-         reportType = CRYSTALREPORTTYPES.CLIENTKEY_ADMISSIONKEY;
+         CrystalParamsInt cri = new CrystalParamsInt();
+         cri.name = "ClientKey";
+         cri.paramval = clientKey;
+         param.Add(cri);
+         cri.name = "AdmissionKey";
+         cri.paramval = admissionKey;
+         param.Add(cri);
       }
+
       //This type of report requires an AdmissionKey, startdate and enddate for parameters
-      public RptInterface(string inPath, int admissionKey, DateTime startdate, DateTime enddate)
+      private GeneralRpt(string inPath, int admissionKey, DateTime startDate, DateTime endDate)
          : base(inPath)
       {
-         cr.StartDate = startdate;
-         cr.EndDate = enddate;
-         cr.AdmissionKey = admissionKey;
-         reportType = CRYSTALREPORTTYPES.STARTDATE_ENDDATE;
+         CrystalParamsInt cri = new CrystalParamsInt();
+         cri.name = "AdmissionKey";
+         cri.paramval = admissionKey;
+         param.Add(cri);
+
+         CrystalParamsDate crd = new CrystalParamsDate();
+         crd.name = "StartDate";
+         crd.paramval = startDate;
+         param.Add(crd);
+
+         crd.name = "EndDate";
+         crd.paramval = endDate;
+         param.Add(crd);
       }
       //This type of report requires an OP__DOCID
-      public RptInterface(string inPath, int OP__DOCID)
+      private GeneralRpt(string inPath, int OP__DOCID)
          : base(inPath)
       {
-         cr.OP__DOCID = OP__DOCID;
-         reportType = CRYSTALREPORTTYPES.OP__DOCID;
+         CrystalParamsInt cri = new CrystalParamsInt();
+         cri.name = "OP__DOCID";
+         cri.paramval = OP__DOCID;
+         param.Add(cri);
       }
       //This type of report requires an OP__DOCID and AdmissionKey = 0
-      public RptInterface(string inPath, int OP__DOCID, string dummy)
+      private GeneralRpt(string inPath, int OP__DOCID, string dummy = "WTF")
          : base(inPath)
       {
-         cr.OP__DOCID = OP__DOCID;
-         cr.AdmissionKey = 0;
-         reportType = CRYSTALREPORTTYPES.OP__DOCID_ADMISSIONKEY0;
+         CrystalParamsInt cri = new CrystalParamsInt();
+         cri.name = "OP__DOCID";
+         cri.paramval = OP__DOCID;
+         param.Add(cri);
+         cri.name = "AdmissionKey";
+         cri.paramval = 0;
+         param.Add(cri);
       }
-      public int Get_OP__DOCID()
+      public override void PrintCrystalReport()
       {
-         return (cr.OP__DOCID);
+         Tables CrTables;
+         ReportDocument cryRpt = new ReportDocument();
+         ConnectionInfo crConnectionInfo = new ConnectionInfo();
+         TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
+
+         crConnectionInfo.ServerName = Constants.DEFAULT_DB_SERVER_NAME;
+         crConnectionInfo.DatabaseName = Constants.DEFAULT_DB_NAME;
+         crConnectionInfo.UserID = Constants.DEFAULT_DB_USER;
+         crConnectionInfo.Password = Constants.DEFAULT_DB_PASSWORD;
+
+         cryRpt.Load(Path);
+         foreach (var crystalParameter in param)
+         {
+            cryRpt.SetParameterValue(crystalParameter.name, crystalParameter.GetParamValue());
+         }
+
+         CrTables = cryRpt.Database.Tables;
+
+         foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+         {
+            crtablelogoninfo = CrTable.LogOnInfo;
+            crtablelogoninfo.ConnectionInfo = crConnectionInfo;
+            CrTable.ApplyLogOnInfo(crtablelogoninfo);
+         }
+
+         // Select the printer and print
+         cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
+         cryRpt.PrintOptions.PrinterName = Globals.name;
+         cryRpt.PrintToPrinter(1, false, 0, 0);
+
+         cryRpt.Close();
+         cryRpt.Clone();
+         cryRpt.Dispose();
+         cryRpt = null;
+         GC.Collect();
+         GC.WaitForPendingFinalizers();
+
       }
-      public int Get_ClientKey()
+      public static GeneralRpt CreatePrintObject(string inPath, CRYSTALREPORTS reportType, int OP__DOCID)
       {
-         return (cr.ClientKey);
-      }
-      public int Get_AdmissionKey()
-      {
-         return (cr.AdmissionKey);
-      }
-      public DateTime Get_StartDate()
-      {
-         return (cr.StartDate);
-      }
-      public DateTime Get_EndDate()
-      {
-         return (cr.EndDate);
+         switch(reportType)
+         {
+            case CRYSTALREPORTS.FACESHEET:
+               return new GeneralRpt(inPath, Globals.mClientKey, Globals.mAdmissionKey);
+            case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
+            case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
+            case CRYSTALREPORTS.DISCHARGE_SUMMARY:
+            case CRYSTALREPORTS.HISTORY_PHYSICAL:
+            case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
+            case CRYSTALREPORTS.NURSING_ASSESSMENT:
+            case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
+            case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
+            case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
+            case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
+               return new GeneralRpt(inPath, OP__DOCID);
+            case CRYSTALREPORTS.NURSING_EVALUATION:
+            case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
+            case CRYSTALREPORTS.GENERAL_NOTE:
+            case CRYSTALREPORTS.SOAP_NOTE:
+            case CRYSTALREPORTS.CONTACT_NOTE:
+            case CRYSTALREPORTS.GENERAL_ORDER:
+               return new GeneralRpt(inPath, OP__DOCID, "WTF");
+            case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
+               return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
+            default:
+               return null;
+
+         }
       }
    }
+
+      /*
+      public class DateRangeRpt : ReportClass
+      {
+         public DateRangeRpt(string inPath, int admissionKey, DateTime startdate, DateTime enddate)
+            : base(inPath)
+         {
+            base.AddParam("AdmissionKey", admissionKey);
+            //base.AddParam("StartDate", startdate);
+            //base.AddParam("EndDate", enddate);
+         }
+      }
+
+      public class OtherRpt : ReportClass
+      {
+         public OtherRpt(string inPath) : base(inPath)
+         {
+         }
+         public void AddParam(string inName, int inValue)
+         {
+            base.AddParam(inName, inValue);
+
+         }
+      }
+   
+      public void PrintReport()
+      {
+         Tables CrTables;
+         ReportDocument cryRpt = new ReportDocument();
+         ConnectionInfo crConnectionInfo = new ConnectionInfo();
+         TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
+
+         crConnectionInfo.ServerName = Constants.DEFAULT_DB_SERVER_NAME;
+         crConnectionInfo.DatabaseName = Constants.DEFAULT_DB_NAME;
+         crConnectionInfo.UserID = Constants.DEFAULT_DB_USER;
+         crConnectionInfo.Password = Constants.DEFAULT_DB_PASSWORD;
+
+         cryRpt.Load(reportPath);
+         switch (reportType)
+         {
+            case CRYSTALREPORTTYPES.OP__DOCID:
+               cryRpt.SetParameterValue("OP__DOCID", Get_OP__DOCID());
+               break;
+            case CRYSTALREPORTTYPES.CLIENTKEY_ADMISSIONKEY:
+               cryRpt.SetParameterValue("ClientKey", Get_ClientKey());
+               cryRpt.SetParameterValue("AdmissionKey", Get_AdmissionKey());
+               break;
+            case CRYSTALREPORTTYPES.OP__DOCID_ADMISSIONKEY0:
+               cryRpt.SetParameterValue("OP__DOCID", Get_OP__DOCID());
+               cryRpt.SetParameterValue("AdmissionKey", 0);
+               break;
+            case CRYSTALREPORTTYPES.STARTDATE_ENDDATE:
+               cryRpt.SetParameterValue("AdmissionKey", Get_AdmissionKey());
+               cryRpt.SetParameterValue("StartDate", Get_StartDate());
+               cryRpt.SetParameterValue("EndDate", Get_EndDate());
+               break;
+         }
+
+         CrTables = cryRpt.Database.Tables;
+
+         foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+         {
+            crtablelogoninfo = CrTable.LogOnInfo;
+            crtablelogoninfo.ConnectionInfo = crConnectionInfo;
+            CrTable.ApplyLogOnInfo(crtablelogoninfo);
+         }
+
+         // Select the printer and print
+         cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
+         cryRpt.PrintOptions.PrinterName = Globals.name;
+         cryRpt.PrintToPrinter(1, false, 0, 0);
+
+         cryRpt.Close();
+         cryRpt.Clone();
+         cryRpt.Dispose();
+         cryRpt = null;
+         GC.Collect();
+         GC.WaitForPendingFinalizers();
+
+         //crystalReportViewer1.ReportSource = cryRpt;
+         //crystalReportViewer1.Refresh();
+         //crystalReportViewer1.PrintReport();
+
+      }
+
+      public class CrystalParams2
+      {
+         private int mOP__DOCID;
+         public int OP__DOCID
+         {
+            get
+            {
+               return this.mOP__DOCID;
+            }
+            set
+            {
+               this.mOP__DOCID = value;
+            }
+         }
+         private int mClientKey;
+         public int ClientKey
+         {
+            get
+            {
+               return this.mClientKey;
+            }
+            set
+            {
+               this.mClientKey = value;
+            }
+         }
+         private int mAdmissionKey;
+         public int AdmissionKey
+         {
+            get
+            {
+               return this.mAdmissionKey;
+            }
+            set
+            {
+               this.mAdmissionKey = value;
+            }
+         }
+         private DateTime mStartDate;
+         public DateTime StartDate
+         {
+            get
+            {
+               return this.mStartDate;
+            }
+            set
+            {
+               this.mStartDate = value;
+            }
+         }
+         private DateTime mEndDate;
+         public DateTime EndDate
+         {
+            get
+            {
+               return this.mEndDate;
+            }
+            set
+            {
+               this.mEndDate = value;
+            }
+         }
+      }
+      
+
+      public abstract class ReportClassGeneric
+      {
+         string mPath;
+         public string reportPath
+         {
+            get
+            {
+               return this.mPath;
+            }
+            set
+            {
+               this.mPath = value;
+            }
+         }
+         CRYSTALREPORTTYPES mReportType;
+         public CRYSTALREPORTTYPES reportType
+         {
+            get { return this.mReportType; }
+            set { this.mReportType = value; }
+         }
+
+         public ReportClassGeneric(string inPath)
+         {
+            mPath = inPath;
+         }
+      }
+
+      public class RptInterface : ReportClassGeneric
+      {
+         CrystalParams2 cr = new CrystalParams2();
+      
+         //This type of report requires a ClientKey and an AdmissionKey for parameters
+         public RptInterface(string inPath, int clientkey, int admissionKey)
+            : base(inPath)
+         {
+            cr.ClientKey = clientkey;
+            cr.AdmissionKey = admissionKey;
+            reportType = CRYSTALREPORTTYPES.CLIENTKEY_ADMISSIONKEY;
+         }
+         //This type of report requires an AdmissionKey, startdate and enddate for parameters
+         public RptInterface(string inPath, int admissionKey, DateTime startdate, DateTime enddate)
+            : base(inPath)
+         {
+            cr.StartDate = startdate;
+            cr.EndDate = enddate;
+            cr.AdmissionKey = admissionKey;
+            reportType = CRYSTALREPORTTYPES.STARTDATE_ENDDATE;
+         }
+         //This type of report requires an OP__DOCID
+         public RptInterface(string inPath, int OP__DOCID)
+            : base(inPath)
+         {
+            cr.OP__DOCID = OP__DOCID;
+            reportType = CRYSTALREPORTTYPES.OP__DOCID;
+         }
+         //This type of report requires an OP__DOCID and AdmissionKey = 0
+         public RptInterface(string inPath, int OP__DOCID, string dummy)
+            : base(inPath)
+         {
+            cr.OP__DOCID = OP__DOCID;
+            cr.AdmissionKey = 0;
+            reportType = CRYSTALREPORTTYPES.OP__DOCID_ADMISSIONKEY0;
+         }
+         public int Get_OP__DOCID()
+         {
+            return (cr.OP__DOCID);
+         }
+         public int Get_ClientKey()
+         {
+            return (cr.ClientKey);
+         }
+         public int Get_AdmissionKey()
+         {
+            return (cr.AdmissionKey);
+         }
+         public DateTime Get_StartDate()
+         {
+            return (cr.StartDate);
+         }
+         public DateTime Get_EndDate()
+         {
+            return (cr.EndDate);
+         }
+
+         public void PrintReport()
+         {
+            Tables CrTables;
+            ReportDocument cryRpt = new ReportDocument();
+            ConnectionInfo crConnectionInfo = new ConnectionInfo();
+            TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
+
+            crConnectionInfo.ServerName = Constants.DEFAULT_DB_SERVER_NAME;
+            crConnectionInfo.DatabaseName = Constants.DEFAULT_DB_NAME;
+            crConnectionInfo.UserID = Constants.DEFAULT_DB_USER;
+            crConnectionInfo.Password = Constants.DEFAULT_DB_PASSWORD;
+
+            cryRpt.Load(reportPath);
+            switch (reportType)
+            {
+               case CRYSTALREPORTTYPES.OP__DOCID:
+                  cryRpt.SetParameterValue("OP__DOCID", Get_OP__DOCID());
+                  break;
+               case CRYSTALREPORTTYPES.CLIENTKEY_ADMISSIONKEY:
+                  cryRpt.SetParameterValue("ClientKey", Get_ClientKey());
+                  cryRpt.SetParameterValue("AdmissionKey", Get_AdmissionKey());
+                  break;
+               case CRYSTALREPORTTYPES.OP__DOCID_ADMISSIONKEY0:
+                  cryRpt.SetParameterValue("OP__DOCID", Get_OP__DOCID());
+                  cryRpt.SetParameterValue("AdmissionKey", 0);
+                  break;
+               case CRYSTALREPORTTYPES.STARTDATE_ENDDATE:
+                  cryRpt.SetParameterValue("AdmissionKey", Get_AdmissionKey());
+                  cryRpt.SetParameterValue("StartDate", Get_StartDate());
+                  cryRpt.SetParameterValue("EndDate", Get_EndDate());
+                  break;
+            }
+
+            CrTables = cryRpt.Database.Tables;
+
+            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+            {
+               crtablelogoninfo = CrTable.LogOnInfo;
+               crtablelogoninfo.ConnectionInfo = crConnectionInfo;
+               CrTable.ApplyLogOnInfo(crtablelogoninfo);
+            }
+
+            // Select the printer and print
+            cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
+            cryRpt.PrintOptions.PrinterName = Globals.name;
+            cryRpt.PrintToPrinter(1, false, 0, 0);
+
+            cryRpt.Close();
+            cryRpt.Clone();
+            cryRpt.Dispose();
+            cryRpt = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            //crystalReportViewer1.ReportSource = cryRpt;
+            //crystalReportViewer1.Refresh();
+            //crystalReportViewer1.PrintReport();
+
+         }
+      }
+       */
 }

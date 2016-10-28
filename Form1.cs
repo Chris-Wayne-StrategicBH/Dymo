@@ -16,13 +16,9 @@ using System.Drawing.Printing;
 
 namespace DPGPP
 {
+
    public partial class Form1 : Form
    {
-
-      public int mClientKey;
-      public int mAdmissionKey;
-      public DateTime mStartDate, mEndDate;
-      PrinterSettings printerSettings = new PrinterSettings();
       
       public Form1()
       {
@@ -56,10 +52,10 @@ namespace DPGPP
          LBL_SelectedRow.Text = row.ToString();
          LBL_Client_OP__DOCID.Text = dataGridView1.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value.ToString();
          LBL_Client_FullName.Text = dataGridView1.Rows[row].Cells[Constants.FULLNAME_INDEX].Value.ToString();
-         mClientKey = (int)dataGridView1.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value;
+         Globals.mClientKey = (int)dataGridView1.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value;
 
 
-         List<ProgramClientResult> admissions = new List<ProgramClientResult>(Accessor.GetAdmissionsFromClientKey(Convert.ToInt32(LBL_Client_OP__DOCID.Text)));
+         List<ProgramClientResult> admissions = new List<ProgramClientResult>(Accessor.GetAdmissionsFromClientKey(Globals.mClientKey));
          dataGridView2.DataSource = admissions;
       }
 
@@ -74,20 +70,21 @@ namespace DPGPP
 
          row = dataGridView2.CurrentCell.RowIndex;
          LBL_AdmissionKey.Text = dataGridView2.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value.ToString();
-         mAdmissionKey = (int)dataGridView2.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value;
+         Globals.mAdmissionKey = (int)dataGridView2.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value;
          if (dataGridView2.Rows[row].Cells[Constants.STARTDATE_INDEX].Value == null)
-            mStartDate = DateTime.Now;
+            Globals.mStartDate = DateTime.Now;
          else
-            mStartDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.STARTDATE_INDEX].Value;
+            Globals.mStartDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.STARTDATE_INDEX].Value;
 
          if (dataGridView2.Rows[row].Cells[Constants.ENDDATE_INDEX].Value == null)
-            mEndDate = DateTime.Now;
+            Globals.mEndDate = DateTime.Now;
          else
-            mEndDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.ENDDATE_INDEX].Value;
+            Globals.mEndDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.ENDDATE_INDEX].Value;
          PrepareTree();
 
       }
 
+      /*
       private void PrintReport(RptInterface rpt)
       {
          Tables CrTables;
@@ -147,9 +144,11 @@ namespace DPGPP
          //crystalReportViewer1.PrintReport();
 
       }
+       */
       private void PrepareTree()
       {
          TreeNode RootNode = new TreeNode();
+         GeneralRpt gp;
          List<Result> resultList;
          // chop the tree down
          treeView1.Nodes.Clear();
@@ -158,86 +157,89 @@ namespace DPGPP
          {
             int val = (int)rpt;
             Console.WriteLine(rpt + " " + val.ToString());
+            string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
 
             switch(rpt)
             {
                case CRYSTALREPORTS.ROOT:
                   //Root node just display admissionkey
-                  AddRootNode(rpt.ToString(), "Admission : " + mAdmissionKey.ToString(), "Admission : " + mAdmissionKey.ToString(), RootNode);
+                  AddRootNode(rpt.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), RootNode);
                   break;
                case CRYSTALREPORTS.FACESHEET:
                   // FaceSheet Report.. already have ClientKey and AdmissionKey.. should work
                   TreeNode parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt.ToString(), rpt.ToString(), RootNode, parentNode);
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
+                  AddNode(rpt, RootNode, parentNode, gp);
+                  break;
+               case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
+                  AddNode(rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.HISTORY_PHYSICAL:
                   // History And Physical report.. Are there any?
-                  resultList = new List<Result>(Accessor.GetHistoryAndPhysicals(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetHistoryAndPhysicals(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
                   // Psych Eval report.. Are there any?
-                  resultList = new List<Result>(Accessor.GetPsychEvals(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetPsychEvals(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
-                  resultList = new List<Result>(Accessor.GetPsychoSocials(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetPsychoSocials(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.NURSING_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetNursingAssessments(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetNursingAssessments(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.DISCHARGE_SUMMARY:
-                  resultList = new List<Result>(Accessor.GetDischargeSummaries(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetDischargeSummaries(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
-                  resultList = new List<Result>(Accessor.GetDischargeAftercarePlans(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetDischargeAftercarePlans(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
-                  resultList = new List<Result>(Accessor.GetPhysicianDischargeSummary(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetPhysicianDischargeSummary(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.NURSING_EVALUATION:
-                  resultList = new List<Result>(Accessor.GetNursingEvaluations(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetNursingEvaluations(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
-                  resultList = new List<Result>(Accessor.GetInitialContactNotes(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetInitialContactNotes(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
-                  resultList = new List<Result>(Accessor.GetPsychiatricProgressNotes(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetPsychiatricProgressNotes(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.GENERAL_NOTE:
-                  resultList = new List<Result>(Accessor.GetGeneralNotes(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetGeneralNotes(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.SOAP_NOTE:
-                  resultList = new List<Result>(Accessor.GetSoapNotes(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetSoapNotes(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.CONTACT_NOTE:
-                  resultList = new List<Result>(Accessor.GetContactNotes(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetContactNotes(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.GENERAL_ORDER:
-                  resultList = new List<Result>(Accessor.GetGeneralOrders(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetGeneralOrders(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
-                  resultList = new List<Result>(Accessor.GetMedicationOrdersHistory(mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetMedicationOrdersHistory(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
-               case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt.ToString(), rpt.ToString(), RootNode, parentNode);
-                  break;
                case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment (mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment (Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
             }
@@ -250,7 +252,7 @@ namespace DPGPP
       private void Print_Reports()
       {
          TreeNode parentNode, rootNode = null;
-         RptInterface rptObj;
+         GeneralRpt rptObj;
 
          // Find Root Node
          rootNode = FindRootNode(CRYSTALREPORTS.ROOT.ToString(), treeView1.Nodes);
@@ -264,7 +266,7 @@ namespace DPGPP
             {
                int val = (int)rpt;
                Console.WriteLine(rpt + " " + val.ToString());
-               string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportInterface.GetFileName(rpt));
+               string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
                switch (rpt)
                {
                   case CRYSTALREPORTS.ROOT:
@@ -281,9 +283,10 @@ namespace DPGPP
                      {
                         if (parentNode.Checked)
                         {
-                           rptObj = new RptInterface(reportPath, mClientKey, mAdmissionKey);
+                           rptObj = (GeneralRpt)parentNode.Tag;
+                           rptObj.PrintCrystalReport();
                            //MessageBox.Show("Printing Facesheet......");
-                           PrintReport(rptObj);
+                           
                         }
                         else
                            Console.WriteLine(rpt.ToString() + parentNode.Text + "Not Checked.....");
@@ -302,15 +305,15 @@ namespace DPGPP
                         Console.WriteLine("Node " + rpt.ToString() + " not found");
                      else
                      {
-                        foreach (TreeNode childnode in parentNode.Nodes)
+                        foreach (TreeNode childNode in parentNode.Nodes)
                         {
-                           if (childnode.Checked)
+                           if (childNode.Checked)
                            {
-                              rptObj = new RptInterface(reportPath, Convert.ToInt32(childnode.Tag), "Dummy");
-                              PrintReport(rptObj);
+                              rptObj = (GeneralRpt)childNode.Tag;
+                              rptObj.PrintCrystalReport();
                            }
                            else
-                              Console.WriteLine(rpt.ToString() + childnode.Text + "Not Checked.....");
+                              Console.WriteLine(rpt.ToString() + childNode.Text + "Not Checked.....");
                         }
                      }
                      break;
@@ -330,15 +333,15 @@ namespace DPGPP
                         Console.WriteLine("Node " + rpt.ToString() + " not found");
                      else
                      {
-                        foreach (TreeNode childnode in parentNode.Nodes)
+                        foreach (TreeNode childNode in parentNode.Nodes)
                         {
-                           if (childnode.Checked)
+                           if (childNode.Checked)
                            {
-                              rptObj = new RptInterface(reportPath, Convert.ToInt32(childnode.Tag));
-                              PrintReport(rptObj);
+                              rptObj = (GeneralRpt)childNode.Tag;
+                              rptObj.PrintCrystalReport();
                            }
                            else
-                              Console.WriteLine(rpt.ToString() + childnode.Text + "Not Checked.....");
+                              Console.WriteLine(rpt.ToString() + childNode.Text + "Not Checked.....");
                         }
                      }
                      break;
@@ -352,9 +355,8 @@ namespace DPGPP
                      {
                         if (parentNode.Checked)
                         {
-                           rptObj = new RptInterface(reportPath, mAdmissionKey, mStartDate, mEndDate);
-                           //MessageBox.Show("Printing Administered Meds......");
-                           PrintReport(rptObj);
+                           rptObj = (GeneralRpt)parentNode.Tag;
+                           rptObj.PrintCrystalReport();
                         }
                         else
                            Console.WriteLine(rpt.ToString() + parentNode.Text + "Not Checked.....");
@@ -394,11 +396,12 @@ namespace DPGPP
          }
          return (tn);
       }
-      private void AddNode(string name, string text, string tag, TreeNode parentNode, TreeNode childNode)
+
+      private void AddNode(CRYSTALREPORTS rptEnum, TreeNode parentNode, TreeNode childNode, GeneralRpt gp)
       {
-         childNode.Name = name;
-         childNode.Text = text;
-         childNode.Tag = tag;
+         childNode.Name = rptEnum.ToString();
+         childNode.Text = rptEnum.ToString();
+         childNode.Tag = gp;
          childNode.ForeColor = Color.Black;
          childNode.BackColor = Color.White;
          childNode.ImageIndex = 0;
@@ -425,11 +428,13 @@ namespace DPGPP
          TreeNode parentNode, childNode = null;
          string nodestr;
          DateTime datestr;
+         GeneralRpt gp;
+         string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
 
          if (count > 0)
          {
             parentNode = new TreeNode();
-            AddNode(rpt.ToString(), rpt.ToString(), rpt.ToString(), rootNode, parentNode);
+            AddNode(rpt, rootNode, parentNode, null);
 
             // Each individual OP__DOCID
             foreach (Result result in resultList)
@@ -441,7 +446,9 @@ namespace DPGPP
                   datestr = new DateTime(1900, 1, 1);
 
                nodestr = result.OP__DOCID.ToString() + " --- " + datestr.ToShortDateString();
-               AddNode(result.OP__DOCID.ToString(), nodestr, result.OP__DOCID.ToString(), parentNode, childNode);
+
+               gp = GeneralRpt.CreatePrintObject(reportPath, rpt, result.OP__DOCID);
+               AddNode(rpt, parentNode, childNode, gp);
             }
          }
       }
@@ -473,7 +480,7 @@ namespace DPGPP
       private void printerToolStripMenuItem_Click(object sender, EventArgs e)
       {
          PrintDialog printDialog = new PrintDialog();
-         printDialog.PrinterSettings = printerSettings;
+         //printDialog.PrinterSettings = printerSettings;
          printDialog.AllowPrintToFile = false;
          printDialog.AllowSomePages = true;
          printDialog.UseEXDialog = true;
@@ -487,9 +494,5 @@ namespace DPGPP
 
       }
 
-      private void Form1_Load(object sender, EventArgs e)
-      {
-         PrinterSettings printerSettings = new PrinterSettings();
-      }
    }
 }
