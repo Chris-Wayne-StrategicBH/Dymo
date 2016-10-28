@@ -103,27 +103,23 @@ namespace DPGPP
             switch(rpt)
             {
                case CRYSTALREPORTS.ROOT:
-                  //Root node just display admissionkey
                   AddRootNode(rpt.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), RootNode);
                   break;
                case CRYSTALREPORTS.FACESHEET:
-                  // FaceSheet Report.. already have ClientKey and AdmissionKey.. should work
                   TreeNode parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED); 
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                   parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED); 
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.HISTORY_PHYSICAL:
-                  // History And Physical report.. Are there any?
                   resultList = new List<Result>(Accessor.GetHistoryAndPhysicals(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
-                  // Psych Eval report.. Are there any?
                   resultList = new List<Result>(Accessor.GetPsychEvals(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;

@@ -14,21 +14,18 @@ namespace DPGPP
 
    static class Constants
    {
-      public const int OP__DOCID_INDEX = 0; // ?
-      public const int ADMISSIONKEY_INDEX = 0; // ?
-      public const int STARTDATE_INDEX = 1; // 
-      public const int ENDDATE_INDEX = 2; // 
-      public const int FULLNAME_INDEX = 2; // ?
-      public const int NOT_USED = 9999; // indicates not used
+      public const int OP__DOCID_INDEX = 0;
+      public const int ADMISSIONKEY_INDEX = 0;
+      public const int STARTDATE_INDEX = 1; 
+      public const int ENDDATE_INDEX = 2; 
+      public const int FULLNAME_INDEX = 2;
+      public const int NOT_USED = 9999;
       public const PrinterDuplex DEFAULT_PRINTER_DUPLEX = PrinterDuplex.Simplex;
       public const string DEFAULT_PRINTER_NAME = @"\\srvcosad1\Medical Records Printer";
       public const string DEFAULT_DB_SERVER_NAME = "srvcostier";
       public const string DEFAULT_DB_NAME = "TIER_PVBH";
       public const string DEFAULT_DB_USER = "TIER";
       public const string DEFAULT_DB_PASSWORD = "38$bH125";
-
-      // Set this path to your reports
-      //public const string REPORT_BASE_PATH = @"C:\tier-work\c#\test\test1\Reports";
       public const string REPORT_BASE_PATH = @"\\srvcosad1\share\DPGPP\Reports";
 
    }
