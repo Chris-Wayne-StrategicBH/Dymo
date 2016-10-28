@@ -19,7 +19,9 @@ namespace DPGPP
 
    public partial class Form1 : Form
    {
-      
+
+      PrinterSettings printerSettings = new PrinterSettings();
+           
       public Form1()
       {
          InitializeComponent();
@@ -169,12 +171,12 @@ namespace DPGPP
                   // FaceSheet Report.. already have ClientKey and AdmissionKey.. should work
                   TreeNode parentNode = new TreeNode();
                   gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
-                  AddNode(rpt, RootNode, parentNode, gp);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                   parentNode = new TreeNode();
                   gp = GeneralRpt.CreatePrintObject(reportPath, rpt, 0); // the 0 is not used
-                  AddNode(rpt, RootNode, parentNode, gp);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.HISTORY_PHYSICAL:
                   // History And Physical report.. Are there any?
@@ -397,10 +399,10 @@ namespace DPGPP
          return (tn);
       }
 
-      private void AddNode(CRYSTALREPORTS rptEnum, TreeNode parentNode, TreeNode childNode, GeneralRpt gp)
+      private void AddNode(string inName, CRYSTALREPORTS rptEnum, TreeNode parentNode, TreeNode childNode, GeneralRpt gp)
       {
-         childNode.Name = rptEnum.ToString();
-         childNode.Text = rptEnum.ToString();
+         childNode.Name = inName;
+         childNode.Text = inName;
          childNode.Tag = gp;
          childNode.ForeColor = Color.Black;
          childNode.BackColor = Color.White;
@@ -434,7 +436,7 @@ namespace DPGPP
          if (count > 0)
          {
             parentNode = new TreeNode();
-            AddNode(rpt, rootNode, parentNode, null);
+            AddNode(rpt.ToString(), rpt, rootNode, parentNode, null);
 
             // Each individual OP__DOCID
             foreach (Result result in resultList)
@@ -448,7 +450,7 @@ namespace DPGPP
                nodestr = result.OP__DOCID.ToString() + " --- " + datestr.ToShortDateString();
 
                gp = GeneralRpt.CreatePrintObject(reportPath, rpt, result.OP__DOCID);
-               AddNode(rpt, parentNode, childNode, gp);
+               AddNode(nodestr, rpt, parentNode, childNode, gp);
             }
          }
       }
@@ -480,7 +482,7 @@ namespace DPGPP
       private void printerToolStripMenuItem_Click(object sender, EventArgs e)
       {
          PrintDialog printDialog = new PrintDialog();
-         //printDialog.PrinterSettings = printerSettings;
+         printDialog.PrinterSettings = printerSettings;
          printDialog.AllowPrintToFile = false;
          printDialog.AllowSomePages = true;
          printDialog.UseEXDialog = true;
@@ -490,6 +492,11 @@ namespace DPGPP
          if (result == DialogResult.Cancel)
          {
             return;
+         }
+         else
+         {
+            Globals.duplex = (PrinterDuplex)printDialog.PrinterSettings.Duplex;
+            Globals.name = (string)printDialog.PrinterSettings.PrinterName;
          }
 
       }
