@@ -178,5 +178,11 @@
         <elementListCompartment Id="51568880-2d70-4f95-a873-3dec9f71c9a8" absoluteBounds="3.1399999999999997, 4.96, 1.9700000000000002, 15.056599934895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="8e0e0d12-ce1b-4921-b55c-0c16c6a17b7c" isExpanded="false" absoluteBounds="5.625, 4.5, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/MTP_Master" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f2bdc51-b2a9-4c2e-a53a-23f91a64d350" absoluteBounds="5.64, 4.96, 1.9700000000000002, 11.595174153645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -187,6 +187,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetFallRiskEval(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
+                  resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }
@@ -220,6 +224,7 @@ namespace DPGPP
                      // Nothing to print
                      break;
                   case CRYSTALREPORTS.FACESHEET:
+                  case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                      // FaceSheet Report.. already have ClientKey and AdmissionKey.. should work
                      // Find Parent Node
                      parentNode = FindNode(rpt.ToString(), rootNode);
@@ -246,24 +251,6 @@ namespace DPGPP
                   case CRYSTALREPORTS.CONTACT_NOTE:
                   case CRYSTALREPORTS.GENERAL_ORDER:
                   case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-                     // Find Parent Node
-                     parentNode = FindNode(rpt.ToString(), rootNode);
-                     if (parentNode == null)
-                        Console.WriteLine("Node " + rpt.ToString() + " not found");
-                     else
-                     {
-                        foreach (TreeNode childNode in parentNode.Nodes)
-                        {
-                           if (childNode.Checked)
-                           {
-                              rptObj = (GeneralRpt)childNode.Tag;
-                              rptObj.PrintCrystalReport();
-                           }
-                           else
-                              Console.WriteLine(rpt.ToString() + childNode.Text + "Not Checked.....");
-                        }
-                     }
-                     break;
                   case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
                   case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
                   case CRYSTALREPORTS.DISCHARGE_SUMMARY:
@@ -275,6 +262,7 @@ namespace DPGPP
                   case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
                   case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
                   case CRYSTALREPORTS.EVALUATION_OF_RISK:
+                  case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
                      // Find Parent Node
                      parentNode = FindNode(rpt.ToString(), rootNode);
                      if (parentNode == null)
@@ -291,23 +279,6 @@ namespace DPGPP
                            else
                               Console.WriteLine(rpt.ToString() + childNode.Text + "Not Checked.....");
                         }
-                     }
-                     break;
-                  case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
-                     // Administered Medication Report.. already have AdmissionKey Startdate and End date
-                     // Find Parent Node
-                     parentNode = FindNode(rpt.ToString(), rootNode);
-                     if (parentNode == null)
-                        Console.WriteLine("Node " + rpt.ToString() + " not found");
-                     else
-                     {
-                        if (parentNode.Checked)
-                        {
-                           rptObj = (GeneralRpt)parentNode.Tag;
-                           rptObj.PrintCrystalReport();
-                        }
-                        else
-                           Console.WriteLine(rpt.ToString() + parentNode.Text + "Not Checked.....");
                      }
                      break;
                }

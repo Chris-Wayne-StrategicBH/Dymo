@@ -281,6 +281,14 @@ namespace DPGPP
 				return this.GetTable<FD__FALL_RISK>();
 			}
 		}
+		
+		public System.Data.Linq.Table<MTP_Master> MTP_Masters
+		{
+			get
+			{
+				return this.GetTable<MTP_Master>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__CLIENTS")]
@@ -43087,6 +43095,1077 @@ namespace DPGPP
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MTP_Master")]
+	public partial class MTP_Master
+	{
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private System.Nullable<int> _IntakeKey;
+		
+		private System.Nullable<int> _PreAdmissionKey;
+		
+		private System.Nullable<int> _Staffkey;
+		
+		private string _DschCriteriaExpected;
+		
+		private string _DschCriteriaMinimum;
+		
+		private string _OvrAllTreatFocus;
+		
+		private System.Nullable<int> _MTPKey;
+		
+		private System.Nullable<int> _ICSFlag;
+		
+		private string _Plan_Type;
+		
+		private System.Nullable<int> _FamilyKey;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private string _Evidence;
+		
+		private string _Projected_Stay;
+		
+		private System.Nullable<System.DateTime> _DateDoc;
+		
+		private System.Nullable<System.DateTime> _End_Date;
+		
+		private System.Nullable<System.DateTime> _DateMod;
+		
+		private string _PermanencyDetail;
+		
+		private string _PermanencyPlan;
+		
+		private System.Nullable<System.DateTime> _EffectiveDate;
+		
+		private System.Nullable<char> _isCloned;
+		
+		private System.Nullable<int> _RevisionNo;
+		
+		private System.Nullable<int> _SrvcKey;
+		
+		private System.Nullable<System.DateTime> _Revision_EndDate;
+		
+		private System.Nullable<System.DateTime> _Revision_StartDate;
+		
+		private System.Nullable<int> _OriginalStaff;
+		
+		private System.Nullable<int> _OriginalTierUserID;
+		
+		private string _DischageGoals;
+		
+		private string _LongTermGoals;
+		
+		private System.Nullable<System.DateTime> _NextScheduleReview;
+		
+		private string _PlanType;
+		
+		private System.Nullable<char> _chkShowTab;
+		
+		private System.Nullable<int> _TXPlanTypeKey;
+		
+		private System.Nullable<int> _InitialPlanMTPKey;
+		
+		private System.Nullable<int> _PgmKey;
+		
+		private System.Nullable<int> _PgmAdmissionKey;
+		
+		private string _SMOKE_CURRENT;
+		
+		private System.Nullable<int> _SmokingStatusCode;
+		
+		private System.Nullable<int> _CycleKey;
+		
+		private string _GroupKey;
+		
+		private string _EDU_INFO;
+		
+		private string _SCHOOL_AGED;
+		
+		private string _SMOKE_INTERESTED;
+		
+		private System.Nullable<int> _ModalityValidation;
+		
+		private System.Nullable<int> _ModalityValidationSchoolAged;
+		
+		private System.Nullable<int> _DisciplineValidation;
+		
+		private System.Nullable<int> _EpisodeKey;
+		
+		private System.Nullable<int> _InquiryKey;
+		
+		private System.Nullable<System.DateTime> _SignatureDate;
+		
+		private System.Data.Linq.Binary _TierSign;
+		
+		private string _PrelimDischargePlan;
+		
+		private string _behaviours;
+		
+		private string _interventions;
+		
+		private string _duration;
+		
+		public MTP_Master()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL")]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this._OP__DOCID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this._OP__PARENTID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this._OP__FOLDERID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this._AdmissionKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					this._ClientKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IntakeKey", DbType="Int")]
+		public System.Nullable<int> IntakeKey
+		{
+			get
+			{
+				return this._IntakeKey;
+			}
+			set
+			{
+				if ((this._IntakeKey != value))
+				{
+					this._IntakeKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PreAdmissionKey
+		{
+			get
+			{
+				return this._PreAdmissionKey;
+			}
+			set
+			{
+				if ((this._PreAdmissionKey != value))
+				{
+					this._PreAdmissionKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Staffkey", DbType="Int")]
+		public System.Nullable<int> Staffkey
+		{
+			get
+			{
+				return this._Staffkey;
+			}
+			set
+			{
+				if ((this._Staffkey != value))
+				{
+					this._Staffkey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DschCriteriaExpected", DbType="VarChar(200)")]
+		public string DschCriteriaExpected
+		{
+			get
+			{
+				return this._DschCriteriaExpected;
+			}
+			set
+			{
+				if ((this._DschCriteriaExpected != value))
+				{
+					this._DschCriteriaExpected = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DschCriteriaMinimum", DbType="VarChar(200)")]
+		public string DschCriteriaMinimum
+		{
+			get
+			{
+				return this._DschCriteriaMinimum;
+			}
+			set
+			{
+				if ((this._DschCriteriaMinimum != value))
+				{
+					this._DschCriteriaMinimum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OvrAllTreatFocus", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string OvrAllTreatFocus
+		{
+			get
+			{
+				return this._OvrAllTreatFocus;
+			}
+			set
+			{
+				if ((this._OvrAllTreatFocus != value))
+				{
+					this._OvrAllTreatFocus = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MTPKey", DbType="Int")]
+		public System.Nullable<int> MTPKey
+		{
+			get
+			{
+				return this._MTPKey;
+			}
+			set
+			{
+				if ((this._MTPKey != value))
+				{
+					this._MTPKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ICSFlag", DbType="Int")]
+		public System.Nullable<int> ICSFlag
+		{
+			get
+			{
+				return this._ICSFlag;
+			}
+			set
+			{
+				if ((this._ICSFlag != value))
+				{
+					this._ICSFlag = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Plan_Type", DbType="VarChar(20)")]
+		public string Plan_Type
+		{
+			get
+			{
+				return this._Plan_Type;
+			}
+			set
+			{
+				if ((this._Plan_Type != value))
+				{
+					this._Plan_Type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FamilyKey", DbType="Int")]
+		public System.Nullable<int> FamilyKey
+		{
+			get
+			{
+				return this._FamilyKey;
+			}
+			set
+			{
+				if ((this._FamilyKey != value))
+				{
+					this._FamilyKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Evidence", DbType="VarChar(200)")]
+		public string Evidence
+		{
+			get
+			{
+				return this._Evidence;
+			}
+			set
+			{
+				if ((this._Evidence != value))
+				{
+					this._Evidence = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Projected_Stay", DbType="VarChar(150)")]
+		public string Projected_Stay
+		{
+			get
+			{
+				return this._Projected_Stay;
+			}
+			set
+			{
+				if ((this._Projected_Stay != value))
+				{
+					this._Projected_Stay = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDoc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateDoc
+		{
+			get
+			{
+				return this._DateDoc;
+			}
+			set
+			{
+				if ((this._DateDoc != value))
+				{
+					this._DateDoc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_End_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> End_Date
+		{
+			get
+			{
+				return this._End_Date;
+			}
+			set
+			{
+				if ((this._End_Date != value))
+				{
+					this._End_Date = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateMod", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateMod
+		{
+			get
+			{
+				return this._DateMod;
+			}
+			set
+			{
+				if ((this._DateMod != value))
+				{
+					this._DateMod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermanencyDetail", DbType="VarChar(100)")]
+		public string PermanencyDetail
+		{
+			get
+			{
+				return this._PermanencyDetail;
+			}
+			set
+			{
+				if ((this._PermanencyDetail != value))
+				{
+					this._PermanencyDetail = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermanencyPlan", DbType="VarChar(25)")]
+		public string PermanencyPlan
+		{
+			get
+			{
+				return this._PermanencyPlan;
+			}
+			set
+			{
+				if ((this._PermanencyPlan != value))
+				{
+					this._PermanencyPlan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EffectiveDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EffectiveDate
+		{
+			get
+			{
+				return this._EffectiveDate;
+			}
+			set
+			{
+				if ((this._EffectiveDate != value))
+				{
+					this._EffectiveDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isCloned", DbType="Char(1)")]
+		public System.Nullable<char> isCloned
+		{
+			get
+			{
+				return this._isCloned;
+			}
+			set
+			{
+				if ((this._isCloned != value))
+				{
+					this._isCloned = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RevisionNo", DbType="Int")]
+		public System.Nullable<int> RevisionNo
+		{
+			get
+			{
+				return this._RevisionNo;
+			}
+			set
+			{
+				if ((this._RevisionNo != value))
+				{
+					this._RevisionNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SrvcKey", DbType="Int")]
+		public System.Nullable<int> SrvcKey
+		{
+			get
+			{
+				return this._SrvcKey;
+			}
+			set
+			{
+				if ((this._SrvcKey != value))
+				{
+					this._SrvcKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Revision_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Revision_EndDate
+		{
+			get
+			{
+				return this._Revision_EndDate;
+			}
+			set
+			{
+				if ((this._Revision_EndDate != value))
+				{
+					this._Revision_EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Revision_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Revision_StartDate
+		{
+			get
+			{
+				return this._Revision_StartDate;
+			}
+			set
+			{
+				if ((this._Revision_StartDate != value))
+				{
+					this._Revision_StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginalStaff", DbType="Int")]
+		public System.Nullable<int> OriginalStaff
+		{
+			get
+			{
+				return this._OriginalStaff;
+			}
+			set
+			{
+				if ((this._OriginalStaff != value))
+				{
+					this._OriginalStaff = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OriginalTierUserID", DbType="Int")]
+		public System.Nullable<int> OriginalTierUserID
+		{
+			get
+			{
+				return this._OriginalTierUserID;
+			}
+			set
+			{
+				if ((this._OriginalTierUserID != value))
+				{
+					this._OriginalTierUserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DischageGoals", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string DischageGoals
+		{
+			get
+			{
+				return this._DischageGoals;
+			}
+			set
+			{
+				if ((this._DischageGoals != value))
+				{
+					this._DischageGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LongTermGoals", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string LongTermGoals
+		{
+			get
+			{
+				return this._LongTermGoals;
+			}
+			set
+			{
+				if ((this._LongTermGoals != value))
+				{
+					this._LongTermGoals = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NextScheduleReview", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NextScheduleReview
+		{
+			get
+			{
+				return this._NextScheduleReview;
+			}
+			set
+			{
+				if ((this._NextScheduleReview != value))
+				{
+					this._NextScheduleReview = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlanType", DbType="VarChar(10)")]
+		public string PlanType
+		{
+			get
+			{
+				return this._PlanType;
+			}
+			set
+			{
+				if ((this._PlanType != value))
+				{
+					this._PlanType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_chkShowTab", DbType="Char(1)")]
+		public System.Nullable<char> chkShowTab
+		{
+			get
+			{
+				return this._chkShowTab;
+			}
+			set
+			{
+				if ((this._chkShowTab != value))
+				{
+					this._chkShowTab = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TXPlanTypeKey", DbType="Int")]
+		public System.Nullable<int> TXPlanTypeKey
+		{
+			get
+			{
+				return this._TXPlanTypeKey;
+			}
+			set
+			{
+				if ((this._TXPlanTypeKey != value))
+				{
+					this._TXPlanTypeKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InitialPlanMTPKey", DbType="Int")]
+		public System.Nullable<int> InitialPlanMTPKey
+		{
+			get
+			{
+				return this._InitialPlanMTPKey;
+			}
+			set
+			{
+				if ((this._InitialPlanMTPKey != value))
+				{
+					this._InitialPlanMTPKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmKey", DbType="Int")]
+		public System.Nullable<int> PgmKey
+		{
+			get
+			{
+				return this._PgmKey;
+			}
+			set
+			{
+				if ((this._PgmKey != value))
+				{
+					this._PgmKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PgmAdmissionKey
+		{
+			get
+			{
+				return this._PgmAdmissionKey;
+			}
+			set
+			{
+				if ((this._PgmAdmissionKey != value))
+				{
+					this._PgmAdmissionKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMOKE_CURRENT", DbType="VarChar(3)")]
+		public string SMOKE_CURRENT
+		{
+			get
+			{
+				return this._SMOKE_CURRENT;
+			}
+			set
+			{
+				if ((this._SMOKE_CURRENT != value))
+				{
+					this._SMOKE_CURRENT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SmokingStatusCode", DbType="Int")]
+		public System.Nullable<int> SmokingStatusCode
+		{
+			get
+			{
+				return this._SmokingStatusCode;
+			}
+			set
+			{
+				if ((this._SmokingStatusCode != value))
+				{
+					this._SmokingStatusCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CycleKey", DbType="Int")]
+		public System.Nullable<int> CycleKey
+		{
+			get
+			{
+				return this._CycleKey;
+			}
+			set
+			{
+				if ((this._CycleKey != value))
+				{
+					this._CycleKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupKey", DbType="VarChar(40)")]
+		public string GroupKey
+		{
+			get
+			{
+				return this._GroupKey;
+			}
+			set
+			{
+				if ((this._GroupKey != value))
+				{
+					this._GroupKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EDU_INFO", DbType="VarChar(3)")]
+		public string EDU_INFO
+		{
+			get
+			{
+				return this._EDU_INFO;
+			}
+			set
+			{
+				if ((this._EDU_INFO != value))
+				{
+					this._EDU_INFO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SCHOOL_AGED", DbType="VarChar(3)")]
+		public string SCHOOL_AGED
+		{
+			get
+			{
+				return this._SCHOOL_AGED;
+			}
+			set
+			{
+				if ((this._SCHOOL_AGED != value))
+				{
+					this._SCHOOL_AGED = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMOKE_INTERESTED", DbType="VarChar(3)")]
+		public string SMOKE_INTERESTED
+		{
+			get
+			{
+				return this._SMOKE_INTERESTED;
+			}
+			set
+			{
+				if ((this._SMOKE_INTERESTED != value))
+				{
+					this._SMOKE_INTERESTED = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModalityValidation", DbType="Int")]
+		public System.Nullable<int> ModalityValidation
+		{
+			get
+			{
+				return this._ModalityValidation;
+			}
+			set
+			{
+				if ((this._ModalityValidation != value))
+				{
+					this._ModalityValidation = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModalityValidationSchoolAged", DbType="Int")]
+		public System.Nullable<int> ModalityValidationSchoolAged
+		{
+			get
+			{
+				return this._ModalityValidationSchoolAged;
+			}
+			set
+			{
+				if ((this._ModalityValidationSchoolAged != value))
+				{
+					this._ModalityValidationSchoolAged = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisciplineValidation", DbType="Int")]
+		public System.Nullable<int> DisciplineValidation
+		{
+			get
+			{
+				return this._DisciplineValidation;
+			}
+			set
+			{
+				if ((this._DisciplineValidation != value))
+				{
+					this._DisciplineValidation = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EpisodeKey", DbType="Int")]
+		public System.Nullable<int> EpisodeKey
+		{
+			get
+			{
+				return this._EpisodeKey;
+			}
+			set
+			{
+				if ((this._EpisodeKey != value))
+				{
+					this._EpisodeKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InquiryKey", DbType="Int")]
+		public System.Nullable<int> InquiryKey
+		{
+			get
+			{
+				return this._InquiryKey;
+			}
+			set
+			{
+				if ((this._InquiryKey != value))
+				{
+					this._InquiryKey = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignatureDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SignatureDate
+		{
+			get
+			{
+				return this._SignatureDate;
+			}
+			set
+			{
+				if ((this._SignatureDate != value))
+				{
+					this._SignatureDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TierSign", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary TierSign
+		{
+			get
+			{
+				return this._TierSign;
+			}
+			set
+			{
+				if ((this._TierSign != value))
+				{
+					this._TierSign = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrelimDischargePlan", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string PrelimDischargePlan
+		{
+			get
+			{
+				return this._PrelimDischargePlan;
+			}
+			set
+			{
+				if ((this._PrelimDischargePlan != value))
+				{
+					this._PrelimDischargePlan = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_behaviours", DbType="VarChar(200)")]
+		public string behaviours
+		{
+			get
+			{
+				return this._behaviours;
+			}
+			set
+			{
+				if ((this._behaviours != value))
+				{
+					this._behaviours = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_interventions", DbType="VarChar(200)")]
+		public string interventions
+		{
+			get
+			{
+				return this._interventions;
+			}
+			set
+			{
+				if ((this._interventions != value))
+				{
+					this._interventions = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_duration", DbType="VarChar(200)")]
+		public string duration
+		{
+			get
+			{
+				return this._duration;
+			}
+			set
+			{
+				if ((this._duration != value))
+				{
+					this._duration = value;
+				}
 			}
 		}
 	}

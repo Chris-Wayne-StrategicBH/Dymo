@@ -83,7 +83,9 @@ namespace DPGPP
       [Description("SD - Initial Assesment of Risk 20120806.rpt")]
       EVALUATION_OF_RISK,
       [Description("SD - Fall Risk  Assessment 20160609.rpt")]
-      FALL_RISK_EVALUATION
+      FALL_RISK_EVALUATION,
+      [Description("SD - Master Treatment Plan-08-18-15.rpt")]
+      MASTER_TREATMENT_PLAN
    }
 
    public enum CRYSTALREPORTTYPES
@@ -167,17 +169,17 @@ namespace DPGPP
 
    public class GeneralRpt : ReportClass
    {
-      //This type of report requires a ClientKey and an AdmissionKey for parameters
-      private GeneralRpt(string inPath, int clientKey, int admissionKey)
+      //This type of report requires 2 integer parameters
+      private GeneralRpt(string inPath, string paramstring1, int param1, string paramstring2, int param2)
          : base(inPath)
       {
          CrystalParamsInt cri1 = new CrystalParamsInt();
-         cri1.name = "ClientKey";
-         cri1.paramval = clientKey;
+         cri1.name = paramstring1;
+         cri1.paramval = param1;
          param.Add(cri1);
          CrystalParamsInt cri2 = new CrystalParamsInt();
-         cri2.name = "AdmissionKey";
-         cri2.paramval = admissionKey;
+         cri2.name = paramstring2;
+         cri2.paramval = param2;
          param.Add(cri2);
       }
 
@@ -198,13 +200,13 @@ namespace DPGPP
          crd2.paramval = endDate;
          param.Add(crd2);
       }
-      //This type of report requires an OP__DOCID
-      private GeneralRpt(string inPath, int OP__DOCID)
+      //This type of report requires 1 integer parameter
+      private GeneralRpt(string inPath, string paramstring, int paramint)
          : base(inPath)
       {
          CrystalParamsInt cri = new CrystalParamsInt();
-         cri.name = "OP__DOCID";
-         cri.paramval = OP__DOCID;
+         cri.name = paramstring;
+         cri.paramval = paramint;
          param.Add(cri);
       }
       //This type of report requires an OP__DOCID and AdmissionKey = 0
@@ -265,7 +267,7 @@ namespace DPGPP
          switch(reportType)
          {
             case CRYSTALREPORTS.FACESHEET:
-               return new GeneralRpt(inPath, Globals.mClientKey, Globals.mAdmissionKey);
+               return new GeneralRpt(inPath, "ClientKey", Globals.mClientKey, "AdmissionKey", Globals.mAdmissionKey);
             case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
             case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
             case CRYSTALREPORTS.DISCHARGE_SUMMARY:
@@ -277,7 +279,7 @@ namespace DPGPP
             case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
             case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
             case CRYSTALREPORTS.EVALUATION_OF_RISK:
-               return new GeneralRpt(inPath, OP__DOCID);
+               return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
             case CRYSTALREPORTS.GENERAL_NOTE:
@@ -285,9 +287,11 @@ namespace DPGPP
             case CRYSTALREPORTS.CONTACT_NOTE:
             case CRYSTALREPORTS.GENERAL_ORDER:
             case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-               return new GeneralRpt(inPath, OP__DOCID, "WTF");
+               return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID, "AdmissionKey", 0);
             case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
+            case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
+               return new GeneralRpt(inPath, "MTPkey", OP__DOCID);
             default:
                return null;
 

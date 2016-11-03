@@ -442,6 +442,18 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetMasterTreatmentPlan(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<MTP_Master>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = (int)e.MTPKey, Date_Doc = e.DateDoc });
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 

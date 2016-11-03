@@ -1825,4 +1825,67 @@
       <Column Name="Rassist" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MTP_Master" Member="MTP_Masters">
+    <Type Name="MTP_Master">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IntakeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PreAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Staffkey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DschCriteriaExpected" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DschCriteriaMinimum" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="OvrAllTreatFocus" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MTPKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ICSFlag" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Plan_Type" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="FamilyKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Evidence" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Projected_Stay" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="End_Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateMod" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PermanencyDetail" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PermanencyPlan" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="EffectiveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isCloned" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="RevisionNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SrvcKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Revision_EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Revision_StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OriginalStaff" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalTierUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DischageGoals" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LongTermGoals" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NextScheduleReview" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PlanType" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="chkShowTab" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="TXPlanTypeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InitialPlanMTPKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SMOKE_CURRENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="SmokingStatusCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CycleKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupKey" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="EDU_INFO" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="SCHOOL_AGED" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="SMOKE_INTERESTED" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="ModalityValidation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModalityValidationSchoolAged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisciplineValidation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignatureDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TierSign" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PrelimDischargePlan" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="behaviours" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="interventions" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="duration" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
