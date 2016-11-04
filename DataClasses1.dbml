@@ -1888,4 +1888,41 @@
       <Column Name="duration" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FD__COGNITIVE_ASSESS" Member="FD__COGNITIVE_ASSESSes">
+    <Type Name="FD__COGNITIVE_ASSESS">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AbleDrawClock" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Animals" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Attentiveness" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Brown1" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Brown2" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CurrentMonth" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CurrentYear" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DelayedBrown" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DelayedFace" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DelayedTulip" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Face1" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Face2" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Fruits" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TimeOfDay" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tulip1" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tulip2" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="VisuoComments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImmediateBrown" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ImmediateFace" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ImmediateTulip" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

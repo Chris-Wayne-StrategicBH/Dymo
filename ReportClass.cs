@@ -85,20 +85,11 @@ namespace DPGPP
       [Description("SD - Fall Risk  Assessment 20160609.rpt")]
       FALL_RISK_EVALUATION,
       [Description("SD - Master Treatment Plan-08-18-15.rpt")]
-      MASTER_TREATMENT_PLAN
+      MASTER_TREATMENT_PLAN,
+      [Description("Cognitive Assessment.rpt")]
+      COGNITIVE_ASSESSMENT
    }
 
-   public enum CRYSTALREPORTTYPES
-   {
-      [Description("OP__DOC_ID Only")]
-      OP__DOCID,
-      [Description("OP__DOCID and AdmissionKey = 0")]
-      OP__DOCID_ADMISSIONKEY0,
-      [Description("ClientKey and AdmissionKey")]
-      CLIENTKEY_ADMISSIONKEY,
-      [Description("Start Date and End Date")]
-      STARTDATE_ENDDATE,
-   }
 
    // using reflection to get description values of enums
    public static class ReportTranslation
@@ -279,6 +270,7 @@ namespace DPGPP
             case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
             case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
             case CRYSTALREPORTS.EVALUATION_OF_RISK:
+            case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
                return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:

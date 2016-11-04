@@ -90,6 +90,9 @@ namespace DPGPP
     partial void InsertFD__FALL_RISK(FD__FALL_RISK instance);
     partial void UpdateFD__FALL_RISK(FD__FALL_RISK instance);
     partial void DeleteFD__FALL_RISK(FD__FALL_RISK instance);
+    partial void InsertFD__COGNITIVE_ASSESS(FD__COGNITIVE_ASSESS instance);
+    partial void UpdateFD__COGNITIVE_ASSESS(FD__COGNITIVE_ASSESS instance);
+    partial void DeleteFD__COGNITIVE_ASSESS(FD__COGNITIVE_ASSESS instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -287,6 +290,14 @@ namespace DPGPP
 			get
 			{
 				return this.GetTable<MTP_Master>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FD__COGNITIVE_ASSESS> FD__COGNITIVE_ASSESSes
+		{
+			get
+			{
+				return this.GetTable<FD__COGNITIVE_ASSESS>();
 			}
 		}
 	}
@@ -44166,6 +44177,836 @@ namespace DPGPP
 				{
 					this._duration = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__COGNITIVE_ASSESS")]
+	public partial class FD__COGNITIVE_ASSESS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private string _AbleDrawClock;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private string _Animals;
+		
+		private System.Nullable<int> _AssessmentKey;
+		
+		private string _Attentiveness;
+		
+		private string _Brown1;
+		
+		private string _Brown2;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private string _Comments;
+		
+		private string _CurrentMonth;
+		
+		private string _CurrentYear;
+		
+		private System.Nullable<System.DateTime> _DateDoc;
+		
+		private string _DelayedBrown;
+		
+		private string _DelayedFace;
+		
+		private string _DelayedTulip;
+		
+		private System.Nullable<int> _EpisodeKey;
+		
+		private string _Face1;
+		
+		private string _Face2;
+		
+		private string _Fruits;
+		
+		private System.Nullable<int> _PgmAdmissionKey;
+		
+		private System.Nullable<int> _PgmKey;
+		
+		private System.Nullable<int> _StaffKey;
+		
+		private System.Nullable<System.DateTime> _TimeDoc;
+		
+		private string _TimeOfDay;
+		
+		private string _Tulip1;
+		
+		private string _Tulip2;
+		
+		private string _VisuoComments;
+		
+		private string _ImmediateBrown;
+		
+		private string _ImmediateFace;
+		
+		private string _ImmediateTulip;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOP__DOCIDChanging(int value);
+    partial void OnOP__DOCIDChanged();
+    partial void OnOP__PARENTIDChanging(System.Nullable<int> value);
+    partial void OnOP__PARENTIDChanged();
+    partial void OnOP__FOLDERIDChanging(System.Nullable<int> value);
+    partial void OnOP__FOLDERIDChanged();
+    partial void OnAbleDrawClockChanging(string value);
+    partial void OnAbleDrawClockChanged();
+    partial void OnAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnAdmissionKeyChanged();
+    partial void OnAnimalsChanging(string value);
+    partial void OnAnimalsChanged();
+    partial void OnAssessmentKeyChanging(System.Nullable<int> value);
+    partial void OnAssessmentKeyChanged();
+    partial void OnAttentivenessChanging(string value);
+    partial void OnAttentivenessChanged();
+    partial void OnBrown1Changing(string value);
+    partial void OnBrown1Changed();
+    partial void OnBrown2Changing(string value);
+    partial void OnBrown2Changed();
+    partial void OnClientKeyChanging(System.Nullable<int> value);
+    partial void OnClientKeyChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    partial void OnCurrentMonthChanging(string value);
+    partial void OnCurrentMonthChanged();
+    partial void OnCurrentYearChanging(string value);
+    partial void OnCurrentYearChanged();
+    partial void OnDateDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateDocChanged();
+    partial void OnDelayedBrownChanging(string value);
+    partial void OnDelayedBrownChanged();
+    partial void OnDelayedFaceChanging(string value);
+    partial void OnDelayedFaceChanged();
+    partial void OnDelayedTulipChanging(string value);
+    partial void OnDelayedTulipChanged();
+    partial void OnEpisodeKeyChanging(System.Nullable<int> value);
+    partial void OnEpisodeKeyChanged();
+    partial void OnFace1Changing(string value);
+    partial void OnFace1Changed();
+    partial void OnFace2Changing(string value);
+    partial void OnFace2Changed();
+    partial void OnFruitsChanging(string value);
+    partial void OnFruitsChanged();
+    partial void OnPgmAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnPgmAdmissionKeyChanged();
+    partial void OnPgmKeyChanging(System.Nullable<int> value);
+    partial void OnPgmKeyChanged();
+    partial void OnStaffKeyChanging(System.Nullable<int> value);
+    partial void OnStaffKeyChanged();
+    partial void OnTimeDocChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeDocChanged();
+    partial void OnTimeOfDayChanging(string value);
+    partial void OnTimeOfDayChanged();
+    partial void OnTulip1Changing(string value);
+    partial void OnTulip1Changed();
+    partial void OnTulip2Changing(string value);
+    partial void OnTulip2Changed();
+    partial void OnVisuoCommentsChanging(string value);
+    partial void OnVisuoCommentsChanged();
+    partial void OnImmediateBrownChanging(string value);
+    partial void OnImmediateBrownChanged();
+    partial void OnImmediateFaceChanging(string value);
+    partial void OnImmediateFaceChanged();
+    partial void OnImmediateTulipChanging(string value);
+    partial void OnImmediateTulipChanged();
+    #endregion
+		
+		public FD__COGNITIVE_ASSESS()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this.OnOP__DOCIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__DOCID = value;
+					this.SendPropertyChanged("OP__DOCID");
+					this.OnOP__DOCIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this.OnOP__PARENTIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__PARENTID = value;
+					this.SendPropertyChanged("OP__PARENTID");
+					this.OnOP__PARENTIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this.OnOP__FOLDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__FOLDERID = value;
+					this.SendPropertyChanged("OP__FOLDERID");
+					this.OnOP__FOLDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbleDrawClock", DbType="VarChar(3)")]
+		public string AbleDrawClock
+		{
+			get
+			{
+				return this._AbleDrawClock;
+			}
+			set
+			{
+				if ((this._AbleDrawClock != value))
+				{
+					this.OnAbleDrawClockChanging(value);
+					this.SendPropertyChanging();
+					this._AbleDrawClock = value;
+					this.SendPropertyChanged("AbleDrawClock");
+					this.OnAbleDrawClockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this.OnAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionKey = value;
+					this.SendPropertyChanged("AdmissionKey");
+					this.OnAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Animals", DbType="VarChar(25)")]
+		public string Animals
+		{
+			get
+			{
+				return this._Animals;
+			}
+			set
+			{
+				if ((this._Animals != value))
+				{
+					this.OnAnimalsChanging(value);
+					this.SendPropertyChanging();
+					this._Animals = value;
+					this.SendPropertyChanged("Animals");
+					this.OnAnimalsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssessmentKey", DbType="Int")]
+		public System.Nullable<int> AssessmentKey
+		{
+			get
+			{
+				return this._AssessmentKey;
+			}
+			set
+			{
+				if ((this._AssessmentKey != value))
+				{
+					this.OnAssessmentKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AssessmentKey = value;
+					this.SendPropertyChanged("AssessmentKey");
+					this.OnAssessmentKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Attentiveness", DbType="VarChar(25)")]
+		public string Attentiveness
+		{
+			get
+			{
+				return this._Attentiveness;
+			}
+			set
+			{
+				if ((this._Attentiveness != value))
+				{
+					this.OnAttentivenessChanging(value);
+					this.SendPropertyChanging();
+					this._Attentiveness = value;
+					this.SendPropertyChanged("Attentiveness");
+					this.OnAttentivenessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Brown1", DbType="VarChar(25)")]
+		public string Brown1
+		{
+			get
+			{
+				return this._Brown1;
+			}
+			set
+			{
+				if ((this._Brown1 != value))
+				{
+					this.OnBrown1Changing(value);
+					this.SendPropertyChanging();
+					this._Brown1 = value;
+					this.SendPropertyChanged("Brown1");
+					this.OnBrown1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Brown2", DbType="VarChar(25)")]
+		public string Brown2
+		{
+			get
+			{
+				return this._Brown2;
+			}
+			set
+			{
+				if ((this._Brown2 != value))
+				{
+					this.OnBrown2Changing(value);
+					this.SendPropertyChanging();
+					this._Brown2 = value;
+					this.SendPropertyChanged("Brown2");
+					this.OnBrown2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					this.OnClientKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ClientKey = value;
+					this.SendPropertyChanged("ClientKey");
+					this.OnClientKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentMonth", DbType="VarChar(50)")]
+		public string CurrentMonth
+		{
+			get
+			{
+				return this._CurrentMonth;
+			}
+			set
+			{
+				if ((this._CurrentMonth != value))
+				{
+					this.OnCurrentMonthChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentMonth = value;
+					this.SendPropertyChanged("CurrentMonth");
+					this.OnCurrentMonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CurrentYear", DbType="VarChar(50)")]
+		public string CurrentYear
+		{
+			get
+			{
+				return this._CurrentYear;
+			}
+			set
+			{
+				if ((this._CurrentYear != value))
+				{
+					this.OnCurrentYearChanging(value);
+					this.SendPropertyChanging();
+					this._CurrentYear = value;
+					this.SendPropertyChanged("CurrentYear");
+					this.OnCurrentYearChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateDoc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateDoc
+		{
+			get
+			{
+				return this._DateDoc;
+			}
+			set
+			{
+				if ((this._DateDoc != value))
+				{
+					this.OnDateDocChanging(value);
+					this.SendPropertyChanging();
+					this._DateDoc = value;
+					this.SendPropertyChanged("DateDoc");
+					this.OnDateDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelayedBrown", DbType="VarChar(20)")]
+		public string DelayedBrown
+		{
+			get
+			{
+				return this._DelayedBrown;
+			}
+			set
+			{
+				if ((this._DelayedBrown != value))
+				{
+					this.OnDelayedBrownChanging(value);
+					this.SendPropertyChanging();
+					this._DelayedBrown = value;
+					this.SendPropertyChanged("DelayedBrown");
+					this.OnDelayedBrownChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelayedFace", DbType="VarChar(20)")]
+		public string DelayedFace
+		{
+			get
+			{
+				return this._DelayedFace;
+			}
+			set
+			{
+				if ((this._DelayedFace != value))
+				{
+					this.OnDelayedFaceChanging(value);
+					this.SendPropertyChanging();
+					this._DelayedFace = value;
+					this.SendPropertyChanged("DelayedFace");
+					this.OnDelayedFaceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DelayedTulip", DbType="VarChar(20)")]
+		public string DelayedTulip
+		{
+			get
+			{
+				return this._DelayedTulip;
+			}
+			set
+			{
+				if ((this._DelayedTulip != value))
+				{
+					this.OnDelayedTulipChanging(value);
+					this.SendPropertyChanging();
+					this._DelayedTulip = value;
+					this.SendPropertyChanged("DelayedTulip");
+					this.OnDelayedTulipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EpisodeKey", DbType="Int")]
+		public System.Nullable<int> EpisodeKey
+		{
+			get
+			{
+				return this._EpisodeKey;
+			}
+			set
+			{
+				if ((this._EpisodeKey != value))
+				{
+					this.OnEpisodeKeyChanging(value);
+					this.SendPropertyChanging();
+					this._EpisodeKey = value;
+					this.SendPropertyChanged("EpisodeKey");
+					this.OnEpisodeKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Face1", DbType="VarChar(25)")]
+		public string Face1
+		{
+			get
+			{
+				return this._Face1;
+			}
+			set
+			{
+				if ((this._Face1 != value))
+				{
+					this.OnFace1Changing(value);
+					this.SendPropertyChanging();
+					this._Face1 = value;
+					this.SendPropertyChanged("Face1");
+					this.OnFace1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Face2", DbType="VarChar(25)")]
+		public string Face2
+		{
+			get
+			{
+				return this._Face2;
+			}
+			set
+			{
+				if ((this._Face2 != value))
+				{
+					this.OnFace2Changing(value);
+					this.SendPropertyChanging();
+					this._Face2 = value;
+					this.SendPropertyChanged("Face2");
+					this.OnFace2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fruits", DbType="VarChar(25)")]
+		public string Fruits
+		{
+			get
+			{
+				return this._Fruits;
+			}
+			set
+			{
+				if ((this._Fruits != value))
+				{
+					this.OnFruitsChanging(value);
+					this.SendPropertyChanging();
+					this._Fruits = value;
+					this.SendPropertyChanged("Fruits");
+					this.OnFruitsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PgmAdmissionKey
+		{
+			get
+			{
+				return this._PgmAdmissionKey;
+			}
+			set
+			{
+				if ((this._PgmAdmissionKey != value))
+				{
+					this.OnPgmAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmAdmissionKey = value;
+					this.SendPropertyChanged("PgmAdmissionKey");
+					this.OnPgmAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmKey", DbType="Int")]
+		public System.Nullable<int> PgmKey
+		{
+			get
+			{
+				return this._PgmKey;
+			}
+			set
+			{
+				if ((this._PgmKey != value))
+				{
+					this.OnPgmKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmKey = value;
+					this.SendPropertyChanged("PgmKey");
+					this.OnPgmKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffKey", DbType="Int")]
+		public System.Nullable<int> StaffKey
+		{
+			get
+			{
+				return this._StaffKey;
+			}
+			set
+			{
+				if ((this._StaffKey != value))
+				{
+					this.OnStaffKeyChanging(value);
+					this.SendPropertyChanging();
+					this._StaffKey = value;
+					this.SendPropertyChanged("StaffKey");
+					this.OnStaffKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeDoc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TimeDoc
+		{
+			get
+			{
+				return this._TimeDoc;
+			}
+			set
+			{
+				if ((this._TimeDoc != value))
+				{
+					this.OnTimeDocChanging(value);
+					this.SendPropertyChanging();
+					this._TimeDoc = value;
+					this.SendPropertyChanged("TimeDoc");
+					this.OnTimeDocChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfDay", DbType="VarChar(50)")]
+		public string TimeOfDay
+		{
+			get
+			{
+				return this._TimeOfDay;
+			}
+			set
+			{
+				if ((this._TimeOfDay != value))
+				{
+					this.OnTimeOfDayChanging(value);
+					this.SendPropertyChanging();
+					this._TimeOfDay = value;
+					this.SendPropertyChanged("TimeOfDay");
+					this.OnTimeOfDayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tulip1", DbType="VarChar(25)")]
+		public string Tulip1
+		{
+			get
+			{
+				return this._Tulip1;
+			}
+			set
+			{
+				if ((this._Tulip1 != value))
+				{
+					this.OnTulip1Changing(value);
+					this.SendPropertyChanging();
+					this._Tulip1 = value;
+					this.SendPropertyChanged("Tulip1");
+					this.OnTulip1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tulip2", DbType="VarChar(25)")]
+		public string Tulip2
+		{
+			get
+			{
+				return this._Tulip2;
+			}
+			set
+			{
+				if ((this._Tulip2 != value))
+				{
+					this.OnTulip2Changing(value);
+					this.SendPropertyChanging();
+					this._Tulip2 = value;
+					this.SendPropertyChanged("Tulip2");
+					this.OnTulip2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VisuoComments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string VisuoComments
+		{
+			get
+			{
+				return this._VisuoComments;
+			}
+			set
+			{
+				if ((this._VisuoComments != value))
+				{
+					this.OnVisuoCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._VisuoComments = value;
+					this.SendPropertyChanged("VisuoComments");
+					this.OnVisuoCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImmediateBrown", DbType="VarChar(20)")]
+		public string ImmediateBrown
+		{
+			get
+			{
+				return this._ImmediateBrown;
+			}
+			set
+			{
+				if ((this._ImmediateBrown != value))
+				{
+					this.OnImmediateBrownChanging(value);
+					this.SendPropertyChanging();
+					this._ImmediateBrown = value;
+					this.SendPropertyChanged("ImmediateBrown");
+					this.OnImmediateBrownChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImmediateFace", DbType="VarChar(20)")]
+		public string ImmediateFace
+		{
+			get
+			{
+				return this._ImmediateFace;
+			}
+			set
+			{
+				if ((this._ImmediateFace != value))
+				{
+					this.OnImmediateFaceChanging(value);
+					this.SendPropertyChanging();
+					this._ImmediateFace = value;
+					this.SendPropertyChanged("ImmediateFace");
+					this.OnImmediateFaceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImmediateTulip", DbType="VarChar(20)")]
+		public string ImmediateTulip
+		{
+			get
+			{
+				return this._ImmediateTulip;
+			}
+			set
+			{
+				if ((this._ImmediateTulip != value))
+				{
+					this.OnImmediateTulipChanging(value);
+					this.SendPropertyChanging();
+					this._ImmediateTulip = value;
+					this.SendPropertyChanged("ImmediateTulip");
+					this.OnImmediateTulipChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

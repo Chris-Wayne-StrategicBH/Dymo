@@ -454,6 +454,18 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetCognitiveAssessments(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__COGNITIVE_ASSESS>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.DateDoc });
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 

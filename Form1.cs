@@ -191,6 +191,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
+                  resultList = new List<Result>(Accessor.GetCognitiveAssessments(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }
@@ -263,6 +267,7 @@ namespace DPGPP
                   case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
                   case CRYSTALREPORTS.EVALUATION_OF_RISK:
                   case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
+                  case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
                      // Find Parent Node
                      parentNode = FindNode(rpt.ToString(), rootNode);
                      if (parentNode == null)
