@@ -190,5 +190,23 @@
         <elementListCompartment Id="3744381d-989e-4669-a010-62a1dae71956" absoluteBounds="0.89000000000000012, 5.585, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="a282c02d-6fc8-4d7b-8f4a-2b83b01253ad" isExpanded="false" absoluteBounds="3.25, 5.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/FD__BODY_ASSESSMENT_CHECKLIST" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cd44a5e2-2250-4cfb-abdf-7755c39d0a39" absoluteBounds="3.2649999999999997, 5.585, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b8fda8b7-1463-45d7-8e3c-6a2c186102eb" isExpanded="false" absoluteBounds="5.625, 5.25, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/FD__ALLERGIES" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0006237a-a631-4403-89db-fcedfe4bd4e2" absoluteBounds="5.64, 5.71, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1cbabdb5-de35-43e8-8896-076b1581f94f" isExpanded="false" absoluteBounds="8.125, 4.625, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/FD__PAIN_ASSESS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2e5b4704-53da-44aa-9162-4058cdde3b21" absoluteBounds="8.14, 5.085, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

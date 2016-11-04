@@ -466,6 +466,42 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetBodyAssessmentChecklist(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__BODY_ASSESSMENT_CHECKLIST>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.DATEDoc});
+
+
+          return results.ToList<Result>();
+       }
+
+       public static List<Result> GetAllergies(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__ALLERGIES>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.Date_Document});
+
+
+          return results.ToList<Result>();
+       }
+
+       public static List<Result> GetPainEvaluations(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__PAIN_ASSESS>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.DateDoc});
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 

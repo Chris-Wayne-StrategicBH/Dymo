@@ -1925,4 +1925,119 @@
       <Column Name="ImmediateTulip" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FD__BODY_ASSESSMENT_CHECKLIST" Member="FD__BODY_ASSESSMENT_CHECKLISTs">
+    <Type Name="FD__BODY_ASSESSMENT_CHECKLIST">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Addtcomments1" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="axillaryregion" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClinicalIndic" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="comments1b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments2b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments3b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments4b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments5b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments6b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments7b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments8b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="comments9b" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DATEDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DATEPPBA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DescOther" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DNRBA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="episodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="feettoes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hems" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="InquiryKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luggages" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="MDkey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MeditechAccountNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="mouthtongue" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="patientsears" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="patientshair" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PreAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="shoes" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Staffperson" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="undergarments" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__ALLERGIES" Member="FD__ALLERGIES">
+    <Type Name="FD__ALLERGIES">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Allergy" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="AllergyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Date_Document" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Reaction" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="AllergyTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EPISODEKEY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AlchCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllergyCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Reaction_SnoMedCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Alert_SnoMedCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RXNormCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status_SnoMedCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RcopiaID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PatientRcopiaID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DrugRcopiaID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="GroupRcopiaID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="AllergyStatus" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="OtherDesc" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="DrFirstUpload" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__PAIN_ASSESS" Member="FD__PAIN_ASSESSes">
+    <Type Name="FD__PAIN_ASSESS">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmitDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Arms" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Back" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments_Pain" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Feet" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hands" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Head" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Legs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Other_PL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Pain_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TimeDoc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SSN" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="Ankle" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Knee" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PainSide" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Loc_Ankle" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Arms" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Back" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Feet" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Hands" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Head" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Knee" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Legs" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Loc_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

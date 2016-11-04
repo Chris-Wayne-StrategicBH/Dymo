@@ -195,6 +195,18 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetCognitiveAssessments(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
+                  resultList = new List<Result>(Accessor.GetBodyAssessmentChecklist(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
+               case CRYSTALREPORTS.ALLERGIES:
+                  resultList = new List<Result>(Accessor.GetAllergies(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
+               case CRYSTALREPORTS.PAIN_EVALUATION:
+                  resultList = new List<Result>(Accessor.GetPainEvaluations(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }
@@ -268,6 +280,9 @@ namespace DPGPP
                   case CRYSTALREPORTS.EVALUATION_OF_RISK:
                   case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
                   case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
+                  case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
+                  case CRYSTALREPORTS.ALLERGIES:
+                  case CRYSTALREPORTS.PAIN_EVALUATION:
                      // Find Parent Node
                      parentNode = FindNode(rpt.ToString(), rootNode);
                      if (parentNode == null)

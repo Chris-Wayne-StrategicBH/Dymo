@@ -87,7 +87,13 @@ namespace DPGPP
       [Description("SD - Master Treatment Plan-08-18-15.rpt")]
       MASTER_TREATMENT_PLAN,
       [Description("Cognitive Assessment.rpt")]
-      COGNITIVE_ASSESSMENT
+      COGNITIVE_ASSESSMENT,
+      [Description("SD - Body Assessment Checklist 20120606.rpt")]
+      BODY_ASSESSMENT_CHECKLIST,
+      [Description("SD - Allergies.rpt")]
+      ALLERGIES,
+      [Description("SD - Pain Evaluation 20160414.rpt")]
+      PAIN_EVALUATION
    }
 
 
@@ -271,6 +277,8 @@ namespace DPGPP
             case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
             case CRYSTALREPORTS.EVALUATION_OF_RISK:
             case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
+            case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
+            case CRYSTALREPORTS.PAIN_EVALUATION:
                return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
@@ -284,6 +292,8 @@ namespace DPGPP
                return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
             case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
                return new GeneralRpt(inPath, "MTPkey", OP__DOCID);
+            case CRYSTALREPORTS.ALLERGIES:
+               return new GeneralRpt(inPath, "ClientKey", Globals.mClientKey);
             default:
                return null;
 
