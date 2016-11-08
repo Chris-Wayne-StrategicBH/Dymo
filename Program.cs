@@ -18,7 +18,11 @@ namespace DPGPP
       {
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
-         Application.Run(new Form1());
+         loginForm objLogin = new loginForm();
+         if(objLogin.ShowDialog() == DialogResult.OK)
+         {
+            Application.Run(new Form1());
+         }
       }
    }
 }
