@@ -210,99 +210,34 @@ namespace DPGPP
             }
 
          }
-         //treeView1.ExpandAll();
 
       }
 
-      // traverse the tree instead of this mess!
+      private void PrintRecursive(TreeNode treeNode)
+      {
+         GeneralRpt rptObj;
+         // Print the node.
+         //System.Diagnostics.Debug.WriteLine(treeNode.Text);
+         //MessageBox.Show(treeNode.Text);
+         // Print each node recursively.
+         foreach (TreeNode tn in treeNode.Nodes)
+         {
+            if(tn.Checked)
+            {
+               rptObj = (GeneralRpt)tn.Tag;
+               rptObj.PrintCrystalReport();
+            }
+            PrintRecursive(tn);
+         }
+      }
+
       private void Print_Reports()
       {
-         TreeNode parentNode, rootNode = null;
-         GeneralRpt rptObj;
-
-         // Find Root Node
-         rootNode = FindRootNode(CRYSTALREPORTS.ROOT.ToString(), treeView1.Nodes);
-         if (rootNode == null)
+         // Print each node recursively.
+         TreeNodeCollection nodes = treeView1.Nodes;
+         foreach (TreeNode n in nodes)
          {
-            Console.WriteLine("Root Node not found.. See The Great Gazoo!");
-         }
-         else
-         {
-            foreach (CRYSTALREPORTS rpt in Enum.GetValues(typeof(CRYSTALREPORTS)))
-            {
-               int val = (int)rpt;
-               Console.WriteLine(rpt + " " + val.ToString());
-               string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
-               switch (rpt)
-               {
-                  case CRYSTALREPORTS.ROOT:
-                     //Root node just display admissionkey
-                     // Nothing to print
-                     break;
-                  case CRYSTALREPORTS.FACESHEET:
-                  case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
-                     // FaceSheet Report.. already have ClientKey and AdmissionKey.. should work
-                     // Find Parent Node
-                     parentNode = FindNode(rpt.ToString(), rootNode);
-                     if (parentNode == null)
-                        Console.WriteLine("Node " + rpt.ToString() + " not found");
-                     else
-                     {
-                        if (parentNode.Checked)
-                        {
-                           rptObj = (GeneralRpt)parentNode.Tag;
-                           rptObj.PrintCrystalReport();
-                           //MessageBox.Show("Printing Facesheet......");
-
-                        }
-                        else
-                           Console.WriteLine(rpt.ToString() + parentNode.Text + "Not Checked.....");
-                     }
-                     break;
-
-                  case CRYSTALREPORTS.NURSING_EVALUATION:
-                  case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
-                  case CRYSTALREPORTS.GENERAL_NOTE:
-                  case CRYSTALREPORTS.SOAP_NOTE:
-                  case CRYSTALREPORTS.CONTACT_NOTE:
-                  case CRYSTALREPORTS.GENERAL_ORDER:
-                  case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-                  case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
-                  case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
-                  case CRYSTALREPORTS.DISCHARGE_SUMMARY:
-                  case CRYSTALREPORTS.HISTORY_PHYSICAL:
-                  case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
-                  case CRYSTALREPORTS.NURSING_ASSESSMENT:
-                  case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
-                  case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
-                  case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
-                  case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
-                  case CRYSTALREPORTS.EVALUATION_OF_RISK:
-                  case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
-                  case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
-                  case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
-                  case CRYSTALREPORTS.ALLERGIES:
-                  case CRYSTALREPORTS.PAIN_EVALUATION:
-                     // Find Parent Node
-                     parentNode = FindNode(rpt.ToString(), rootNode);
-                     if (parentNode == null)
-                        Console.WriteLine("Node " + rpt.ToString() + " not found");
-                     else
-                     {
-                        foreach (TreeNode childNode in parentNode.Nodes)
-                        {
-                           if (childNode.Checked)
-                           {
-                              rptObj = (GeneralRpt)childNode.Tag;
-                              rptObj.PrintCrystalReport();
-                           }
-                           else
-                              Console.WriteLine(rpt.ToString() + childNode.Text + "Not Checked.....");
-                        }
-                     }
-                     break;
-               }
-            }
+            PrintRecursive(n);
          }
       }
 
