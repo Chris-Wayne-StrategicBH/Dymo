@@ -21,7 +21,7 @@ namespace DPGPP
    {
 
       PrinterSettings printerSettings = new PrinterSettings();
-           
+
       public Form1()
       {
          InitializeComponent();
@@ -100,19 +100,19 @@ namespace DPGPP
             Console.WriteLine(rpt + " " + val.ToString());
             string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
 
-            switch(rpt)
+            switch (rpt)
             {
                case CRYSTALREPORTS.ROOT:
                   AddRootNode(rpt.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), RootNode);
                   break;
                case CRYSTALREPORTS.FACESHEET:
                   TreeNode parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED); 
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED);
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                   parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED); 
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED);
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.HISTORY_PHYSICAL:
@@ -176,7 +176,7 @@ namespace DPGPP
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment (Globals.mAdmissionKey));
+                  resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
                case CRYSTALREPORTS.EVALUATION_OF_RISK:
@@ -210,7 +210,7 @@ namespace DPGPP
             }
 
          }
-         treeView1.ExpandAll();
+         //treeView1.ExpandAll();
 
       }
 
@@ -253,7 +253,7 @@ namespace DPGPP
                            rptObj = (GeneralRpt)parentNode.Tag;
                            rptObj.PrintCrystalReport();
                            //MessageBox.Show("Printing Facesheet......");
-                           
+
                         }
                         else
                            Console.WriteLine(rpt.ToString() + parentNode.Text + "Not Checked.....");
@@ -345,7 +345,7 @@ namespace DPGPP
          childNode.BackColor = Color.White;
          childNode.ImageIndex = 0;
          childNode.SelectedImageIndex = 0;
-         parentNode.Nodes.Add(childNode); 
+         parentNode.Nodes.Add(childNode);
       }
 
       private void AddRootNode(string name, string text, string tag, TreeNode rootNode)
@@ -438,5 +438,32 @@ namespace DPGPP
 
       }
 
+      // Updates all child tree nodes recursively.
+      private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
+      {
+         foreach (TreeNode node in treeNode.Nodes)
+         {
+            node.Checked = nodeChecked;
+            if (node.Nodes.Count > 0)
+            {
+               // If the current node has child nodes, call the CheckAllChildsNodes method recursively.
+               this.CheckAllChildNodes(node, nodeChecked);
+            }
+         }
+      }
+
+      private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+      {
+         // The code only executes if the user caused the checked state to change.
+         if (e.Action != TreeViewAction.Unknown)
+         {
+            if (e.Node.Nodes.Count > 0)
+            {
+               /* Calls the CheckAllChildNodes method, passing in the current 
+               Checked value of the TreeNode whose checked state changed. */
+               this.CheckAllChildNodes(e.Node, e.Node.Checked);
+            }
+         }
+      }
    }
 }
