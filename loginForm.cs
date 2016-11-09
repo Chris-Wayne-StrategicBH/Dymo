@@ -19,7 +19,7 @@ namespace DPGPP
 
       private void BTN_OK_Click(object sender, EventArgs e)
       {
-         if (TB_UserName.Text == "Chris" && TB_Password.Text == "1234")
+         if (TB_UserName.Text == "dpgpp" && TB_Password.Text == "7353")
          {
             this.DialogResult = DialogResult.OK;
             this.Close();
