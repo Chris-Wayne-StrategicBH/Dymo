@@ -225,7 +225,8 @@ namespace DPGPP
             if(tn.Checked)
             {
                rptObj = (GeneralRpt)tn.Tag;
-               rptObj.PrintCrystalReport();
+               if(rptObj != null)
+                  rptObj.PrintCrystalReport();
             }
             PrintRecursive(tn);
          }
