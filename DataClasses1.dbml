@@ -2167,4 +2167,27 @@
       <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FD__FOLLOW_UP_APPOINTMENTS" Member="FD__FOLLOW_UP_APPOINTMENTS">
+    <Type Name="FD__FOLLOW_UP_APPOINTMENTS">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FollowUpWith" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="Organization" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="ApptDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ApptTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Purpose" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Fax" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

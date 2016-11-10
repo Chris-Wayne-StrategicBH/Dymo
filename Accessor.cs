@@ -526,6 +526,18 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetFollowupAppointments(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__FOLLOW_UP_APPOINTMENTS>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.ApptDate});
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 

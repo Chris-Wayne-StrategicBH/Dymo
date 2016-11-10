@@ -105,6 +105,9 @@ namespace DPGPP
     partial void InsertFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
     partial void UpdateFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
     partial void DeleteFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
+    partial void InsertFD__FOLLOW_UP_APPOINTMENTS(FD__FOLLOW_UP_APPOINTMENTS instance);
+    partial void UpdateFD__FOLLOW_UP_APPOINTMENTS(FD__FOLLOW_UP_APPOINTMENTS instance);
+    partial void DeleteFD__FOLLOW_UP_APPOINTMENTS(FD__FOLLOW_UP_APPOINTMENTS instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -350,6 +353,14 @@ namespace DPGPP
 			get
 			{
 				return this.GetTable<FD__MINI_MENTAL_STATUS_EXAM>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FD__FOLLOW_UP_APPOINTMENTS> FD__FOLLOW_UP_APPOINTMENTS
+		{
+			get
+			{
+				return this.GetTable<FD__FOLLOW_UP_APPOINTMENTS>();
 			}
 		}
 	}
@@ -50338,6 +50349,500 @@ namespace DPGPP
 					this._DateVoided = value;
 					this.SendPropertyChanged("DateVoided");
 					this.OnDateVoidedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__FOLLOW_UP_APPOINTMENTS")]
+	public partial class FD__FOLLOW_UP_APPOINTMENTS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private string _FollowUpWith;
+		
+		private string _Organization;
+		
+		private string _ContactName;
+		
+		private string _Address1;
+		
+		private string _Address2;
+		
+		private string _City;
+		
+		private string _State;
+		
+		private string _Zip;
+		
+		private System.Nullable<System.DateTime> _ApptDate;
+		
+		private System.Nullable<System.DateTime> _ApptTime;
+		
+		private string _Purpose;
+		
+		private string _Notes;
+		
+		private string _Fax;
+		
+		private string _Phone;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOP__DOCIDChanging(int value);
+    partial void OnOP__DOCIDChanged();
+    partial void OnOP__PARENTIDChanging(System.Nullable<int> value);
+    partial void OnOP__PARENTIDChanged();
+    partial void OnOP__FOLDERIDChanging(System.Nullable<int> value);
+    partial void OnOP__FOLDERIDChanged();
+    partial void OnClientKeyChanging(System.Nullable<int> value);
+    partial void OnClientKeyChanged();
+    partial void OnAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnAdmissionKeyChanged();
+    partial void OnFollowUpWithChanging(string value);
+    partial void OnFollowUpWithChanged();
+    partial void OnOrganizationChanging(string value);
+    partial void OnOrganizationChanged();
+    partial void OnContactNameChanging(string value);
+    partial void OnContactNameChanged();
+    partial void OnAddress1Changing(string value);
+    partial void OnAddress1Changed();
+    partial void OnAddress2Changing(string value);
+    partial void OnAddress2Changed();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStateChanging(string value);
+    partial void OnStateChanged();
+    partial void OnZipChanging(string value);
+    partial void OnZipChanged();
+    partial void OnApptDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnApptDateChanged();
+    partial void OnApptTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnApptTimeChanged();
+    partial void OnPurposeChanging(string value);
+    partial void OnPurposeChanged();
+    partial void OnNotesChanging(string value);
+    partial void OnNotesChanged();
+    partial void OnFaxChanging(string value);
+    partial void OnFaxChanged();
+    partial void OnPhoneChanging(string value);
+    partial void OnPhoneChanged();
+    #endregion
+		
+		public FD__FOLLOW_UP_APPOINTMENTS()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this.OnOP__DOCIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__DOCID = value;
+					this.SendPropertyChanged("OP__DOCID");
+					this.OnOP__DOCIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this.OnOP__PARENTIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__PARENTID = value;
+					this.SendPropertyChanged("OP__PARENTID");
+					this.OnOP__PARENTIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this.OnOP__FOLDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__FOLDERID = value;
+					this.SendPropertyChanged("OP__FOLDERID");
+					this.OnOP__FOLDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					this.OnClientKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ClientKey = value;
+					this.SendPropertyChanged("ClientKey");
+					this.OnClientKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this.OnAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionKey = value;
+					this.SendPropertyChanged("AdmissionKey");
+					this.OnAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FollowUpWith", DbType="VarChar(40)")]
+		public string FollowUpWith
+		{
+			get
+			{
+				return this._FollowUpWith;
+			}
+			set
+			{
+				if ((this._FollowUpWith != value))
+				{
+					this.OnFollowUpWithChanging(value);
+					this.SendPropertyChanging();
+					this._FollowUpWith = value;
+					this.SendPropertyChanged("FollowUpWith");
+					this.OnFollowUpWithChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Organization", DbType="VarChar(100)")]
+		public string Organization
+		{
+			get
+			{
+				return this._Organization;
+			}
+			set
+			{
+				if ((this._Organization != value))
+				{
+					this.OnOrganizationChanging(value);
+					this.SendPropertyChanging();
+					this._Organization = value;
+					this.SendPropertyChanged("Organization");
+					this.OnOrganizationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactName", DbType="VarChar(50)")]
+		public string ContactName
+		{
+			get
+			{
+				return this._ContactName;
+			}
+			set
+			{
+				if ((this._ContactName != value))
+				{
+					this.OnContactNameChanging(value);
+					this.SendPropertyChanging();
+					this._ContactName = value;
+					this.SendPropertyChanged("ContactName");
+					this.OnContactNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address1", DbType="VarChar(50)")]
+		public string Address1
+		{
+			get
+			{
+				return this._Address1;
+			}
+			set
+			{
+				if ((this._Address1 != value))
+				{
+					this.OnAddress1Changing(value);
+					this.SendPropertyChanging();
+					this._Address1 = value;
+					this.SendPropertyChanged("Address1");
+					this.OnAddress1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address2", DbType="VarChar(50)")]
+		public string Address2
+		{
+			get
+			{
+				return this._Address2;
+			}
+			set
+			{
+				if ((this._Address2 != value))
+				{
+					this.OnAddress2Changing(value);
+					this.SendPropertyChanging();
+					this._Address2 = value;
+					this.SendPropertyChanged("Address2");
+					this.OnAddress2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="VarChar(50)")]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_State", DbType="Char(2)")]
+		public string State
+		{
+			get
+			{
+				return this._State;
+			}
+			set
+			{
+				if ((this._State != value))
+				{
+					this.OnStateChanging(value);
+					this.SendPropertyChanging();
+					this._State = value;
+					this.SendPropertyChanged("State");
+					this.OnStateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zip", DbType="Char(10)")]
+		public string Zip
+		{
+			get
+			{
+				return this._Zip;
+			}
+			set
+			{
+				if ((this._Zip != value))
+				{
+					this.OnZipChanging(value);
+					this.SendPropertyChanging();
+					this._Zip = value;
+					this.SendPropertyChanged("Zip");
+					this.OnZipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApptDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ApptDate
+		{
+			get
+			{
+				return this._ApptDate;
+			}
+			set
+			{
+				if ((this._ApptDate != value))
+				{
+					this.OnApptDateChanging(value);
+					this.SendPropertyChanging();
+					this._ApptDate = value;
+					this.SendPropertyChanged("ApptDate");
+					this.OnApptDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApptTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ApptTime
+		{
+			get
+			{
+				return this._ApptTime;
+			}
+			set
+			{
+				if ((this._ApptTime != value))
+				{
+					this.OnApptTimeChanging(value);
+					this.SendPropertyChanging();
+					this._ApptTime = value;
+					this.SendPropertyChanged("ApptTime");
+					this.OnApptTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Purpose", DbType="VarChar(250)")]
+		public string Purpose
+		{
+			get
+			{
+				return this._Purpose;
+			}
+			set
+			{
+				if ((this._Purpose != value))
+				{
+					this.OnPurposeChanging(value);
+					this.SendPropertyChanging();
+					this._Purpose = value;
+					this.SendPropertyChanged("Purpose");
+					this.OnPurposeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Notes", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Notes
+		{
+			get
+			{
+				return this._Notes;
+			}
+			set
+			{
+				if ((this._Notes != value))
+				{
+					this.OnNotesChanging(value);
+					this.SendPropertyChanging();
+					this._Notes = value;
+					this.SendPropertyChanged("Notes");
+					this.OnNotesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fax", DbType="VarChar(13)")]
+		public string Fax
+		{
+			get
+			{
+				return this._Fax;
+			}
+			set
+			{
+				if ((this._Fax != value))
+				{
+					this.OnFaxChanging(value);
+					this.SendPropertyChanging();
+					this._Fax = value;
+					this.SendPropertyChanged("Fax");
+					this.OnFaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(13)")]
+		public string Phone
+		{
+			get
+			{
+				return this._Phone;
+			}
+			set
+			{
+				if ((this._Phone != value))
+				{
+					this.OnPhoneChanging(value);
+					this.SendPropertyChanging();
+					this._Phone = value;
+					this.SendPropertyChanged("Phone");
+					this.OnPhoneChanged();
 				}
 			}
 		}

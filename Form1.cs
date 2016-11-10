@@ -215,6 +215,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetMiniMentalStatus(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.FOLLOWUP_APPOINTMENT:
+                  resultList = new List<Result>(Accessor.GetFollowupAppointments(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }
