@@ -102,6 +102,9 @@ namespace DPGPP
     partial void InsertFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
     partial void UpdateFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
     partial void DeleteFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
+    partial void InsertFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
+    partial void UpdateFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
+    partial void DeleteFD__MINI_MENTAL_STATUS_EXAM(FD__MINI_MENTAL_STATUS_EXAM instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -339,6 +342,14 @@ namespace DPGPP
 			get
 			{
 				return this.GetTable<FD__MENTAL_STATUS>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FD__MINI_MENTAL_STATUS_EXAM> FD__MINI_MENTAL_STATUS_EXAMs
+		{
+			get
+			{
+				return this.GetTable<FD__MINI_MENTAL_STATUS_EXAM>();
 			}
 		}
 	}
@@ -49377,6 +49388,956 @@ namespace DPGPP
 						this._ClientKey = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("FD__CLIENT");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__MINI_MENTAL_STATUS_EXAM")]
+	public partial class FD__MINI_MENTAL_STATUS_EXAM : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private System.Nullable<int> _EpisodeKey;
+		
+		private System.Nullable<int> _PgmAdmissionKey;
+		
+		private System.Nullable<int> _PgmKey;
+		
+		private System.Nullable<System.DateTime> _Time_MHStatus;
+		
+		private string _Ability_Mini;
+		
+		private string _Ability_Mini_Other_Specify;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private string _Affect_Mini;
+		
+		private string _APPEARANCE_Mini;
+		
+		private string _APPEARANCE_Mini_Other_Specify;
+		
+		private System.Nullable<int> _AssessmentKey;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private string _Comments;
+		
+		private System.Nullable<System.DateTime> _Date_MHStatus;
+		
+		private System.Nullable<char> _Date_Orientation;
+		
+		private string _Insight_Mini;
+		
+		private string _Insight_Mini_Other_Specify;
+		
+		private string _Judgement_Mini;
+		
+		private string _Judgement_Mini_Other_Specify;
+		
+		private string _LevelOfConsciousness_Mini;
+		
+		private string _LevelOfConsciousness_Other_Specify;
+		
+		private string _Memory_Mini;
+		
+		private string _Memory_Mini_Other_Specify;
+		
+		private string _Mood_Mini;
+		
+		private System.Nullable<char> _Person_Orientation;
+		
+		private System.Nullable<char> _Place_Orientation;
+		
+		private System.Nullable<char> _Situation_Orientation;
+		
+		private string _Speech_Mini;
+		
+		private string _Speech_Mini_Other_Specify;
+		
+		private System.Nullable<int> _StaffKey;
+		
+		private string _Thought_Process_Mini;
+		
+		private string _Thought_Process_Mini_Other_Specify;
+		
+		private System.Nullable<char> _Time_Orientation;
+		
+		private System.Nullable<char> _Voided;
+		
+		private System.Nullable<System.DateTime> _DateVoided;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOP__DOCIDChanging(int value);
+    partial void OnOP__DOCIDChanged();
+    partial void OnOP__PARENTIDChanging(System.Nullable<int> value);
+    partial void OnOP__PARENTIDChanged();
+    partial void OnOP__FOLDERIDChanging(System.Nullable<int> value);
+    partial void OnOP__FOLDERIDChanged();
+    partial void OnEpisodeKeyChanging(System.Nullable<int> value);
+    partial void OnEpisodeKeyChanged();
+    partial void OnPgmAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnPgmAdmissionKeyChanged();
+    partial void OnPgmKeyChanging(System.Nullable<int> value);
+    partial void OnPgmKeyChanged();
+    partial void OnTime_MHStatusChanging(System.Nullable<System.DateTime> value);
+    partial void OnTime_MHStatusChanged();
+    partial void OnAbility_MiniChanging(string value);
+    partial void OnAbility_MiniChanged();
+    partial void OnAbility_Mini_Other_SpecifyChanging(string value);
+    partial void OnAbility_Mini_Other_SpecifyChanged();
+    partial void OnAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnAdmissionKeyChanged();
+    partial void OnAffect_MiniChanging(string value);
+    partial void OnAffect_MiniChanged();
+    partial void OnAPPEARANCE_MiniChanging(string value);
+    partial void OnAPPEARANCE_MiniChanged();
+    partial void OnAPPEARANCE_Mini_Other_SpecifyChanging(string value);
+    partial void OnAPPEARANCE_Mini_Other_SpecifyChanged();
+    partial void OnAssessmentKeyChanging(System.Nullable<int> value);
+    partial void OnAssessmentKeyChanged();
+    partial void OnClientKeyChanging(System.Nullable<int> value);
+    partial void OnClientKeyChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    partial void OnDate_MHStatusChanging(System.Nullable<System.DateTime> value);
+    partial void OnDate_MHStatusChanged();
+    partial void OnDate_OrientationChanging(System.Nullable<char> value);
+    partial void OnDate_OrientationChanged();
+    partial void OnInsight_MiniChanging(string value);
+    partial void OnInsight_MiniChanged();
+    partial void OnInsight_Mini_Other_SpecifyChanging(string value);
+    partial void OnInsight_Mini_Other_SpecifyChanged();
+    partial void OnJudgement_MiniChanging(string value);
+    partial void OnJudgement_MiniChanged();
+    partial void OnJudgement_Mini_Other_SpecifyChanging(string value);
+    partial void OnJudgement_Mini_Other_SpecifyChanged();
+    partial void OnLevelOfConsciousness_MiniChanging(string value);
+    partial void OnLevelOfConsciousness_MiniChanged();
+    partial void OnLevelOfConsciousness_Other_SpecifyChanging(string value);
+    partial void OnLevelOfConsciousness_Other_SpecifyChanged();
+    partial void OnMemory_MiniChanging(string value);
+    partial void OnMemory_MiniChanged();
+    partial void OnMemory_Mini_Other_SpecifyChanging(string value);
+    partial void OnMemory_Mini_Other_SpecifyChanged();
+    partial void OnMood_MiniChanging(string value);
+    partial void OnMood_MiniChanged();
+    partial void OnPerson_OrientationChanging(System.Nullable<char> value);
+    partial void OnPerson_OrientationChanged();
+    partial void OnPlace_OrientationChanging(System.Nullable<char> value);
+    partial void OnPlace_OrientationChanged();
+    partial void OnSituation_OrientationChanging(System.Nullable<char> value);
+    partial void OnSituation_OrientationChanged();
+    partial void OnSpeech_MiniChanging(string value);
+    partial void OnSpeech_MiniChanged();
+    partial void OnSpeech_Mini_Other_SpecifyChanging(string value);
+    partial void OnSpeech_Mini_Other_SpecifyChanged();
+    partial void OnStaffKeyChanging(System.Nullable<int> value);
+    partial void OnStaffKeyChanged();
+    partial void OnThought_Process_MiniChanging(string value);
+    partial void OnThought_Process_MiniChanged();
+    partial void OnThought_Process_Mini_Other_SpecifyChanging(string value);
+    partial void OnThought_Process_Mini_Other_SpecifyChanged();
+    partial void OnTime_OrientationChanging(System.Nullable<char> value);
+    partial void OnTime_OrientationChanged();
+    partial void OnVoidedChanging(System.Nullable<char> value);
+    partial void OnVoidedChanged();
+    partial void OnDateVoidedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateVoidedChanged();
+    #endregion
+		
+		public FD__MINI_MENTAL_STATUS_EXAM()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this.OnOP__DOCIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__DOCID = value;
+					this.SendPropertyChanged("OP__DOCID");
+					this.OnOP__DOCIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this.OnOP__PARENTIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__PARENTID = value;
+					this.SendPropertyChanged("OP__PARENTID");
+					this.OnOP__PARENTIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this.OnOP__FOLDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__FOLDERID = value;
+					this.SendPropertyChanged("OP__FOLDERID");
+					this.OnOP__FOLDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EpisodeKey", DbType="Int")]
+		public System.Nullable<int> EpisodeKey
+		{
+			get
+			{
+				return this._EpisodeKey;
+			}
+			set
+			{
+				if ((this._EpisodeKey != value))
+				{
+					this.OnEpisodeKeyChanging(value);
+					this.SendPropertyChanging();
+					this._EpisodeKey = value;
+					this.SendPropertyChanged("EpisodeKey");
+					this.OnEpisodeKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PgmAdmissionKey
+		{
+			get
+			{
+				return this._PgmAdmissionKey;
+			}
+			set
+			{
+				if ((this._PgmAdmissionKey != value))
+				{
+					this.OnPgmAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmAdmissionKey = value;
+					this.SendPropertyChanged("PgmAdmissionKey");
+					this.OnPgmAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmKey", DbType="Int")]
+		public System.Nullable<int> PgmKey
+		{
+			get
+			{
+				return this._PgmKey;
+			}
+			set
+			{
+				if ((this._PgmKey != value))
+				{
+					this.OnPgmKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmKey = value;
+					this.SendPropertyChanged("PgmKey");
+					this.OnPgmKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time_MHStatus", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Time_MHStatus
+		{
+			get
+			{
+				return this._Time_MHStatus;
+			}
+			set
+			{
+				if ((this._Time_MHStatus != value))
+				{
+					this.OnTime_MHStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Time_MHStatus = value;
+					this.SendPropertyChanged("Time_MHStatus");
+					this.OnTime_MHStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ability_Mini", DbType="VarChar(45)")]
+		public string Ability_Mini
+		{
+			get
+			{
+				return this._Ability_Mini;
+			}
+			set
+			{
+				if ((this._Ability_Mini != value))
+				{
+					this.OnAbility_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Ability_Mini = value;
+					this.SendPropertyChanged("Ability_Mini");
+					this.OnAbility_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ability_Mini_Other_Specify", DbType="VarChar(45)")]
+		public string Ability_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Ability_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Ability_Mini_Other_Specify != value))
+				{
+					this.OnAbility_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Ability_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Ability_Mini_Other_Specify");
+					this.OnAbility_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this.OnAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionKey = value;
+					this.SendPropertyChanged("AdmissionKey");
+					this.OnAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Affect_Mini", DbType="VarChar(20)")]
+		public string Affect_Mini
+		{
+			get
+			{
+				return this._Affect_Mini;
+			}
+			set
+			{
+				if ((this._Affect_Mini != value))
+				{
+					this.OnAffect_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Affect_Mini = value;
+					this.SendPropertyChanged("Affect_Mini");
+					this.OnAffect_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APPEARANCE_Mini", DbType="VarChar(40)")]
+		public string APPEARANCE_Mini
+		{
+			get
+			{
+				return this._APPEARANCE_Mini;
+			}
+			set
+			{
+				if ((this._APPEARANCE_Mini != value))
+				{
+					this.OnAPPEARANCE_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._APPEARANCE_Mini = value;
+					this.SendPropertyChanged("APPEARANCE_Mini");
+					this.OnAPPEARANCE_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_APPEARANCE_Mini_Other_Specify", DbType="VarChar(40)")]
+		public string APPEARANCE_Mini_Other_Specify
+		{
+			get
+			{
+				return this._APPEARANCE_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._APPEARANCE_Mini_Other_Specify != value))
+				{
+					this.OnAPPEARANCE_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._APPEARANCE_Mini_Other_Specify = value;
+					this.SendPropertyChanged("APPEARANCE_Mini_Other_Specify");
+					this.OnAPPEARANCE_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssessmentKey", DbType="Int")]
+		public System.Nullable<int> AssessmentKey
+		{
+			get
+			{
+				return this._AssessmentKey;
+			}
+			set
+			{
+				if ((this._AssessmentKey != value))
+				{
+					this.OnAssessmentKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AssessmentKey = value;
+					this.SendPropertyChanged("AssessmentKey");
+					this.OnAssessmentKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					this.OnClientKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ClientKey = value;
+					this.SendPropertyChanged("ClientKey");
+					this.OnClientKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date_MHStatus", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date_MHStatus
+		{
+			get
+			{
+				return this._Date_MHStatus;
+			}
+			set
+			{
+				if ((this._Date_MHStatus != value))
+				{
+					this.OnDate_MHStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Date_MHStatus = value;
+					this.SendPropertyChanged("Date_MHStatus");
+					this.OnDate_MHStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date_Orientation", DbType="Char(1)")]
+		public System.Nullable<char> Date_Orientation
+		{
+			get
+			{
+				return this._Date_Orientation;
+			}
+			set
+			{
+				if ((this._Date_Orientation != value))
+				{
+					this.OnDate_OrientationChanging(value);
+					this.SendPropertyChanging();
+					this._Date_Orientation = value;
+					this.SendPropertyChanged("Date_Orientation");
+					this.OnDate_OrientationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Insight_Mini", DbType="VarChar(25)")]
+		public string Insight_Mini
+		{
+			get
+			{
+				return this._Insight_Mini;
+			}
+			set
+			{
+				if ((this._Insight_Mini != value))
+				{
+					this.OnInsight_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Insight_Mini = value;
+					this.SendPropertyChanged("Insight_Mini");
+					this.OnInsight_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Insight_Mini_Other_Specify", DbType="VarChar(25)")]
+		public string Insight_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Insight_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Insight_Mini_Other_Specify != value))
+				{
+					this.OnInsight_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Insight_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Insight_Mini_Other_Specify");
+					this.OnInsight_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Judgement_Mini", DbType="VarChar(25)")]
+		public string Judgement_Mini
+		{
+			get
+			{
+				return this._Judgement_Mini;
+			}
+			set
+			{
+				if ((this._Judgement_Mini != value))
+				{
+					this.OnJudgement_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Judgement_Mini = value;
+					this.SendPropertyChanged("Judgement_Mini");
+					this.OnJudgement_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Judgement_Mini_Other_Specify", DbType="VarChar(25)")]
+		public string Judgement_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Judgement_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Judgement_Mini_Other_Specify != value))
+				{
+					this.OnJudgement_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Judgement_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Judgement_Mini_Other_Specify");
+					this.OnJudgement_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelOfConsciousness_Mini", DbType="VarChar(20)")]
+		public string LevelOfConsciousness_Mini
+		{
+			get
+			{
+				return this._LevelOfConsciousness_Mini;
+			}
+			set
+			{
+				if ((this._LevelOfConsciousness_Mini != value))
+				{
+					this.OnLevelOfConsciousness_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._LevelOfConsciousness_Mini = value;
+					this.SendPropertyChanged("LevelOfConsciousness_Mini");
+					this.OnLevelOfConsciousness_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LevelOfConsciousness_Other_Specify", DbType="VarChar(20)")]
+		public string LevelOfConsciousness_Other_Specify
+		{
+			get
+			{
+				return this._LevelOfConsciousness_Other_Specify;
+			}
+			set
+			{
+				if ((this._LevelOfConsciousness_Other_Specify != value))
+				{
+					this.OnLevelOfConsciousness_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._LevelOfConsciousness_Other_Specify = value;
+					this.SendPropertyChanged("LevelOfConsciousness_Other_Specify");
+					this.OnLevelOfConsciousness_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Memory_Mini", DbType="VarChar(25)")]
+		public string Memory_Mini
+		{
+			get
+			{
+				return this._Memory_Mini;
+			}
+			set
+			{
+				if ((this._Memory_Mini != value))
+				{
+					this.OnMemory_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Memory_Mini = value;
+					this.SendPropertyChanged("Memory_Mini");
+					this.OnMemory_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Memory_Mini_Other_Specify", DbType="VarChar(25)")]
+		public string Memory_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Memory_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Memory_Mini_Other_Specify != value))
+				{
+					this.OnMemory_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Memory_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Memory_Mini_Other_Specify");
+					this.OnMemory_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mood_Mini", DbType="VarChar(20)")]
+		public string Mood_Mini
+		{
+			get
+			{
+				return this._Mood_Mini;
+			}
+			set
+			{
+				if ((this._Mood_Mini != value))
+				{
+					this.OnMood_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Mood_Mini = value;
+					this.SendPropertyChanged("Mood_Mini");
+					this.OnMood_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Person_Orientation", DbType="Char(1)")]
+		public System.Nullable<char> Person_Orientation
+		{
+			get
+			{
+				return this._Person_Orientation;
+			}
+			set
+			{
+				if ((this._Person_Orientation != value))
+				{
+					this.OnPerson_OrientationChanging(value);
+					this.SendPropertyChanging();
+					this._Person_Orientation = value;
+					this.SendPropertyChanged("Person_Orientation");
+					this.OnPerson_OrientationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Place_Orientation", DbType="Char(1)")]
+		public System.Nullable<char> Place_Orientation
+		{
+			get
+			{
+				return this._Place_Orientation;
+			}
+			set
+			{
+				if ((this._Place_Orientation != value))
+				{
+					this.OnPlace_OrientationChanging(value);
+					this.SendPropertyChanging();
+					this._Place_Orientation = value;
+					this.SendPropertyChanged("Place_Orientation");
+					this.OnPlace_OrientationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Situation_Orientation", DbType="Char(1)")]
+		public System.Nullable<char> Situation_Orientation
+		{
+			get
+			{
+				return this._Situation_Orientation;
+			}
+			set
+			{
+				if ((this._Situation_Orientation != value))
+				{
+					this.OnSituation_OrientationChanging(value);
+					this.SendPropertyChanging();
+					this._Situation_Orientation = value;
+					this.SendPropertyChanged("Situation_Orientation");
+					this.OnSituation_OrientationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Speech_Mini", DbType="VarChar(20)")]
+		public string Speech_Mini
+		{
+			get
+			{
+				return this._Speech_Mini;
+			}
+			set
+			{
+				if ((this._Speech_Mini != value))
+				{
+					this.OnSpeech_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Speech_Mini = value;
+					this.SendPropertyChanged("Speech_Mini");
+					this.OnSpeech_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Speech_Mini_Other_Specify", DbType="VarChar(20)")]
+		public string Speech_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Speech_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Speech_Mini_Other_Specify != value))
+				{
+					this.OnSpeech_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Speech_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Speech_Mini_Other_Specify");
+					this.OnSpeech_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffKey", DbType="Int")]
+		public System.Nullable<int> StaffKey
+		{
+			get
+			{
+				return this._StaffKey;
+			}
+			set
+			{
+				if ((this._StaffKey != value))
+				{
+					this.OnStaffKeyChanging(value);
+					this.SendPropertyChanging();
+					this._StaffKey = value;
+					this.SendPropertyChanged("StaffKey");
+					this.OnStaffKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thought_Process_Mini", DbType="VarChar(20)")]
+		public string Thought_Process_Mini
+		{
+			get
+			{
+				return this._Thought_Process_Mini;
+			}
+			set
+			{
+				if ((this._Thought_Process_Mini != value))
+				{
+					this.OnThought_Process_MiniChanging(value);
+					this.SendPropertyChanging();
+					this._Thought_Process_Mini = value;
+					this.SendPropertyChanged("Thought_Process_Mini");
+					this.OnThought_Process_MiniChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Thought_Process_Mini_Other_Specify", DbType="VarChar(20)")]
+		public string Thought_Process_Mini_Other_Specify
+		{
+			get
+			{
+				return this._Thought_Process_Mini_Other_Specify;
+			}
+			set
+			{
+				if ((this._Thought_Process_Mini_Other_Specify != value))
+				{
+					this.OnThought_Process_Mini_Other_SpecifyChanging(value);
+					this.SendPropertyChanging();
+					this._Thought_Process_Mini_Other_Specify = value;
+					this.SendPropertyChanged("Thought_Process_Mini_Other_Specify");
+					this.OnThought_Process_Mini_Other_SpecifyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time_Orientation", DbType="Char(1)")]
+		public System.Nullable<char> Time_Orientation
+		{
+			get
+			{
+				return this._Time_Orientation;
+			}
+			set
+			{
+				if ((this._Time_Orientation != value))
+				{
+					this.OnTime_OrientationChanging(value);
+					this.SendPropertyChanging();
+					this._Time_Orientation = value;
+					this.SendPropertyChanged("Time_Orientation");
+					this.OnTime_OrientationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Voided", DbType="Char(1)")]
+		public System.Nullable<char> Voided
+		{
+			get
+			{
+				return this._Voided;
+			}
+			set
+			{
+				if ((this._Voided != value))
+				{
+					this.OnVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._Voided = value;
+					this.SendPropertyChanged("Voided");
+					this.OnVoidedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateVoided", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateVoided
+		{
+			get
+			{
+				return this._DateVoided;
+			}
+			set
+			{
+				if ((this._DateVoided != value))
+				{
+					this.OnDateVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._DateVoided = value;
+					this.SendPropertyChanged("DateVoided");
+					this.OnDateVoidedChanged();
 				}
 			}
 		}

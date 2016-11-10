@@ -221,5 +221,11 @@
         <classShapeMoniker Id="00b4a46a-687a-42cd-aeb4-af308e15f7de" />
       </nodes>
     </associationConnector>
+    <classShape Id="ef8c5715-eabb-4766-b2f2-4febf26be8a7" isExpanded="false" absoluteBounds="0.75, 6, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/FD__MINI_MENTAL_STATUS_EXAM" />
+      <nestedChildShapes>
+        <elementListCompartment Id="70a35b5c-07e3-485b-9aad-fd7da4f8c011" absoluteBounds="0.76500000000000012, 6.46, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

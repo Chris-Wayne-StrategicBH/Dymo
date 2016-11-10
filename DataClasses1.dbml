@@ -2125,4 +2125,46 @@
       <Association Name="FD__CLIENT_FD__MENTAL_STATUS" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FD__MINI_MENTAL_STATUS_EXAM" Member="FD__MINI_MENTAL_STATUS_EXAMs">
+    <Type Name="FD__MINI_MENTAL_STATUS_EXAM">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time_MHStatus" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Ability_Mini" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="Ability_Mini_Other_Specify" Type="System.String" DbType="VarChar(45)" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Affect_Mini" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="APPEARANCE_Mini" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="APPEARANCE_Mini_Other_Specify" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="AssessmentKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date_MHStatus" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date_Orientation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Insight_Mini" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Insight_Mini_Other_Specify" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Judgement_Mini" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Judgement_Mini_Other_Specify" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="LevelOfConsciousness_Mini" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LevelOfConsciousness_Other_Specify" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Memory_Mini" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Memory_Mini_Other_Specify" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Mood_Mini" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Person_Orientation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Place_Orientation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Situation_Orientation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Speech_Mini" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Speech_Mini_Other_Specify" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Thought_Process_Mini" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Thought_Process_Mini_Other_Specify" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Time_Orientation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

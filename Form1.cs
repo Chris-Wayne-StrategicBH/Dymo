@@ -211,6 +211,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetComprehensiveMentalStatus(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.MINI_MENTAL_STATUS:
+                  resultList = new List<Result>(Accessor.GetMiniMentalStatus(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }

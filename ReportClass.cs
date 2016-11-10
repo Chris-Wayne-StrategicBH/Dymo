@@ -95,7 +95,9 @@ namespace DPGPP
       [Description("SD - Pain Evaluation 20160414.rpt")]
       PAIN_EVALUATION,
       [Description("SD - Comprehensive Mental  Status 20120519.rpt")]
-      COMPREHENSIVE_MENTAL_STATUS
+      COMPREHENSIVE_MENTAL_STATUS,
+      [Description("SD - Mini Mental Status Exam 20120902.rpt")]
+      MINI_MENTAL_STATUS
    }
 
 
@@ -282,6 +284,7 @@ namespace DPGPP
             case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
             case CRYSTALREPORTS.PAIN_EVALUATION:
             case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
+            case CRYSTALREPORTS.MINI_MENTAL_STATUS:
                return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:

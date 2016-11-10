@@ -514,6 +514,18 @@ namespace DPGPP
           return results.ToList<Result>();
        }
 
+       public static List<Result> GetMiniMentalStatus(int admissionkey)
+       {
+
+          DataClasses1DataContext dc = new DataClasses1DataContext();
+          var results = (from e in dc.GetTable<FD__MINI_MENTAL_STATUS_EXAM>()
+                         where (e.AdmissionKey == admissionkey)
+                         select new Result { OP__DOCID = e.OP__DOCID, Date_Doc = e.Date_MHStatus});
+
+
+          return results.ToList<Result>();
+       }
+
 #endregion
 
 
