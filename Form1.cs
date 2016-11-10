@@ -207,6 +207,10 @@ namespace DPGPP
                   resultList = new List<Result>(Accessor.GetPainEvaluations(Globals.mAdmissionKey));
                   AddNodes(resultList.Count, resultList, rpt, RootNode);
                   break;
+               case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
+                  resultList = new List<Result>(Accessor.GetComprehensiveMentalStatus(Globals.mAdmissionKey));
+                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  break;
             }
 
          }

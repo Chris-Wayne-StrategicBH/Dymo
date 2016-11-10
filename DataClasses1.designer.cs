@@ -99,6 +99,9 @@ namespace DPGPP
     partial void InsertFD__ALLERGIES(FD__ALLERGIES instance);
     partial void UpdateFD__ALLERGIES(FD__ALLERGIES instance);
     partial void DeleteFD__ALLERGIES(FD__ALLERGIES instance);
+    partial void InsertFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
+    partial void UpdateFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
+    partial void DeleteFD__MENTAL_STATUS(FD__MENTAL_STATUS instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -330,6 +333,14 @@ namespace DPGPP
 				return this.GetTable<FD__PAIN_ASSESS>();
 			}
 		}
+		
+		public System.Data.Linq.Table<FD__MENTAL_STATUS> FD__MENTAL_STATUS
+		{
+			get
+			{
+				return this.GetTable<FD__MENTAL_STATUS>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__CLIENTS")]
@@ -364,6 +375,8 @@ namespace DPGPP
 		
 		private EntitySet<FD__MED_HISTORY> _FD__MED_HISTORies;
 		
+		private EntitySet<FD__MENTAL_STATUS> _FD__MENTAL_STATUS;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -390,6 +403,7 @@ namespace DPGPP
 			this._FD__CONTACTNOTEs = new EntitySet<FD__CONTACTNOTE>(new Action<FD__CONTACTNOTE>(this.attach_FD__CONTACTNOTEs), new Action<FD__CONTACTNOTE>(this.detach_FD__CONTACTNOTEs));
 			this._FD__PHYSGENs = new EntitySet<FD__PHYSGEN>(new Action<FD__PHYSGEN>(this.attach_FD__PHYSGENs), new Action<FD__PHYSGEN>(this.detach_FD__PHYSGENs));
 			this._FD__MED_HISTORies = new EntitySet<FD__MED_HISTORY>(new Action<FD__MED_HISTORY>(this.attach_FD__MED_HISTORies), new Action<FD__MED_HISTORY>(this.detach_FD__MED_HISTORies));
+			this._FD__MENTAL_STATUS = new EntitySet<FD__MENTAL_STATUS>(new Action<FD__MENTAL_STATUS>(this.attach_FD__MENTAL_STATUS), new Action<FD__MENTAL_STATUS>(this.detach_FD__MENTAL_STATUS));
 			OnCreated();
 		}
 		
@@ -597,6 +611,19 @@ namespace DPGPP
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FD__CLIENT_FD__MENTAL_STATUS", Storage="_FD__MENTAL_STATUS", ThisKey="OP__DOCID", OtherKey="ClientKey")]
+		public EntitySet<FD__MENTAL_STATUS> FD__MENTAL_STATUS
+		{
+			get
+			{
+				return this._FD__MENTAL_STATUS;
+			}
+			set
+			{
+				this._FD__MENTAL_STATUS.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -708,6 +735,18 @@ namespace DPGPP
 		}
 		
 		private void detach_FD__MED_HISTORies(FD__MED_HISTORY entity)
+		{
+			this.SendPropertyChanging();
+			entity.FD__CLIENT = null;
+		}
+		
+		private void attach_FD__MENTAL_STATUS(FD__MENTAL_STATUS entity)
+		{
+			this.SendPropertyChanging();
+			entity.FD__CLIENT = this;
+		}
+		
+		private void detach_FD__MENTAL_STATUS(FD__MENTAL_STATUS entity)
 		{
 			this.SendPropertyChanging();
 			entity.FD__CLIENT = null;
@@ -47384,6 +47423,1981 @@ namespace DPGPP
 				{
 					this._PgmKey = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FD__MENTAL_STATUS")]
+	public partial class FD__MENTAL_STATUS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _OP__DOCID;
+		
+		private System.Nullable<int> _OP__PARENTID;
+		
+		private System.Nullable<int> _OP__FOLDERID;
+		
+		private System.Nullable<int> _AdmissionKey;
+		
+		private string _AFFECT;
+		
+		private System.Nullable<char> _AFFECT_ANXIOUS;
+		
+		private System.Nullable<char> _Angry;
+		
+		private System.Nullable<char> _Apathetic;
+		
+		private System.Nullable<int> _ClientKey;
+		
+		private System.Nullable<char> _COG_FUNC_ALERT;
+		
+		private System.Nullable<char> _COG_FUNC_AWARE_PERSON;
+		
+		private System.Nullable<char> _COG_FUNC_AWARE_PLACE;
+		
+		private System.Nullable<char> _COG_FUNC_AWARE_TIME;
+		
+		private string _COG_FUNC_COMMENTS;
+		
+		private string _COG_FUNC_CONCENTRATE;
+		
+		private System.Nullable<char> _COG_FUNC_CONFUSED;
+		
+		private System.Nullable<char> _COG_FUNC_DROWSY;
+		
+		private System.Nullable<char> _COG_FUNC_HYPERALERT;
+		
+		private string _COG_FUNC_INSIGHT;
+		
+		private string _COG_FUNC_JUDGMENT;
+		
+		private string _COG_FUNC_MEM_FUNC;
+		
+		private string _Comments;
+		
+		private System.Nullable<System.DateTime> _Date_Status;
+		
+		private System.Nullable<char> _DELUSION_CONTROL;
+		
+		private System.Nullable<char> _DELUSION_GRANDEUR;
+		
+		private System.Nullable<char> _DELUSION_IDEAS_REF;
+		
+		private System.Nullable<char> _DELUSION_PERSECUTION;
+		
+		private System.Nullable<char> _DELUSION_SOMATIC;
+		
+		private System.Nullable<char> _DELUSION_THOUGHT_BRDCST;
+		
+		private System.Nullable<char> _Depressed;
+		
+		private System.Nullable<char> _Despair;
+		
+		private System.Nullable<char> _Elated;
+		
+		private System.Nullable<char> _Euphoric;
+		
+		private System.Nullable<char> _Fearful;
+		
+		private System.Nullable<char> _Finalize_Update_Diag;
+		
+		private System.Nullable<char> _Hopeless;
+		
+		private string _IllusionsPresent;
+		
+		private System.Nullable<char> _Irritible;
+		
+		private System.Nullable<char> _Labile;
+		
+		private System.Nullable<char> _Other_TX_Facility;
+		
+		private System.Nullable<char> _Panic;
+		
+		private string _PERCEP_COMMENTS;
+		
+		private System.Nullable<char> _PERCEP_HALLUC_AUDIT;
+		
+		private System.Nullable<char> _PERCEP_HALLUC_OTHER;
+		
+		private string _PERCEP_HALLUC_OTHER_EXPLN;
+		
+		private System.Nullable<char> _PERCEP_HALLUC_TACTILE;
+		
+		private System.Nullable<char> _PERCEP_HALLUC_VIS;
+		
+		private System.Nullable<char> _Pleasant;
+		
+		private System.Nullable<char> _Psych_Evaluation;
+		
+		private System.Nullable<char> _Self_Loathing;
+		
+		private string _SLEEP_APPET_COMMENTS;
+		
+		private System.Nullable<char> _SPEECH_ABSENT;
+		
+		private string _SPEECH_COMMENTS;
+		
+		private System.Nullable<char> _SPEECH_HIGH_PITCH;
+		
+		private System.Nullable<char> _SPEECH_LOUD;
+		
+		private System.Nullable<char> _SPEECH_MUMBLED;
+		
+		private System.Nullable<char> _SPEECH_NORMAL;
+		
+		private System.Nullable<char> _SPEECH_PRESSURED;
+		
+		private System.Nullable<char> _SPEECH_SLOWED;
+		
+		private System.Nullable<char> _Tense;
+		
+		private string _THOUGHT_COMMENTS;
+		
+		private string _THOUGHT_DELUSION;
+		
+		private string _THOUGHT_LOOSE_ASSOC;
+		
+		private string _THOUGHT_RACING;
+		
+		private string _THOUGHT_SLOW_RETARD;
+		
+		private System.Nullable<char> _Twentyfour_Hour_Care;
+		
+		private string _Ambulation_appropriate;
+		
+		private string _DRESS_GROOM;
+		
+		private string _EYE_CONTACT;
+		
+		private string _Individual_Agitated;
+		
+		private string _Threatening_Behavior;
+		
+		private System.Nullable<char> _Irritable;
+		
+		private System.Nullable<int> _StaffKey;
+		
+		private System.Nullable<int> _PgmAdmissionKey;
+		
+		private System.Nullable<int> _PgmKey;
+		
+		private System.Nullable<int> _EpisodeKey;
+		
+		private System.Nullable<System.DateTime> _Time_Status;
+		
+		private System.Nullable<char> _Voided;
+		
+		private System.Nullable<System.DateTime> _DateVoided;
+		
+		private EntityRef<FD__CLIENT> _FD__CLIENT;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOP__DOCIDChanging(int value);
+    partial void OnOP__DOCIDChanged();
+    partial void OnOP__PARENTIDChanging(System.Nullable<int> value);
+    partial void OnOP__PARENTIDChanged();
+    partial void OnOP__FOLDERIDChanging(System.Nullable<int> value);
+    partial void OnOP__FOLDERIDChanged();
+    partial void OnAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnAdmissionKeyChanged();
+    partial void OnAFFECTChanging(string value);
+    partial void OnAFFECTChanged();
+    partial void OnAFFECT_ANXIOUSChanging(System.Nullable<char> value);
+    partial void OnAFFECT_ANXIOUSChanged();
+    partial void OnAngryChanging(System.Nullable<char> value);
+    partial void OnAngryChanged();
+    partial void OnApatheticChanging(System.Nullable<char> value);
+    partial void OnApatheticChanged();
+    partial void OnClientKeyChanging(System.Nullable<int> value);
+    partial void OnClientKeyChanged();
+    partial void OnCOG_FUNC_ALERTChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_ALERTChanged();
+    partial void OnCOG_FUNC_AWARE_PERSONChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_AWARE_PERSONChanged();
+    partial void OnCOG_FUNC_AWARE_PLACEChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_AWARE_PLACEChanged();
+    partial void OnCOG_FUNC_AWARE_TIMEChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_AWARE_TIMEChanged();
+    partial void OnCOG_FUNC_COMMENTSChanging(string value);
+    partial void OnCOG_FUNC_COMMENTSChanged();
+    partial void OnCOG_FUNC_CONCENTRATEChanging(string value);
+    partial void OnCOG_FUNC_CONCENTRATEChanged();
+    partial void OnCOG_FUNC_CONFUSEDChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_CONFUSEDChanged();
+    partial void OnCOG_FUNC_DROWSYChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_DROWSYChanged();
+    partial void OnCOG_FUNC_HYPERALERTChanging(System.Nullable<char> value);
+    partial void OnCOG_FUNC_HYPERALERTChanged();
+    partial void OnCOG_FUNC_INSIGHTChanging(string value);
+    partial void OnCOG_FUNC_INSIGHTChanged();
+    partial void OnCOG_FUNC_JUDGMENTChanging(string value);
+    partial void OnCOG_FUNC_JUDGMENTChanged();
+    partial void OnCOG_FUNC_MEM_FUNCChanging(string value);
+    partial void OnCOG_FUNC_MEM_FUNCChanged();
+    partial void OnCommentsChanging(string value);
+    partial void OnCommentsChanged();
+    partial void OnDate_StatusChanging(System.Nullable<System.DateTime> value);
+    partial void OnDate_StatusChanged();
+    partial void OnDELUSION_CONTROLChanging(System.Nullable<char> value);
+    partial void OnDELUSION_CONTROLChanged();
+    partial void OnDELUSION_GRANDEURChanging(System.Nullable<char> value);
+    partial void OnDELUSION_GRANDEURChanged();
+    partial void OnDELUSION_IDEAS_REFChanging(System.Nullable<char> value);
+    partial void OnDELUSION_IDEAS_REFChanged();
+    partial void OnDELUSION_PERSECUTIONChanging(System.Nullable<char> value);
+    partial void OnDELUSION_PERSECUTIONChanged();
+    partial void OnDELUSION_SOMATICChanging(System.Nullable<char> value);
+    partial void OnDELUSION_SOMATICChanged();
+    partial void OnDELUSION_THOUGHT_BRDCSTChanging(System.Nullable<char> value);
+    partial void OnDELUSION_THOUGHT_BRDCSTChanged();
+    partial void OnDepressedChanging(System.Nullable<char> value);
+    partial void OnDepressedChanged();
+    partial void OnDespairChanging(System.Nullable<char> value);
+    partial void OnDespairChanged();
+    partial void OnElatedChanging(System.Nullable<char> value);
+    partial void OnElatedChanged();
+    partial void OnEuphoricChanging(System.Nullable<char> value);
+    partial void OnEuphoricChanged();
+    partial void OnFearfulChanging(System.Nullable<char> value);
+    partial void OnFearfulChanged();
+    partial void OnFinalize_Update_DiagChanging(System.Nullable<char> value);
+    partial void OnFinalize_Update_DiagChanged();
+    partial void OnHopelessChanging(System.Nullable<char> value);
+    partial void OnHopelessChanged();
+    partial void OnIllusionsPresentChanging(string value);
+    partial void OnIllusionsPresentChanged();
+    partial void OnIrritibleChanging(System.Nullable<char> value);
+    partial void OnIrritibleChanged();
+    partial void OnLabileChanging(System.Nullable<char> value);
+    partial void OnLabileChanged();
+    partial void OnOther_TX_FacilityChanging(System.Nullable<char> value);
+    partial void OnOther_TX_FacilityChanged();
+    partial void OnPanicChanging(System.Nullable<char> value);
+    partial void OnPanicChanged();
+    partial void OnPERCEP_COMMENTSChanging(string value);
+    partial void OnPERCEP_COMMENTSChanged();
+    partial void OnPERCEP_HALLUC_AUDITChanging(System.Nullable<char> value);
+    partial void OnPERCEP_HALLUC_AUDITChanged();
+    partial void OnPERCEP_HALLUC_OTHERChanging(System.Nullable<char> value);
+    partial void OnPERCEP_HALLUC_OTHERChanged();
+    partial void OnPERCEP_HALLUC_OTHER_EXPLNChanging(string value);
+    partial void OnPERCEP_HALLUC_OTHER_EXPLNChanged();
+    partial void OnPERCEP_HALLUC_TACTILEChanging(System.Nullable<char> value);
+    partial void OnPERCEP_HALLUC_TACTILEChanged();
+    partial void OnPERCEP_HALLUC_VISChanging(System.Nullable<char> value);
+    partial void OnPERCEP_HALLUC_VISChanged();
+    partial void OnPleasantChanging(System.Nullable<char> value);
+    partial void OnPleasantChanged();
+    partial void OnPsych_EvaluationChanging(System.Nullable<char> value);
+    partial void OnPsych_EvaluationChanged();
+    partial void OnSelf_LoathingChanging(System.Nullable<char> value);
+    partial void OnSelf_LoathingChanged();
+    partial void OnSLEEP_APPET_COMMENTSChanging(string value);
+    partial void OnSLEEP_APPET_COMMENTSChanged();
+    partial void OnSPEECH_ABSENTChanging(System.Nullable<char> value);
+    partial void OnSPEECH_ABSENTChanged();
+    partial void OnSPEECH_COMMENTSChanging(string value);
+    partial void OnSPEECH_COMMENTSChanged();
+    partial void OnSPEECH_HIGH_PITCHChanging(System.Nullable<char> value);
+    partial void OnSPEECH_HIGH_PITCHChanged();
+    partial void OnSPEECH_LOUDChanging(System.Nullable<char> value);
+    partial void OnSPEECH_LOUDChanged();
+    partial void OnSPEECH_MUMBLEDChanging(System.Nullable<char> value);
+    partial void OnSPEECH_MUMBLEDChanged();
+    partial void OnSPEECH_NORMALChanging(System.Nullable<char> value);
+    partial void OnSPEECH_NORMALChanged();
+    partial void OnSPEECH_PRESSUREDChanging(System.Nullable<char> value);
+    partial void OnSPEECH_PRESSUREDChanged();
+    partial void OnSPEECH_SLOWEDChanging(System.Nullable<char> value);
+    partial void OnSPEECH_SLOWEDChanged();
+    partial void OnTenseChanging(System.Nullable<char> value);
+    partial void OnTenseChanged();
+    partial void OnTHOUGHT_COMMENTSChanging(string value);
+    partial void OnTHOUGHT_COMMENTSChanged();
+    partial void OnTHOUGHT_DELUSIONChanging(string value);
+    partial void OnTHOUGHT_DELUSIONChanged();
+    partial void OnTHOUGHT_LOOSE_ASSOCChanging(string value);
+    partial void OnTHOUGHT_LOOSE_ASSOCChanged();
+    partial void OnTHOUGHT_RACINGChanging(string value);
+    partial void OnTHOUGHT_RACINGChanged();
+    partial void OnTHOUGHT_SLOW_RETARDChanging(string value);
+    partial void OnTHOUGHT_SLOW_RETARDChanged();
+    partial void OnTwentyfour_Hour_CareChanging(System.Nullable<char> value);
+    partial void OnTwentyfour_Hour_CareChanged();
+    partial void OnAmbulation_appropriateChanging(string value);
+    partial void OnAmbulation_appropriateChanged();
+    partial void OnDRESS_GROOMChanging(string value);
+    partial void OnDRESS_GROOMChanged();
+    partial void OnEYE_CONTACTChanging(string value);
+    partial void OnEYE_CONTACTChanged();
+    partial void OnIndividual_AgitatedChanging(string value);
+    partial void OnIndividual_AgitatedChanged();
+    partial void OnThreatening_BehaviorChanging(string value);
+    partial void OnThreatening_BehaviorChanged();
+    partial void OnIrritableChanging(System.Nullable<char> value);
+    partial void OnIrritableChanged();
+    partial void OnStaffKeyChanging(System.Nullable<int> value);
+    partial void OnStaffKeyChanged();
+    partial void OnPgmAdmissionKeyChanging(System.Nullable<int> value);
+    partial void OnPgmAdmissionKeyChanged();
+    partial void OnPgmKeyChanging(System.Nullable<int> value);
+    partial void OnPgmKeyChanged();
+    partial void OnEpisodeKeyChanging(System.Nullable<int> value);
+    partial void OnEpisodeKeyChanged();
+    partial void OnTime_StatusChanging(System.Nullable<System.DateTime> value);
+    partial void OnTime_StatusChanged();
+    partial void OnVoidedChanging(System.Nullable<char> value);
+    partial void OnVoidedChanged();
+    partial void OnDateVoidedChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateVoidedChanged();
+    #endregion
+		
+		public FD__MENTAL_STATUS()
+		{
+			this._FD__CLIENT = default(EntityRef<FD__CLIENT>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__DOCID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int OP__DOCID
+		{
+			get
+			{
+				return this._OP__DOCID;
+			}
+			set
+			{
+				if ((this._OP__DOCID != value))
+				{
+					this.OnOP__DOCIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__DOCID = value;
+					this.SendPropertyChanged("OP__DOCID");
+					this.OnOP__DOCIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__PARENTID", DbType="Int")]
+		public System.Nullable<int> OP__PARENTID
+		{
+			get
+			{
+				return this._OP__PARENTID;
+			}
+			set
+			{
+				if ((this._OP__PARENTID != value))
+				{
+					this.OnOP__PARENTIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__PARENTID = value;
+					this.SendPropertyChanged("OP__PARENTID");
+					this.OnOP__PARENTIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OP__FOLDERID", DbType="Int")]
+		public System.Nullable<int> OP__FOLDERID
+		{
+			get
+			{
+				return this._OP__FOLDERID;
+			}
+			set
+			{
+				if ((this._OP__FOLDERID != value))
+				{
+					this.OnOP__FOLDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._OP__FOLDERID = value;
+					this.SendPropertyChanged("OP__FOLDERID");
+					this.OnOP__FOLDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdmissionKey", DbType="Int")]
+		public System.Nullable<int> AdmissionKey
+		{
+			get
+			{
+				return this._AdmissionKey;
+			}
+			set
+			{
+				if ((this._AdmissionKey != value))
+				{
+					this.OnAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._AdmissionKey = value;
+					this.SendPropertyChanged("AdmissionKey");
+					this.OnAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AFFECT", DbType="VarChar(12)")]
+		public string AFFECT
+		{
+			get
+			{
+				return this._AFFECT;
+			}
+			set
+			{
+				if ((this._AFFECT != value))
+				{
+					this.OnAFFECTChanging(value);
+					this.SendPropertyChanging();
+					this._AFFECT = value;
+					this.SendPropertyChanged("AFFECT");
+					this.OnAFFECTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AFFECT_ANXIOUS", DbType="Char(1)")]
+		public System.Nullable<char> AFFECT_ANXIOUS
+		{
+			get
+			{
+				return this._AFFECT_ANXIOUS;
+			}
+			set
+			{
+				if ((this._AFFECT_ANXIOUS != value))
+				{
+					this.OnAFFECT_ANXIOUSChanging(value);
+					this.SendPropertyChanging();
+					this._AFFECT_ANXIOUS = value;
+					this.SendPropertyChanged("AFFECT_ANXIOUS");
+					this.OnAFFECT_ANXIOUSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Angry", DbType="Char(1)")]
+		public System.Nullable<char> Angry
+		{
+			get
+			{
+				return this._Angry;
+			}
+			set
+			{
+				if ((this._Angry != value))
+				{
+					this.OnAngryChanging(value);
+					this.SendPropertyChanging();
+					this._Angry = value;
+					this.SendPropertyChanged("Angry");
+					this.OnAngryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Apathetic", DbType="Char(1)")]
+		public System.Nullable<char> Apathetic
+		{
+			get
+			{
+				return this._Apathetic;
+			}
+			set
+			{
+				if ((this._Apathetic != value))
+				{
+					this.OnApatheticChanging(value);
+					this.SendPropertyChanging();
+					this._Apathetic = value;
+					this.SendPropertyChanged("Apathetic");
+					this.OnApatheticChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClientKey", DbType="Int")]
+		public System.Nullable<int> ClientKey
+		{
+			get
+			{
+				return this._ClientKey;
+			}
+			set
+			{
+				if ((this._ClientKey != value))
+				{
+					if (this._FD__CLIENT.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnClientKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ClientKey = value;
+					this.SendPropertyChanged("ClientKey");
+					this.OnClientKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_ALERT", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_ALERT
+		{
+			get
+			{
+				return this._COG_FUNC_ALERT;
+			}
+			set
+			{
+				if ((this._COG_FUNC_ALERT != value))
+				{
+					this.OnCOG_FUNC_ALERTChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_ALERT = value;
+					this.SendPropertyChanged("COG_FUNC_ALERT");
+					this.OnCOG_FUNC_ALERTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_AWARE_PERSON", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_AWARE_PERSON
+		{
+			get
+			{
+				return this._COG_FUNC_AWARE_PERSON;
+			}
+			set
+			{
+				if ((this._COG_FUNC_AWARE_PERSON != value))
+				{
+					this.OnCOG_FUNC_AWARE_PERSONChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_AWARE_PERSON = value;
+					this.SendPropertyChanged("COG_FUNC_AWARE_PERSON");
+					this.OnCOG_FUNC_AWARE_PERSONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_AWARE_PLACE", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_AWARE_PLACE
+		{
+			get
+			{
+				return this._COG_FUNC_AWARE_PLACE;
+			}
+			set
+			{
+				if ((this._COG_FUNC_AWARE_PLACE != value))
+				{
+					this.OnCOG_FUNC_AWARE_PLACEChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_AWARE_PLACE = value;
+					this.SendPropertyChanged("COG_FUNC_AWARE_PLACE");
+					this.OnCOG_FUNC_AWARE_PLACEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_AWARE_TIME", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_AWARE_TIME
+		{
+			get
+			{
+				return this._COG_FUNC_AWARE_TIME;
+			}
+			set
+			{
+				if ((this._COG_FUNC_AWARE_TIME != value))
+				{
+					this.OnCOG_FUNC_AWARE_TIMEChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_AWARE_TIME = value;
+					this.SendPropertyChanged("COG_FUNC_AWARE_TIME");
+					this.OnCOG_FUNC_AWARE_TIMEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_COMMENTS", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string COG_FUNC_COMMENTS
+		{
+			get
+			{
+				return this._COG_FUNC_COMMENTS;
+			}
+			set
+			{
+				if ((this._COG_FUNC_COMMENTS != value))
+				{
+					this.OnCOG_FUNC_COMMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_COMMENTS = value;
+					this.SendPropertyChanged("COG_FUNC_COMMENTS");
+					this.OnCOG_FUNC_COMMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_CONCENTRATE", DbType="VarChar(3)")]
+		public string COG_FUNC_CONCENTRATE
+		{
+			get
+			{
+				return this._COG_FUNC_CONCENTRATE;
+			}
+			set
+			{
+				if ((this._COG_FUNC_CONCENTRATE != value))
+				{
+					this.OnCOG_FUNC_CONCENTRATEChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_CONCENTRATE = value;
+					this.SendPropertyChanged("COG_FUNC_CONCENTRATE");
+					this.OnCOG_FUNC_CONCENTRATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_CONFUSED", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_CONFUSED
+		{
+			get
+			{
+				return this._COG_FUNC_CONFUSED;
+			}
+			set
+			{
+				if ((this._COG_FUNC_CONFUSED != value))
+				{
+					this.OnCOG_FUNC_CONFUSEDChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_CONFUSED = value;
+					this.SendPropertyChanged("COG_FUNC_CONFUSED");
+					this.OnCOG_FUNC_CONFUSEDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_DROWSY", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_DROWSY
+		{
+			get
+			{
+				return this._COG_FUNC_DROWSY;
+			}
+			set
+			{
+				if ((this._COG_FUNC_DROWSY != value))
+				{
+					this.OnCOG_FUNC_DROWSYChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_DROWSY = value;
+					this.SendPropertyChanged("COG_FUNC_DROWSY");
+					this.OnCOG_FUNC_DROWSYChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_HYPERALERT", DbType="Char(1)")]
+		public System.Nullable<char> COG_FUNC_HYPERALERT
+		{
+			get
+			{
+				return this._COG_FUNC_HYPERALERT;
+			}
+			set
+			{
+				if ((this._COG_FUNC_HYPERALERT != value))
+				{
+					this.OnCOG_FUNC_HYPERALERTChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_HYPERALERT = value;
+					this.SendPropertyChanged("COG_FUNC_HYPERALERT");
+					this.OnCOG_FUNC_HYPERALERTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_INSIGHT", DbType="VarChar(3)")]
+		public string COG_FUNC_INSIGHT
+		{
+			get
+			{
+				return this._COG_FUNC_INSIGHT;
+			}
+			set
+			{
+				if ((this._COG_FUNC_INSIGHT != value))
+				{
+					this.OnCOG_FUNC_INSIGHTChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_INSIGHT = value;
+					this.SendPropertyChanged("COG_FUNC_INSIGHT");
+					this.OnCOG_FUNC_INSIGHTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_JUDGMENT", DbType="VarChar(3)")]
+		public string COG_FUNC_JUDGMENT
+		{
+			get
+			{
+				return this._COG_FUNC_JUDGMENT;
+			}
+			set
+			{
+				if ((this._COG_FUNC_JUDGMENT != value))
+				{
+					this.OnCOG_FUNC_JUDGMENTChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_JUDGMENT = value;
+					this.SendPropertyChanged("COG_FUNC_JUDGMENT");
+					this.OnCOG_FUNC_JUDGMENTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COG_FUNC_MEM_FUNC", DbType="VarChar(3)")]
+		public string COG_FUNC_MEM_FUNC
+		{
+			get
+			{
+				return this._COG_FUNC_MEM_FUNC;
+			}
+			set
+			{
+				if ((this._COG_FUNC_MEM_FUNC != value))
+				{
+					this.OnCOG_FUNC_MEM_FUNCChanging(value);
+					this.SendPropertyChanging();
+					this._COG_FUNC_MEM_FUNC = value;
+					this.SendPropertyChanged("COG_FUNC_MEM_FUNC");
+					this.OnCOG_FUNC_MEM_FUNCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Comments", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Comments
+		{
+			get
+			{
+				return this._Comments;
+			}
+			set
+			{
+				if ((this._Comments != value))
+				{
+					this.OnCommentsChanging(value);
+					this.SendPropertyChanging();
+					this._Comments = value;
+					this.SendPropertyChanged("Comments");
+					this.OnCommentsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date_Status", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date_Status
+		{
+			get
+			{
+				return this._Date_Status;
+			}
+			set
+			{
+				if ((this._Date_Status != value))
+				{
+					this.OnDate_StatusChanging(value);
+					this.SendPropertyChanging();
+					this._Date_Status = value;
+					this.SendPropertyChanged("Date_Status");
+					this.OnDate_StatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_CONTROL", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_CONTROL
+		{
+			get
+			{
+				return this._DELUSION_CONTROL;
+			}
+			set
+			{
+				if ((this._DELUSION_CONTROL != value))
+				{
+					this.OnDELUSION_CONTROLChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_CONTROL = value;
+					this.SendPropertyChanged("DELUSION_CONTROL");
+					this.OnDELUSION_CONTROLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_GRANDEUR", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_GRANDEUR
+		{
+			get
+			{
+				return this._DELUSION_GRANDEUR;
+			}
+			set
+			{
+				if ((this._DELUSION_GRANDEUR != value))
+				{
+					this.OnDELUSION_GRANDEURChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_GRANDEUR = value;
+					this.SendPropertyChanged("DELUSION_GRANDEUR");
+					this.OnDELUSION_GRANDEURChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_IDEAS_REF", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_IDEAS_REF
+		{
+			get
+			{
+				return this._DELUSION_IDEAS_REF;
+			}
+			set
+			{
+				if ((this._DELUSION_IDEAS_REF != value))
+				{
+					this.OnDELUSION_IDEAS_REFChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_IDEAS_REF = value;
+					this.SendPropertyChanged("DELUSION_IDEAS_REF");
+					this.OnDELUSION_IDEAS_REFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_PERSECUTION", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_PERSECUTION
+		{
+			get
+			{
+				return this._DELUSION_PERSECUTION;
+			}
+			set
+			{
+				if ((this._DELUSION_PERSECUTION != value))
+				{
+					this.OnDELUSION_PERSECUTIONChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_PERSECUTION = value;
+					this.SendPropertyChanged("DELUSION_PERSECUTION");
+					this.OnDELUSION_PERSECUTIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_SOMATIC", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_SOMATIC
+		{
+			get
+			{
+				return this._DELUSION_SOMATIC;
+			}
+			set
+			{
+				if ((this._DELUSION_SOMATIC != value))
+				{
+					this.OnDELUSION_SOMATICChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_SOMATIC = value;
+					this.SendPropertyChanged("DELUSION_SOMATIC");
+					this.OnDELUSION_SOMATICChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DELUSION_THOUGHT_BRDCST", DbType="Char(1)")]
+		public System.Nullable<char> DELUSION_THOUGHT_BRDCST
+		{
+			get
+			{
+				return this._DELUSION_THOUGHT_BRDCST;
+			}
+			set
+			{
+				if ((this._DELUSION_THOUGHT_BRDCST != value))
+				{
+					this.OnDELUSION_THOUGHT_BRDCSTChanging(value);
+					this.SendPropertyChanging();
+					this._DELUSION_THOUGHT_BRDCST = value;
+					this.SendPropertyChanged("DELUSION_THOUGHT_BRDCST");
+					this.OnDELUSION_THOUGHT_BRDCSTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Depressed", DbType="Char(1)")]
+		public System.Nullable<char> Depressed
+		{
+			get
+			{
+				return this._Depressed;
+			}
+			set
+			{
+				if ((this._Depressed != value))
+				{
+					this.OnDepressedChanging(value);
+					this.SendPropertyChanging();
+					this._Depressed = value;
+					this.SendPropertyChanged("Depressed");
+					this.OnDepressedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Despair", DbType="Char(1)")]
+		public System.Nullable<char> Despair
+		{
+			get
+			{
+				return this._Despair;
+			}
+			set
+			{
+				if ((this._Despair != value))
+				{
+					this.OnDespairChanging(value);
+					this.SendPropertyChanging();
+					this._Despair = value;
+					this.SendPropertyChanged("Despair");
+					this.OnDespairChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Elated", DbType="Char(1)")]
+		public System.Nullable<char> Elated
+		{
+			get
+			{
+				return this._Elated;
+			}
+			set
+			{
+				if ((this._Elated != value))
+				{
+					this.OnElatedChanging(value);
+					this.SendPropertyChanging();
+					this._Elated = value;
+					this.SendPropertyChanged("Elated");
+					this.OnElatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Euphoric", DbType="Char(1)")]
+		public System.Nullable<char> Euphoric
+		{
+			get
+			{
+				return this._Euphoric;
+			}
+			set
+			{
+				if ((this._Euphoric != value))
+				{
+					this.OnEuphoricChanging(value);
+					this.SendPropertyChanging();
+					this._Euphoric = value;
+					this.SendPropertyChanged("Euphoric");
+					this.OnEuphoricChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fearful", DbType="Char(1)")]
+		public System.Nullable<char> Fearful
+		{
+			get
+			{
+				return this._Fearful;
+			}
+			set
+			{
+				if ((this._Fearful != value))
+				{
+					this.OnFearfulChanging(value);
+					this.SendPropertyChanging();
+					this._Fearful = value;
+					this.SendPropertyChanged("Fearful");
+					this.OnFearfulChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Finalize_Update_Diag", DbType="Char(1)")]
+		public System.Nullable<char> Finalize_Update_Diag
+		{
+			get
+			{
+				return this._Finalize_Update_Diag;
+			}
+			set
+			{
+				if ((this._Finalize_Update_Diag != value))
+				{
+					this.OnFinalize_Update_DiagChanging(value);
+					this.SendPropertyChanging();
+					this._Finalize_Update_Diag = value;
+					this.SendPropertyChanged("Finalize_Update_Diag");
+					this.OnFinalize_Update_DiagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hopeless", DbType="Char(1)")]
+		public System.Nullable<char> Hopeless
+		{
+			get
+			{
+				return this._Hopeless;
+			}
+			set
+			{
+				if ((this._Hopeless != value))
+				{
+					this.OnHopelessChanging(value);
+					this.SendPropertyChanging();
+					this._Hopeless = value;
+					this.SendPropertyChanged("Hopeless");
+					this.OnHopelessChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IllusionsPresent", DbType="VarChar(3)")]
+		public string IllusionsPresent
+		{
+			get
+			{
+				return this._IllusionsPresent;
+			}
+			set
+			{
+				if ((this._IllusionsPresent != value))
+				{
+					this.OnIllusionsPresentChanging(value);
+					this.SendPropertyChanging();
+					this._IllusionsPresent = value;
+					this.SendPropertyChanged("IllusionsPresent");
+					this.OnIllusionsPresentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Irritible", DbType="Char(1)")]
+		public System.Nullable<char> Irritible
+		{
+			get
+			{
+				return this._Irritible;
+			}
+			set
+			{
+				if ((this._Irritible != value))
+				{
+					this.OnIrritibleChanging(value);
+					this.SendPropertyChanging();
+					this._Irritible = value;
+					this.SendPropertyChanged("Irritible");
+					this.OnIrritibleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Labile", DbType="Char(1)")]
+		public System.Nullable<char> Labile
+		{
+			get
+			{
+				return this._Labile;
+			}
+			set
+			{
+				if ((this._Labile != value))
+				{
+					this.OnLabileChanging(value);
+					this.SendPropertyChanging();
+					this._Labile = value;
+					this.SendPropertyChanged("Labile");
+					this.OnLabileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Other_TX_Facility", DbType="Char(1)")]
+		public System.Nullable<char> Other_TX_Facility
+		{
+			get
+			{
+				return this._Other_TX_Facility;
+			}
+			set
+			{
+				if ((this._Other_TX_Facility != value))
+				{
+					this.OnOther_TX_FacilityChanging(value);
+					this.SendPropertyChanging();
+					this._Other_TX_Facility = value;
+					this.SendPropertyChanged("Other_TX_Facility");
+					this.OnOther_TX_FacilityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Panic", DbType="Char(1)")]
+		public System.Nullable<char> Panic
+		{
+			get
+			{
+				return this._Panic;
+			}
+			set
+			{
+				if ((this._Panic != value))
+				{
+					this.OnPanicChanging(value);
+					this.SendPropertyChanging();
+					this._Panic = value;
+					this.SendPropertyChanged("Panic");
+					this.OnPanicChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_COMMENTS", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string PERCEP_COMMENTS
+		{
+			get
+			{
+				return this._PERCEP_COMMENTS;
+			}
+			set
+			{
+				if ((this._PERCEP_COMMENTS != value))
+				{
+					this.OnPERCEP_COMMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_COMMENTS = value;
+					this.SendPropertyChanged("PERCEP_COMMENTS");
+					this.OnPERCEP_COMMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_AUDIT", DbType="Char(1)")]
+		public System.Nullable<char> PERCEP_HALLUC_AUDIT
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_AUDIT;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_AUDIT != value))
+				{
+					this.OnPERCEP_HALLUC_AUDITChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_AUDIT = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_AUDIT");
+					this.OnPERCEP_HALLUC_AUDITChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_OTHER", DbType="Char(1)")]
+		public System.Nullable<char> PERCEP_HALLUC_OTHER
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_OTHER;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_OTHER != value))
+				{
+					this.OnPERCEP_HALLUC_OTHERChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_OTHER = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_OTHER");
+					this.OnPERCEP_HALLUC_OTHERChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_OTHER_EXPLN", DbType="VarChar(40)")]
+		public string PERCEP_HALLUC_OTHER_EXPLN
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_OTHER_EXPLN;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_OTHER_EXPLN != value))
+				{
+					this.OnPERCEP_HALLUC_OTHER_EXPLNChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_OTHER_EXPLN = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_OTHER_EXPLN");
+					this.OnPERCEP_HALLUC_OTHER_EXPLNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_TACTILE", DbType="Char(1)")]
+		public System.Nullable<char> PERCEP_HALLUC_TACTILE
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_TACTILE;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_TACTILE != value))
+				{
+					this.OnPERCEP_HALLUC_TACTILEChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_TACTILE = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_TACTILE");
+					this.OnPERCEP_HALLUC_TACTILEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PERCEP_HALLUC_VIS", DbType="Char(1)")]
+		public System.Nullable<char> PERCEP_HALLUC_VIS
+		{
+			get
+			{
+				return this._PERCEP_HALLUC_VIS;
+			}
+			set
+			{
+				if ((this._PERCEP_HALLUC_VIS != value))
+				{
+					this.OnPERCEP_HALLUC_VISChanging(value);
+					this.SendPropertyChanging();
+					this._PERCEP_HALLUC_VIS = value;
+					this.SendPropertyChanged("PERCEP_HALLUC_VIS");
+					this.OnPERCEP_HALLUC_VISChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pleasant", DbType="Char(1)")]
+		public System.Nullable<char> Pleasant
+		{
+			get
+			{
+				return this._Pleasant;
+			}
+			set
+			{
+				if ((this._Pleasant != value))
+				{
+					this.OnPleasantChanging(value);
+					this.SendPropertyChanging();
+					this._Pleasant = value;
+					this.SendPropertyChanged("Pleasant");
+					this.OnPleasantChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Psych_Evaluation", DbType="Char(1)")]
+		public System.Nullable<char> Psych_Evaluation
+		{
+			get
+			{
+				return this._Psych_Evaluation;
+			}
+			set
+			{
+				if ((this._Psych_Evaluation != value))
+				{
+					this.OnPsych_EvaluationChanging(value);
+					this.SendPropertyChanging();
+					this._Psych_Evaluation = value;
+					this.SendPropertyChanged("Psych_Evaluation");
+					this.OnPsych_EvaluationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Self_Loathing", DbType="Char(1)")]
+		public System.Nullable<char> Self_Loathing
+		{
+			get
+			{
+				return this._Self_Loathing;
+			}
+			set
+			{
+				if ((this._Self_Loathing != value))
+				{
+					this.OnSelf_LoathingChanging(value);
+					this.SendPropertyChanging();
+					this._Self_Loathing = value;
+					this.SendPropertyChanged("Self_Loathing");
+					this.OnSelf_LoathingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SLEEP_APPET_COMMENTS", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SLEEP_APPET_COMMENTS
+		{
+			get
+			{
+				return this._SLEEP_APPET_COMMENTS;
+			}
+			set
+			{
+				if ((this._SLEEP_APPET_COMMENTS != value))
+				{
+					this.OnSLEEP_APPET_COMMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._SLEEP_APPET_COMMENTS = value;
+					this.SendPropertyChanged("SLEEP_APPET_COMMENTS");
+					this.OnSLEEP_APPET_COMMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_ABSENT", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_ABSENT
+		{
+			get
+			{
+				return this._SPEECH_ABSENT;
+			}
+			set
+			{
+				if ((this._SPEECH_ABSENT != value))
+				{
+					this.OnSPEECH_ABSENTChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_ABSENT = value;
+					this.SendPropertyChanged("SPEECH_ABSENT");
+					this.OnSPEECH_ABSENTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_COMMENTS", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string SPEECH_COMMENTS
+		{
+			get
+			{
+				return this._SPEECH_COMMENTS;
+			}
+			set
+			{
+				if ((this._SPEECH_COMMENTS != value))
+				{
+					this.OnSPEECH_COMMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_COMMENTS = value;
+					this.SendPropertyChanged("SPEECH_COMMENTS");
+					this.OnSPEECH_COMMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_HIGH_PITCH", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_HIGH_PITCH
+		{
+			get
+			{
+				return this._SPEECH_HIGH_PITCH;
+			}
+			set
+			{
+				if ((this._SPEECH_HIGH_PITCH != value))
+				{
+					this.OnSPEECH_HIGH_PITCHChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_HIGH_PITCH = value;
+					this.SendPropertyChanged("SPEECH_HIGH_PITCH");
+					this.OnSPEECH_HIGH_PITCHChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_LOUD", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_LOUD
+		{
+			get
+			{
+				return this._SPEECH_LOUD;
+			}
+			set
+			{
+				if ((this._SPEECH_LOUD != value))
+				{
+					this.OnSPEECH_LOUDChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_LOUD = value;
+					this.SendPropertyChanged("SPEECH_LOUD");
+					this.OnSPEECH_LOUDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_MUMBLED", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_MUMBLED
+		{
+			get
+			{
+				return this._SPEECH_MUMBLED;
+			}
+			set
+			{
+				if ((this._SPEECH_MUMBLED != value))
+				{
+					this.OnSPEECH_MUMBLEDChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_MUMBLED = value;
+					this.SendPropertyChanged("SPEECH_MUMBLED");
+					this.OnSPEECH_MUMBLEDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_NORMAL", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_NORMAL
+		{
+			get
+			{
+				return this._SPEECH_NORMAL;
+			}
+			set
+			{
+				if ((this._SPEECH_NORMAL != value))
+				{
+					this.OnSPEECH_NORMALChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_NORMAL = value;
+					this.SendPropertyChanged("SPEECH_NORMAL");
+					this.OnSPEECH_NORMALChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_PRESSURED", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_PRESSURED
+		{
+			get
+			{
+				return this._SPEECH_PRESSURED;
+			}
+			set
+			{
+				if ((this._SPEECH_PRESSURED != value))
+				{
+					this.OnSPEECH_PRESSUREDChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_PRESSURED = value;
+					this.SendPropertyChanged("SPEECH_PRESSURED");
+					this.OnSPEECH_PRESSUREDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SPEECH_SLOWED", DbType="Char(1)")]
+		public System.Nullable<char> SPEECH_SLOWED
+		{
+			get
+			{
+				return this._SPEECH_SLOWED;
+			}
+			set
+			{
+				if ((this._SPEECH_SLOWED != value))
+				{
+					this.OnSPEECH_SLOWEDChanging(value);
+					this.SendPropertyChanging();
+					this._SPEECH_SLOWED = value;
+					this.SendPropertyChanged("SPEECH_SLOWED");
+					this.OnSPEECH_SLOWEDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tense", DbType="Char(1)")]
+		public System.Nullable<char> Tense
+		{
+			get
+			{
+				return this._Tense;
+			}
+			set
+			{
+				if ((this._Tense != value))
+				{
+					this.OnTenseChanging(value);
+					this.SendPropertyChanging();
+					this._Tense = value;
+					this.SendPropertyChanged("Tense");
+					this.OnTenseChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOUGHT_COMMENTS", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string THOUGHT_COMMENTS
+		{
+			get
+			{
+				return this._THOUGHT_COMMENTS;
+			}
+			set
+			{
+				if ((this._THOUGHT_COMMENTS != value))
+				{
+					this.OnTHOUGHT_COMMENTSChanging(value);
+					this.SendPropertyChanging();
+					this._THOUGHT_COMMENTS = value;
+					this.SendPropertyChanged("THOUGHT_COMMENTS");
+					this.OnTHOUGHT_COMMENTSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOUGHT_DELUSION", DbType="VarChar(3)")]
+		public string THOUGHT_DELUSION
+		{
+			get
+			{
+				return this._THOUGHT_DELUSION;
+			}
+			set
+			{
+				if ((this._THOUGHT_DELUSION != value))
+				{
+					this.OnTHOUGHT_DELUSIONChanging(value);
+					this.SendPropertyChanging();
+					this._THOUGHT_DELUSION = value;
+					this.SendPropertyChanged("THOUGHT_DELUSION");
+					this.OnTHOUGHT_DELUSIONChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOUGHT_LOOSE_ASSOC", DbType="VarChar(3)")]
+		public string THOUGHT_LOOSE_ASSOC
+		{
+			get
+			{
+				return this._THOUGHT_LOOSE_ASSOC;
+			}
+			set
+			{
+				if ((this._THOUGHT_LOOSE_ASSOC != value))
+				{
+					this.OnTHOUGHT_LOOSE_ASSOCChanging(value);
+					this.SendPropertyChanging();
+					this._THOUGHT_LOOSE_ASSOC = value;
+					this.SendPropertyChanged("THOUGHT_LOOSE_ASSOC");
+					this.OnTHOUGHT_LOOSE_ASSOCChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOUGHT_RACING", DbType="VarChar(3)")]
+		public string THOUGHT_RACING
+		{
+			get
+			{
+				return this._THOUGHT_RACING;
+			}
+			set
+			{
+				if ((this._THOUGHT_RACING != value))
+				{
+					this.OnTHOUGHT_RACINGChanging(value);
+					this.SendPropertyChanging();
+					this._THOUGHT_RACING = value;
+					this.SendPropertyChanged("THOUGHT_RACING");
+					this.OnTHOUGHT_RACINGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_THOUGHT_SLOW_RETARD", DbType="VarChar(3)")]
+		public string THOUGHT_SLOW_RETARD
+		{
+			get
+			{
+				return this._THOUGHT_SLOW_RETARD;
+			}
+			set
+			{
+				if ((this._THOUGHT_SLOW_RETARD != value))
+				{
+					this.OnTHOUGHT_SLOW_RETARDChanging(value);
+					this.SendPropertyChanging();
+					this._THOUGHT_SLOW_RETARD = value;
+					this.SendPropertyChanged("THOUGHT_SLOW_RETARD");
+					this.OnTHOUGHT_SLOW_RETARDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twentyfour_Hour_Care", DbType="Char(1)")]
+		public System.Nullable<char> Twentyfour_Hour_Care
+		{
+			get
+			{
+				return this._Twentyfour_Hour_Care;
+			}
+			set
+			{
+				if ((this._Twentyfour_Hour_Care != value))
+				{
+					this.OnTwentyfour_Hour_CareChanging(value);
+					this.SendPropertyChanging();
+					this._Twentyfour_Hour_Care = value;
+					this.SendPropertyChanged("Twentyfour_Hour_Care");
+					this.OnTwentyfour_Hour_CareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ambulation_appropriate", DbType="VarChar(3)")]
+		public string Ambulation_appropriate
+		{
+			get
+			{
+				return this._Ambulation_appropriate;
+			}
+			set
+			{
+				if ((this._Ambulation_appropriate != value))
+				{
+					this.OnAmbulation_appropriateChanging(value);
+					this.SendPropertyChanging();
+					this._Ambulation_appropriate = value;
+					this.SendPropertyChanged("Ambulation_appropriate");
+					this.OnAmbulation_appropriateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DRESS_GROOM", DbType="VarChar(3)")]
+		public string DRESS_GROOM
+		{
+			get
+			{
+				return this._DRESS_GROOM;
+			}
+			set
+			{
+				if ((this._DRESS_GROOM != value))
+				{
+					this.OnDRESS_GROOMChanging(value);
+					this.SendPropertyChanging();
+					this._DRESS_GROOM = value;
+					this.SendPropertyChanged("DRESS_GROOM");
+					this.OnDRESS_GROOMChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EYE_CONTACT", DbType="VarChar(3)")]
+		public string EYE_CONTACT
+		{
+			get
+			{
+				return this._EYE_CONTACT;
+			}
+			set
+			{
+				if ((this._EYE_CONTACT != value))
+				{
+					this.OnEYE_CONTACTChanging(value);
+					this.SendPropertyChanging();
+					this._EYE_CONTACT = value;
+					this.SendPropertyChanged("EYE_CONTACT");
+					this.OnEYE_CONTACTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Individual_Agitated", DbType="VarChar(3)")]
+		public string Individual_Agitated
+		{
+			get
+			{
+				return this._Individual_Agitated;
+			}
+			set
+			{
+				if ((this._Individual_Agitated != value))
+				{
+					this.OnIndividual_AgitatedChanging(value);
+					this.SendPropertyChanging();
+					this._Individual_Agitated = value;
+					this.SendPropertyChanged("Individual_Agitated");
+					this.OnIndividual_AgitatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Threatening_Behavior", DbType="VarChar(3)")]
+		public string Threatening_Behavior
+		{
+			get
+			{
+				return this._Threatening_Behavior;
+			}
+			set
+			{
+				if ((this._Threatening_Behavior != value))
+				{
+					this.OnThreatening_BehaviorChanging(value);
+					this.SendPropertyChanging();
+					this._Threatening_Behavior = value;
+					this.SendPropertyChanged("Threatening_Behavior");
+					this.OnThreatening_BehaviorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Irritable", DbType="Char(1)")]
+		public System.Nullable<char> Irritable
+		{
+			get
+			{
+				return this._Irritable;
+			}
+			set
+			{
+				if ((this._Irritable != value))
+				{
+					this.OnIrritableChanging(value);
+					this.SendPropertyChanging();
+					this._Irritable = value;
+					this.SendPropertyChanged("Irritable");
+					this.OnIrritableChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffKey", DbType="Int")]
+		public System.Nullable<int> StaffKey
+		{
+			get
+			{
+				return this._StaffKey;
+			}
+			set
+			{
+				if ((this._StaffKey != value))
+				{
+					this.OnStaffKeyChanging(value);
+					this.SendPropertyChanging();
+					this._StaffKey = value;
+					this.SendPropertyChanged("StaffKey");
+					this.OnStaffKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmAdmissionKey", DbType="Int")]
+		public System.Nullable<int> PgmAdmissionKey
+		{
+			get
+			{
+				return this._PgmAdmissionKey;
+			}
+			set
+			{
+				if ((this._PgmAdmissionKey != value))
+				{
+					this.OnPgmAdmissionKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmAdmissionKey = value;
+					this.SendPropertyChanged("PgmAdmissionKey");
+					this.OnPgmAdmissionKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PgmKey", DbType="Int")]
+		public System.Nullable<int> PgmKey
+		{
+			get
+			{
+				return this._PgmKey;
+			}
+			set
+			{
+				if ((this._PgmKey != value))
+				{
+					this.OnPgmKeyChanging(value);
+					this.SendPropertyChanging();
+					this._PgmKey = value;
+					this.SendPropertyChanged("PgmKey");
+					this.OnPgmKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EpisodeKey", DbType="Int")]
+		public System.Nullable<int> EpisodeKey
+		{
+			get
+			{
+				return this._EpisodeKey;
+			}
+			set
+			{
+				if ((this._EpisodeKey != value))
+				{
+					this.OnEpisodeKeyChanging(value);
+					this.SendPropertyChanging();
+					this._EpisodeKey = value;
+					this.SendPropertyChanged("EpisodeKey");
+					this.OnEpisodeKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time_Status", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Time_Status
+		{
+			get
+			{
+				return this._Time_Status;
+			}
+			set
+			{
+				if ((this._Time_Status != value))
+				{
+					this.OnTime_StatusChanging(value);
+					this.SendPropertyChanging();
+					this._Time_Status = value;
+					this.SendPropertyChanged("Time_Status");
+					this.OnTime_StatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Voided", DbType="Char(1)")]
+		public System.Nullable<char> Voided
+		{
+			get
+			{
+				return this._Voided;
+			}
+			set
+			{
+				if ((this._Voided != value))
+				{
+					this.OnVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._Voided = value;
+					this.SendPropertyChanged("Voided");
+					this.OnVoidedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateVoided", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateVoided
+		{
+			get
+			{
+				return this._DateVoided;
+			}
+			set
+			{
+				if ((this._DateVoided != value))
+				{
+					this.OnDateVoidedChanging(value);
+					this.SendPropertyChanging();
+					this._DateVoided = value;
+					this.SendPropertyChanged("DateVoided");
+					this.OnDateVoidedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="FD__CLIENT_FD__MENTAL_STATUS", Storage="_FD__CLIENT", ThisKey="ClientKey", OtherKey="OP__DOCID", IsForeignKey=true)]
+		public FD__CLIENT FD__CLIENT
+		{
+			get
+			{
+				return this._FD__CLIENT.Entity;
+			}
+			set
+			{
+				FD__CLIENT previousValue = this._FD__CLIENT.Entity;
+				if (((previousValue != value) 
+							|| (this._FD__CLIENT.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._FD__CLIENT.Entity = null;
+						previousValue.FD__MENTAL_STATUS.Remove(this);
+					}
+					this._FD__CLIENT.Entity = value;
+					if ((value != null))
+					{
+						value.FD__MENTAL_STATUS.Add(this);
+						this._ClientKey = value.OP__DOCID;
+					}
+					else
+					{
+						this._ClientKey = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("FD__CLIENT");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

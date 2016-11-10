@@ -15,6 +15,7 @@
       <Association Name="FD__CLIENT_FD__CONTACTNOTE" Member="FD__CONTACTNOTEs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__CONTACTNOTE" />
       <Association Name="FD__CLIENT_FD__PHYSGEN" Member="FD__PHYSGENs" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__PHYSGEN" />
       <Association Name="FD__CLIENT_FD__MED_HISTORY" Member="FD__MED_HISTORies" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__MED_HISTORY" />
+      <Association Name="FD__CLIENT_FD__MENTAL_STATUS" Member="FD__MENTAL_STATUS" ThisKey="OP__DOCID" OtherKey="ClientKey" Type="FD__MENTAL_STATUS" />
     </Type>
   </Table>
   <Table Name="dbo.FD__HISTORY_PHYS" Member="FD__HISTORY_PHies">
@@ -2038,6 +2039,90 @@
       <Column Name="Loc_Other" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FD__MENTAL_STATUS" Member="FD__MENTAL_STATUS">
+    <Type Name="FD__MENTAL_STATUS">
+      <Column Name="OP__DOCID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OP__PARENTID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OP__FOLDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AFFECT" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="AFFECT_ANXIOUS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Angry" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Apathetic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClientKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="COG_FUNC_ALERT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_AWARE_PERSON" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_AWARE_PLACE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_AWARE_TIME" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_COMMENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="COG_FUNC_CONCENTRATE" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="COG_FUNC_CONFUSED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_DROWSY" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_HYPERALERT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="COG_FUNC_INSIGHT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="COG_FUNC_JUDGMENT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="COG_FUNC_MEM_FUNC" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Date_Status" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DELUSION_CONTROL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DELUSION_GRANDEUR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DELUSION_IDEAS_REF" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DELUSION_PERSECUTION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DELUSION_SOMATIC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DELUSION_THOUGHT_BRDCST" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Depressed" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Despair" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Elated" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Euphoric" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Fearful" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Finalize_Update_Diag" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hopeless" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="IllusionsPresent" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Irritible" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Labile" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Other_TX_Facility" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Panic" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PERCEP_COMMENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PERCEP_HALLUC_AUDIT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PERCEP_HALLUC_OTHER" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PERCEP_HALLUC_OTHER_EXPLN" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="PERCEP_HALLUC_TACTILE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="PERCEP_HALLUC_VIS" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Pleasant" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Psych_Evaluation" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Self_Loathing" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SLEEP_APPET_COMMENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SPEECH_ABSENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_COMMENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SPEECH_HIGH_PITCH" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_LOUD" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_MUMBLED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_NORMAL" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_PRESSURED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="SPEECH_SLOWED" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Tense" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="THOUGHT_COMMENTS" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="THOUGHT_DELUSION" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="THOUGHT_LOOSE_ASSOC" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="THOUGHT_RACING" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="THOUGHT_SLOW_RETARD" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Twentyfour_Hour_Care" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ambulation_appropriate" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="DRESS_GROOM" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="EYE_CONTACT" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Individual_Agitated" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Threatening_Behavior" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Irritable" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StaffKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmAdmissionKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EpisodeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time_Status" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Voided" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DateVoided" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FD__CLIENT_FD__MENTAL_STATUS" Member="FD__CLIENT" ThisKey="ClientKey" OtherKey="OP__DOCID" Type="FD__CLIENT" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

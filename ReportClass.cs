@@ -93,7 +93,9 @@ namespace DPGPP
       [Description("SD - Allergies.rpt")]
       ALLERGIES,
       [Description("SD - Pain Evaluation 20160414.rpt")]
-      PAIN_EVALUATION
+      PAIN_EVALUATION,
+      [Description("SD - Comprehensive Mental  Status 20120519.rpt")]
+      COMPREHENSIVE_MENTAL_STATUS
    }
 
 
@@ -279,6 +281,7 @@ namespace DPGPP
             case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
             case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
             case CRYSTALREPORTS.PAIN_EVALUATION:
+            case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
                return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
             case CRYSTALREPORTS.NURSING_EVALUATION:
             case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
