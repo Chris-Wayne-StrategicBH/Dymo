@@ -21,7 +21,7 @@ namespace DPGPP
       public const int FULLNAME_INDEX = 2;
       public const int NOT_USED = 9999;
       public const PrinterDuplex DEFAULT_PRINTER_DUPLEX = PrinterDuplex.Simplex;
-      public const string DEFAULT_PRINTER_NAME = @"\\srvcosad1\Medical Records Printer";
+      public const string DEFAULT_PRINTER_NAME = "\\DEFAULT";
       public const string DEFAULT_DB_SERVER_NAME = "srvcostier";
       public const string DEFAULT_DB_NAME = "TIER_PVBH";
       public const string DEFAULT_DB_USER = "TIER";
@@ -33,7 +33,7 @@ namespace DPGPP
    public static class Globals
    {
       public static PrinterDuplex duplex = Constants.DEFAULT_PRINTER_DUPLEX;
-      public static string name = Constants.DEFAULT_PRINTER_NAME;
+      public static string Printername = Constants.DEFAULT_PRINTER_NAME;
       public static int mClientKey;
       public static int mAdmissionKey;
       public static DateTime mStartDate, mEndDate;
@@ -254,7 +254,7 @@ namespace DPGPP
 
          // Select the printer and print
          cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
-         cryRpt.PrintOptions.PrinterName = Globals.name;
+         cryRpt.PrintOptions.PrinterName = Globals.Printername;
          cryRpt.PrintToPrinter(1, false, 0, 0);
 
          cryRpt.Close();

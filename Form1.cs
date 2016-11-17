@@ -63,7 +63,10 @@ namespace DPGPP
 
       private void BTN_Print_Click(object sender, EventArgs e)
       {
-         Print_Reports();
+         if (Globals.Printername == Constants.DEFAULT_PRINTER_NAME)
+            MessageBox.Show("Invalid Printer Name.. Please select printer or Contact the Great Gazoo");
+         else
+            Print_Reports();
       }
 
       private void dataGridView2_SelectionChanged(object sender, EventArgs e)
@@ -381,7 +384,7 @@ namespace DPGPP
          else
          {
             Globals.duplex = (PrinterDuplex)printDialog.PrinterSettings.Duplex;
-            Globals.name = (string)printDialog.PrinterSettings.PrinterName;
+            Globals.Printername = (string)printDialog.PrinterSettings.PrinterName;
          }
 
       }
