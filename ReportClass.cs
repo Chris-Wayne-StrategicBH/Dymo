@@ -14,6 +14,8 @@ namespace DPGPP
 
    static class Constants
    {
+      public const int PARENT_NODE = 0;
+      public const int CHILD_NODE = 1;
       public const int OP__DOCID_INDEX = 0;
       public const int ADMISSIONKEY_INDEX = 0;
       public const int STARTDATE_INDEX = 1; 
@@ -265,7 +267,7 @@ namespace DPGPP
          GC.WaitForPendingFinalizers();
 
       }
-      public static GeneralRpt CreatePrintObject(string inPath, CRYSTALREPORTS reportType, int OP__DOCID)
+      public static GeneralRpt CreatePrintObject(string inPath, CRYSTALREPORTS reportType, int OP__DOCID, int nodeType)
       {
          switch(reportType)
          {
@@ -296,7 +298,11 @@ namespace DPGPP
             case CRYSTALREPORTS.CONTACT_NOTE:
             case CRYSTALREPORTS.GENERAL_ORDER:
             case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-               return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID, "AdmissionKey", 0);
+               if (nodeType == Constants.CHILD_NODE)
+                  return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID, "AdmissionKey", 0);
+               else
+                  return new GeneralRpt(inPath, "OP__DOCID", 0, "AdmissionKey", Globals.mAdmissionKey);
+
             case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
             case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:

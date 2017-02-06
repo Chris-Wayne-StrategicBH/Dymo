@@ -110,117 +110,175 @@ namespace DPGPP
                   break;
                case CRYSTALREPORTS.FACESHEET:
                   TreeNode parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED);
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
                   parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED);
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
                   AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
                   break;
                case CRYSTALREPORTS.HISTORY_PHYSICAL:
                   resultList = new List<Result>(Accessor.GetHistoryAndPhysicals(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
                   resultList = new List<Result>(Accessor.GetPsychEvals(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
                   resultList = new List<Result>(Accessor.GetPsychoSocials(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.NURSING_ASSESSMENT:
                   resultList = new List<Result>(Accessor.GetNursingAssessments(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.DISCHARGE_SUMMARY:
                   resultList = new List<Result>(Accessor.GetDischargeSummaries(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
                   resultList = new List<Result>(Accessor.GetDischargeAftercarePlans(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
                   resultList = new List<Result>(Accessor.GetPhysicianDischargeSummary(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.NURSING_EVALUATION:
                   resultList = new List<Result>(Accessor.GetNursingEvaluations(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
                   resultList = new List<Result>(Accessor.GetInitialContactNotes(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
                   resultList = new List<Result>(Accessor.GetPsychiatricProgressNotes(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.GENERAL_NOTE:
                   resultList = new List<Result>(Accessor.GetGeneralNotes(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.SOAP_NOTE:
                   resultList = new List<Result>(Accessor.GetSoapNotes(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.CONTACT_NOTE:
                   resultList = new List<Result>(Accessor.GetContactNotes(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.GENERAL_ORDER:
                   resultList = new List<Result>(Accessor.GetGeneralOrders(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
                   resultList = new List<Result>(Accessor.GetMedicationOrdersHistory(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
                   resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.EVALUATION_OF_RISK:
                   resultList = new List<Result>(Accessor.GetEvaluationOfRisk(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.FALL_RISK_EVALUATION:
                   resultList = new List<Result>(Accessor.GetFallRiskEval(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
                   resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
                   resultList = new List<Result>(Accessor.GetCognitiveAssessments(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
                   resultList = new List<Result>(Accessor.GetBodyAssessmentChecklist(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.ALLERGIES:
                   resultList = new List<Result>(Accessor.GetAllergies(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.PAIN_EVALUATION:
                   resultList = new List<Result>(Accessor.GetPainEvaluations(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
                   resultList = new List<Result>(Accessor.GetComprehensiveMentalStatus(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.MINI_MENTAL_STATUS:
                   resultList = new List<Result>(Accessor.GetMiniMentalStatus(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.FOLLOWUP_APPOINTMENT:
                   resultList = new List<Result>(Accessor.GetFollowupAppointments(Globals.mAdmissionKey));
-                  AddNodes(resultList.Count, resultList, rpt, RootNode);
+                  parentNode = new TreeNode();
+                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
             }
 
@@ -249,11 +307,43 @@ namespace DPGPP
 
       private void Print_Reports()
       {
-         // Print each node recursively.
+         string rootString;
+         TreeNode  rootNode;
+         bool printedParent = false;
+         GeneralRpt rptObj;
+         // Walk through Parent Nodes
+
+         rootString = CRYSTALREPORTS.ROOT.ToString(); 
+         rootNode = FindRootNode(rootString, treeView1.Nodes);
          TreeNodeCollection nodes = treeView1.Nodes;
-         foreach (TreeNode n in nodes)
+         foreach (TreeNode parentNode in rootNode.Nodes)
          {
-            PrintRecursive(n);
+            printedParent = false;
+            if (parentNode.Checked)
+            {
+               rptObj = (GeneralRpt)parentNode.Tag;
+               if (rptObj != null)
+               {
+                  rptObj.PrintCrystalReport();
+                  System.Diagnostics.Debug.WriteLine(parentNode.Text);
+                  printedParent = true;
+               }
+            }
+            if (!printedParent)
+            {
+               foreach (TreeNode childNode in parentNode.Nodes)
+               {
+                  if (childNode.Checked)
+                  {
+                     rptObj = (GeneralRpt)childNode.Tag;
+                     if (rptObj != null)
+                     {
+                        rptObj.PrintCrystalReport();
+                        System.Diagnostics.Debug.WriteLine(childNode.Text);
+                     }
+                  }
+               }
+            }
          }
       }
 
@@ -313,9 +403,9 @@ namespace DPGPP
 
       }
 
-      private void AddNodes(int count, List<Result> resultList, CRYSTALREPORTS rpt, TreeNode rootNode)
+      private void AddChildNodes(int count, List<Result> resultList, CRYSTALREPORTS rpt, TreeNode parentNode)
       {
-         TreeNode parentNode, childNode = null;
+         TreeNode childNode = null;
          string nodestr;
          DateTime datestr;
          GeneralRpt gp;
@@ -323,9 +413,6 @@ namespace DPGPP
 
          if (count > 0)
          {
-            parentNode = new TreeNode();
-            AddNode(rpt.ToString(), rpt, rootNode, parentNode, null);
-
             // Each individual OP__DOCID
             foreach (Result result in resultList)
             {
@@ -337,7 +424,7 @@ namespace DPGPP
 
                nodestr = result.OP__DOCID.ToString() + " --- " + datestr.ToShortDateString();
 
-               gp = GeneralRpt.CreatePrintObject(reportPath, rpt, result.OP__DOCID);
+               gp = GeneralRpt.CreatePrintObject(reportPath, rpt, result.OP__DOCID, Constants.CHILD_NODE);
                AddNode(nodestr, rpt, parentNode, childNode, gp);
             }
          }
