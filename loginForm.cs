@@ -15,7 +15,7 @@ namespace DPGPP
       public loginForm()
       {
          InitializeComponent();
-         this.AcceptButton = BTN_OK; 
+         this.AcceptButton = BTN_OK; // testing git
       }
 
       private void BTN_OK_Click(object sender, EventArgs e)
