@@ -15,9 +15,21 @@ namespace DPGPP
       public loginForm()
       {
          InitializeComponent();
+         this.AcceptButton = BTN_OK; 
       }
 
       private void BTN_OK_Click(object sender, EventArgs e)
+      {
+         CheckUserNamePassword();
+      }
+
+      private void BTN_Cancel_Click(object sender, EventArgs e)
+      {
+         this.DialogResult = DialogResult.Cancel;
+         this.Close();
+      }
+
+      private void CheckUserNamePassword()
       {
          if (TB_UserName.Text == "dpgpp" && TB_Password.Text == "7353")
          {
@@ -31,12 +43,7 @@ namespace DPGPP
             TB_UserName.Focus();
             TB_Password.Text = "";
          }
-      }
 
-      private void BTN_Cancel_Click(object sender, EventArgs e)
-      {
-         this.DialogResult = DialogResult.Cancel;
-         this.Close();
       }
    }
 }
