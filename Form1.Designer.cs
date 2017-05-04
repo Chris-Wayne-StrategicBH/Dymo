@@ -96,6 +96,7 @@
          this.TB_LastName.Name = "TB_LastName";
          this.TB_LastName.Size = new System.Drawing.Size(221, 20);
          this.TB_LastName.TabIndex = 3;
+         this.TB_LastName.Enter += new System.EventHandler(this.TB_LastName_Enter);
          this.TB_LastName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_LastName_KeyDown);
          // 
          // label1
@@ -113,6 +114,7 @@
          this.TB_FirstName.Name = "TB_FirstName";
          this.TB_FirstName.Size = new System.Drawing.Size(221, 20);
          this.TB_FirstName.TabIndex = 5;
+         this.TB_FirstName.Enter += new System.EventHandler(this.TB_FirstName_Enter);
          this.TB_FirstName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_FirstName_KeyDown);
          // 
          // label2

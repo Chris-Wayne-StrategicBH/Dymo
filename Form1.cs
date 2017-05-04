@@ -503,5 +503,17 @@ namespace DPGPP
             }
          }
       }
+
+      private void TB_LastName_Enter(object sender, EventArgs e)
+      {
+         this.TB_LastName.SelectionStart = 0;
+         this.TB_LastName.SelectionLength = TB_LastName.Text.Length;
+      }
+
+      private void TB_FirstName_Enter(object sender, EventArgs e)
+      {
+         this.TB_FirstName.SelectionStart = 0;
+         this.TB_FirstName.SelectionLength = TB_LastName.Text.Length;
+      }
    }
 }
