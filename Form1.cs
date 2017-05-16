@@ -513,7 +513,7 @@ namespace DPGPP
       private void TB_FirstName_Enter(object sender, EventArgs e)
       {
          this.TB_FirstName.SelectionStart = 0;
-         this.TB_FirstName.SelectionLength = TB_LastName.Text.Length;
+         this.TB_FirstName.SelectionLength = TB_FirstName.Text.Length;
       }
    }
 }
