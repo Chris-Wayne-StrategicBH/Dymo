@@ -78,7 +78,7 @@ namespace DPGPP
       GENERAL_ORDER,
       [Description("SD - Medication History 20120607.rpt")]
       MEDICATION_ORDERS_HISTORY,
-      [Description("SD - Administered Meds History 20130410.rpt")]
+      [Description("SD - Administered Meds History.rpt")]
       ADMINISTERED_MEDICATION_HISTORY,
       [Description("SD - Psychosocial Plan 20120521.rpt")]
       UPDATED_COMPREHENSIVE_ASSESSMENT,
