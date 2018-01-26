@@ -54,7 +54,7 @@ namespace DPGPP
       PHYSICIAN_DISCHARGE_SUMMARY,
       [Description("SD - Discharge Aftercare Plan 20141121.rpt")]
       DISCHARGE_AFTERCARE_PLAN,
-      [Description("SD - History and Physical 20130206.rpt")]
+      [Description("SD - History and Physical.rpt")]
       HISTORY_PHYSICAL,
       [Description("SD - Psychiatric Evaluation 20130201.rpt")]
       PSYCHIATRIC_EVALUATION,
