@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define HARDWARE
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,8 @@ using System.Reflection;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Drawing.Printing;
+using System.Windows.Forms;
+using System.Threading;
 
 namespace DPGPP
 {
@@ -257,7 +261,15 @@ namespace DPGPP
          // Select the printer and print
          cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
          cryRpt.PrintOptions.PrinterName = Globals.Printername;
+
+#if(HARDWARE)
          cryRpt.PrintToPrinter(1, false, 0, 0);
+#else
+         for (int i = 0; i < 100; i++)
+         {
+            Thread.Sleep(100);
+         }
+#endif
 
          cryRpt.Close();
          cryRpt.Clone();

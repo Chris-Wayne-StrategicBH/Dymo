@@ -29,9 +29,7 @@
       private void InitializeComponent()
       {
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-         this.BTN_Tree = new System.Windows.Forms.Button();
          this.dataGridView1 = new System.Windows.Forms.DataGridView();
-         this.BTN_Search = new System.Windows.Forms.Button();
          this.TB_LastName = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
          this.TB_FirstName = new System.Windows.Forms.TextBox();
@@ -53,22 +51,15 @@
          this.menuStrip1 = new System.Windows.Forms.MenuStrip();
          this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
          this.printerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+         this.lblStatus = new System.Windows.Forms.Label();
+         this.btnCancel = new System.Windows.Forms.Button();
+         this.progressBar1 = new System.Windows.Forms.ProgressBar();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
          this.menuStrip1.SuspendLayout();
          this.SuspendLayout();
-         // 
-         // BTN_Tree
-         // 
-         this.BTN_Tree.Location = new System.Drawing.Point(1114, 129);
-         this.BTN_Tree.Name = "BTN_Tree";
-         this.BTN_Tree.Size = new System.Drawing.Size(115, 47);
-         this.BTN_Tree.TabIndex = 0;
-         this.BTN_Tree.Text = "Build Tree";
-         this.BTN_Tree.UseVisualStyleBackColor = true;
-         this.BTN_Tree.Click += new System.EventHandler(this.BTN_Tree_Click);
          // 
          // dataGridView1
          // 
@@ -79,16 +70,6 @@
          this.dataGridView1.Size = new System.Drawing.Size(637, 150);
          this.dataGridView1.TabIndex = 1;
          this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-         // 
-         // BTN_Search
-         // 
-         this.BTN_Search.Location = new System.Drawing.Point(1114, 76);
-         this.BTN_Search.Name = "BTN_Search";
-         this.BTN_Search.Size = new System.Drawing.Size(115, 47);
-         this.BTN_Search.TabIndex = 2;
-         this.BTN_Search.Text = "Search";
-         this.BTN_Search.UseVisualStyleBackColor = true;
-         this.BTN_Search.Click += new System.EventHandler(this.BTN_Search_Click);
          // 
          // TB_LastName
          // 
@@ -192,7 +173,7 @@
          // 
          // BTN_Print
          // 
-         this.BTN_Print.Location = new System.Drawing.Point(1114, 182);
+         this.BTN_Print.Location = new System.Drawing.Point(1121, 76);
          this.BTN_Print.Name = "BTN_Print";
          this.BTN_Print.Size = new System.Drawing.Size(115, 47);
          this.BTN_Print.TabIndex = 14;
@@ -282,11 +263,40 @@
          this.printerToolStripMenuItem.Text = "Printer";
          this.printerToolStripMenuItem.Click += new System.EventHandler(this.printerToolStripMenuItem_Click);
          // 
+         // lblStatus
+         // 
+         this.lblStatus.AutoSize = true;
+         this.lblStatus.Location = new System.Drawing.Point(419, 698);
+         this.lblStatus.Name = "lblStatus";
+         this.lblStatus.Size = new System.Drawing.Size(35, 13);
+         this.lblStatus.TabIndex = 24;
+         this.lblStatus.Text = "label7";
+         // 
+         // btnCancel
+         // 
+         this.btnCancel.Location = new System.Drawing.Point(1121, 179);
+         this.btnCancel.Name = "btnCancel";
+         this.btnCancel.Size = new System.Drawing.Size(115, 47);
+         this.btnCancel.TabIndex = 25;
+         this.btnCancel.Text = "Cancel";
+         this.btnCancel.UseVisualStyleBackColor = true;
+         this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+         // 
+         // progressBar1
+         // 
+         this.progressBar1.Location = new System.Drawing.Point(360, 346);
+         this.progressBar1.Name = "progressBar1";
+         this.progressBar1.Size = new System.Drawing.Size(575, 23);
+         this.progressBar1.TabIndex = 26;
+         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(1248, 730);
+         this.Controls.Add(this.progressBar1);
+         this.Controls.Add(this.btnCancel);
+         this.Controls.Add(this.lblStatus);
          this.Controls.Add(this.pictureBox2);
          this.Controls.Add(this.pictureBox1);
          this.Controls.Add(this.treeView1);
@@ -305,9 +315,7 @@
          this.Controls.Add(this.TB_FirstName);
          this.Controls.Add(this.label1);
          this.Controls.Add(this.TB_LastName);
-         this.Controls.Add(this.BTN_Search);
          this.Controls.Add(this.dataGridView1);
-         this.Controls.Add(this.BTN_Tree);
          this.Controls.Add(this.menuStrip1);
          this.ForeColor = System.Drawing.SystemColors.WindowText;
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -327,9 +335,7 @@
 
       #endregion
 
-      private System.Windows.Forms.Button BTN_Tree;
       private System.Windows.Forms.DataGridView dataGridView1;
-      private System.Windows.Forms.Button BTN_Search;
       private System.Windows.Forms.TextBox TB_LastName;
       private System.Windows.Forms.Label label1;
       private System.Windows.Forms.TextBox TB_FirstName;
@@ -351,6 +357,9 @@
       private System.Windows.Forms.MenuStrip menuStrip1;
       private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
       private System.Windows.Forms.ToolStripMenuItem printerToolStripMenuItem;
+      private System.Windows.Forms.Label lblStatus;
+      private System.Windows.Forms.Button btnCancel;
+      private System.Windows.Forms.ProgressBar progressBar1;
    }
 }
 

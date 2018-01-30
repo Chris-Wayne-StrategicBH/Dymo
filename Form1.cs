@@ -13,6 +13,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Deployment.Application;
 using System.Drawing.Printing;
+using System.Threading;
 
 namespace DPGPP
 {
@@ -21,6 +22,7 @@ namespace DPGPP
    {
 
       PrinterSettings printerSettings = new PrinterSettings();
+      BackgroundWorker m_Worker;
 
       public Form1()
       {
@@ -29,6 +31,19 @@ namespace DPGPP
          {
             this.Text = string.Format("Daniel's Pretty Good Printing Program - v{0}", ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4));
          }
+
+         m_Worker = new BackgroundWorker();
+
+         // Create a background worker thread that ReportsProgress &
+         // SupportsCancellation
+         // Hook up the appropriate events.
+         m_Worker.DoWork += new DoWorkEventHandler(m_Worker_Print_Reports);
+         m_Worker.ProgressChanged += new ProgressChangedEventHandler
+            (m_Worker_ProgressChanged);
+         m_Worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler
+            (m_Worker_RunWorkerCompleted);
+         m_Worker.WorkerReportsProgress = true;
+         m_Worker.WorkerSupportsCancellation = true;
       }
 
       private void BTN_Tree_Click(object sender, EventArgs e)
@@ -66,7 +81,16 @@ namespace DPGPP
          if (Globals.Printername == Constants.DEFAULT_PRINTER_NAME)
             MessageBox.Show("Invalid Printer Name.. Please select printer or Contact the Great Gazoo");
          else
-            Print_Reports();
+         {
+            //Change the status of the buttons on the UI accordingly
+            //The start button is disabled as soon as the background operation is started
+            //The Cancel button is enabled so that the user can stop the operation 
+            //at any point of time during the execution
+            BTN_Print.Enabled = false;
+            btnCancel.Enabled = true;
+            // Kickoff the worker thread to begin it's DoWork function.
+            m_Worker.RunWorkerAsync();
+         }
       }
 
       private void dataGridView2_SelectionChanged(object sender, EventArgs e)
@@ -305,13 +329,20 @@ namespace DPGPP
          }
       }
 
-      private void Print_Reports()
+      private void m_Worker_Print_Reports(object sender, DoWorkEventArgs e)
       {
          string rootString;
          TreeNode  rootNode;
          bool printedParent = false;
          GeneralRpt rptObj;
+         int i = 0;
+         int childNodes = 0;
+         int numReports = 0;
+         int progress = 0;
+         int childIndex = 0;
          // Walk through Parent Nodes
+
+         numReports = GetNumberReports();
 
          rootString = CRYSTALREPORTS.ROOT.ToString(); 
          rootNode = FindRootNode(rootString, treeView1.Nodes);
@@ -325,12 +356,34 @@ namespace DPGPP
                if (rptObj != null)
                {
                   rptObj.PrintCrystalReport();
+                  childNodes = GetChildNodesChecked(parentNode);
+                  if (childNodes == 0)
+                     i++; // parent report no children like Facesheet
+                  else
+                     i += childNodes;
+                  string[] workerResult = new string[2];
+                  workerResult[0] = string.Format("Report Number {0} ", i);
+                  workerResult[1] = parentNode.Text;
+                  progress = GetProgress(i, numReports);
+                  m_Worker.ReportProgress(progress, workerResult);
+
                   System.Diagnostics.Debug.WriteLine(parentNode.Text);
                   printedParent = true;
+
+                  if (m_Worker.CancellationPending)
+                  {
+                     // Set the e.Cancel flag so that the WorkerCompleted event
+                     // knows that the process was cancelled.
+                     e.Cancel = true;
+                     m_Worker.ReportProgress(0);
+                     return;
+                  }
+
                }
             }
             if (!printedParent)
             {
+               childIndex = 0;
                foreach (TreeNode childNode in parentNode.Nodes)
                {
                   if (childNode.Checked)
@@ -338,13 +391,106 @@ namespace DPGPP
                      rptObj = (GeneralRpt)childNode.Tag;
                      if (rptObj != null)
                      {
+                        childIndex++;
                         rptObj.PrintCrystalReport();
-                        System.Diagnostics.Debug.WriteLine(childNode.Text);
+                        i++;
+                        string[] workerResult = new string[2];
+                        workerResult[0] = string.Format("Report Number {0} ", i);
+                        workerResult[1] = string.Format(parentNode.Text + " Report Number {0} " + childNode.Text, childIndex);
+                        progress = GetProgress(i, numReports);
+                        m_Worker.ReportProgress(progress, workerResult);
+
+
+                        System.Diagnostics.Debug.WriteLine(workerResult[1]);
+
+                        if (m_Worker.CancellationPending)
+                        {
+                           // Set the e.Cancel flag so that the WorkerCompleted event
+                           // knows that the process was cancelled.
+                           e.Cancel = true;
+                           m_Worker.ReportProgress(0);
+                           return;
+                        }
                      }
                   }
                }
             }
          }
+         progress = GetProgress(i, numReports);
+         string[] endResult = new string[2];
+         endResult[0] = string.Format("Task Complete...");
+         endResult[1] = string.Format("Printed {0} Out of {1} Reports!", i, numReports);
+         m_Worker.ReportProgress(progress, endResult);
+      }
+      private int GetProgress(int completed, int total)
+      {
+         int progress = 0;
+         float fProgress;
+
+         if (completed <= 0)
+            progress = 0;
+         else if (completed >= total)
+            progress = 100;
+         else
+         {
+            fProgress = (float)completed / total;
+            progress = (int) (fProgress * 100);
+
+         }
+         return (progress);
+      }
+
+      private int GetNumberReports()
+      {
+         string rootString;
+         TreeNode rootNode;
+         bool checkedParent = false;
+         int childNodesChecked = 0;
+         int totalNumberOfReports = 0;
+         GeneralRpt rptObj;
+         // Walk through Parent Nodes
+
+         rootString = CRYSTALREPORTS.ROOT.ToString();
+         rootNode = FindRootNode(rootString, treeView1.Nodes);
+         TreeNodeCollection nodes = treeView1.Nodes;
+         foreach (TreeNode parentNode in rootNode.Nodes)
+         {
+            checkedParent = false;
+            if (parentNode.Checked)
+            {
+               rptObj = (GeneralRpt)parentNode.Tag;
+               if (rptObj != null)
+                  checkedParent = true;
+            }
+            childNodesChecked = 0;
+            foreach (TreeNode childNode in parentNode.Nodes)
+            {
+               if (childNode.Checked)
+               {
+                  childNodesChecked++;
+               }
+            }
+            if (childNodesChecked > 0)
+               totalNumberOfReports += childNodesChecked;
+            else if (checkedParent)
+               totalNumberOfReports++;
+         }
+         return (totalNumberOfReports);
+      }
+
+      private int GetChildNodesChecked(TreeNode parentNode)
+      {
+         int childNodesChecked = 0;
+       
+         foreach (TreeNode childNode in parentNode.Nodes)
+         {
+            if (childNode.Checked)
+            {
+               childNodesChecked++;
+            }
+         }
+
+         return (childNodesChecked);
       }
 
       private TreeNode FindNode(string search_str, TreeNode tn)
@@ -515,5 +661,116 @@ namespace DPGPP
          this.TB_FirstName.SelectionStart = 0;
          this.TB_FirstName.SelectionLength = TB_FirstName.Text.Length;
       }
+
+      /// <summary>
+      /// On completed do the appropriate task
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      void m_Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+      {
+         // The background process is complete. We need to inspect
+         // our response to see if an error occurred, a cancel was
+         // requested or if we completed successfully.  
+         if (e.Cancelled)
+         {
+            lblStatus.Text = "Task Cancelled.";
+         }
+
+         // Check to see if an error occurred in the background process.
+
+         else if (e.Error != null)
+         {
+            lblStatus.Text = "Error while performing background operation.";
+         }
+         else
+         {
+            // Everything completed normally.
+            lblStatus.Text = "Task Completed...";
+         }
+
+         //Change the status of the buttons on the UI accordingly
+         BTN_Print.Enabled = true;
+         btnCancel.Enabled = false;
+      }
+
+      /// <summary>
+      /// Notification is performed here to the progress bar
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      void m_Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+      {
+
+         // This function fires on the UI thread so it's safe to edit
+
+         // the UI control directly, no funny business with Control.Invoke :)
+
+         // Update the progressBar with the integer supplied to us from the
+
+         // ReportProgress() function.  
+
+         progressBar1.Value = e.ProgressPercentage;
+         if (e.UserState != null)
+         {
+            string[] results = (string[])e.UserState;
+            lblStatus.Text = results[0] + results[1];
+         }
+      }
+
+      /// <summary>
+      /// Time consuming operations go here </br>
+      /// i.e. Database operations,Reporting
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      void m_Worker_DoWork(object sender, DoWorkEventArgs e)
+      {
+         // The sender is the BackgroundWorker object we need it to
+         // report progress and check for cancellation.
+         //NOTE : Never play with the UI thread here...
+         for (int i = 0; i < 100; i++)
+         {
+            Thread.Sleep(100);
+
+            // Periodically report progress to the main thread so that it can
+            // update the UI.  In most cases you'll just need to send an
+            // integer that will update a ProgressBar                    
+            m_Worker.ReportProgress(i);
+            // Periodically check if a cancellation request is pending.
+            // If the user clicks cancel the line
+            // m_AsyncWorker.CancelAsync(); if ran above.  This
+            // sets the CancellationPending to true.
+            // You must check this flag in here and react to it.
+            // We react to it by setting e.Cancel to true and leaving
+            if (m_Worker.CancellationPending)
+            {
+               // Set the e.Cancel flag so that the WorkerCompleted event
+               // knows that the process was cancelled.
+               e.Cancel = true;
+               m_Worker.ReportProgress(0);
+               return;
+            }
+         }
+
+         //Report 100% completion on operation completed
+         m_Worker.ReportProgress(100);
+      }
+
+      private void btnCancel_Click(object sender, EventArgs e)
+      {
+         if (m_Worker.IsBusy)
+         {
+
+            // Notify the worker thread that a cancel has been requested.
+
+            // The cancel will not actually happen until the thread in the
+
+            // DoWork checks the m_oWorker.CancellationPending flag. 
+
+            m_Worker.CancelAsync();
+         }
+      }
+
    }
 }
