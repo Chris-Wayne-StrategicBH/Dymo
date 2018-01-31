@@ -312,6 +312,8 @@ namespace DPGPP
 
       private void PrintRecursive(TreeNode treeNode)
       {
+         int errorCode;
+         string errorString = "";
          GeneralRpt rptObj;
          // Print the node.
          //System.Diagnostics.Debug.WriteLine(treeNode.Text);
@@ -323,7 +325,7 @@ namespace DPGPP
             {
                rptObj = (GeneralRpt)tn.Tag;
                if(rptObj != null)
-                  rptObj.PrintCrystalReport();
+                  errorCode = rptObj.PrintCrystalReport(ref errorString);
             }
             PrintRecursive(tn);
          }
@@ -338,9 +340,12 @@ namespace DPGPP
          int i = 0;
          int childNodes = 0;
          int numReports = 0;
-         int progress = 0;
          int childIndex = 0;
+         int errorCode = 0;
+         string errorString = "";
          // Walk through Parent Nodes
+
+         UpdateDisplay(0, 0, "", "", Constants.STARTING, "");
 
          numReports = GetNumberReports();
 
@@ -355,19 +360,15 @@ namespace DPGPP
                rptObj = (GeneralRpt)parentNode.Tag;
                if (rptObj != null)
                {
-                  rptObj.PrintCrystalReport();
+                  errorCode = rptObj.PrintCrystalReport(ref errorString);
                   childNodes = GetChildNodesChecked(parentNode);
                   if (childNodes == 0)
                      i++; // parent report no children like Facesheet
                   else
                      i += childNodes;
-                  string[] workerResult = new string[2];
-                  workerResult[0] = string.Format("Report Number {0} ", i);
-                  workerResult[1] = parentNode.Text;
-                  progress = GetProgress(i, numReports);
-                  m_Worker.ReportProgress(progress, workerResult);
 
-                  System.Diagnostics.Debug.WriteLine(parentNode.Text);
+                  UpdateDisplay(i, numReports, parentNode.Text, "", errorCode, errorString);
+
                   printedParent = true;
 
                   if (m_Worker.CancellationPending)
@@ -392,16 +393,9 @@ namespace DPGPP
                      if (rptObj != null)
                      {
                         childIndex++;
-                        rptObj.PrintCrystalReport();
+                        errorCode = rptObj.PrintCrystalReport(ref errorString);
                         i++;
-                        string[] workerResult = new string[2];
-                        workerResult[0] = string.Format("Report Number {0} ", i);
-                        workerResult[1] = string.Format(parentNode.Text + " Report Number {0} " + childNode.Text, childIndex);
-                        progress = GetProgress(i, numReports);
-                        m_Worker.ReportProgress(progress, workerResult);
-
-
-                        System.Diagnostics.Debug.WriteLine(workerResult[1]);
+                        UpdateDisplay(i, numReports, parentNode.Text, childNode.Text, errorCode, errorString);
 
                         if (m_Worker.CancellationPending)
                         {
@@ -416,11 +410,7 @@ namespace DPGPP
                }
             }
          }
-         progress = GetProgress(i, numReports);
-         string[] endResult = new string[2];
-         endResult[0] = string.Format("Task Complete...");
-         endResult[1] = string.Format("Printed {0} Out of {1} Reports!", i, numReports);
-         m_Worker.ReportProgress(progress, endResult);
+         UpdateDisplay(i, numReports, "", "", errorCode, errorString);
       }
       private int GetProgress(int completed, int total)
       {
@@ -438,6 +428,45 @@ namespace DPGPP
 
          }
          return (progress);
+      }
+
+      private void UpdateDisplay(int reportNumber, int totalReports, string parentName, string childName, int returnCode, string errorString)
+      {
+         string[] workerResult = new string[2];
+         int progress;
+
+         if (returnCode == Constants.RETURN_SUCCESS)
+         {
+            workerResult[0] = string.Format("Report Number {0}  Out of {1} ", reportNumber, totalReports);
+            workerResult[1] = string.Format("Parent: {0}  Child {1} ", parentName, childName);
+            progress = GetProgress(reportNumber, totalReports);
+            m_Worker.ReportProgress(progress, workerResult);
+
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
+         }
+         else if(returnCode == Constants.STARTING)
+         {
+            workerResult[0] = string.Format("Preparing to Print...");
+            workerResult[1] = string.Format("This is gonna be cool!");
+            m_Worker.ReportProgress(0, workerResult);
+
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
+
+         }
+         else
+         {
+            workerResult[0] = string.Format("Error...{0} ... ", errorString);
+            workerResult[1] = string.Format("Run for your lives!");
+            progress = GetProgress(reportNumber, totalReports);
+            m_Worker.ReportProgress(progress, workerResult);
+
+            System.Diagnostics.Debug.WriteLine(string.Format(" {0} {1}", workerResult[0], workerResult[1]));
+
+            for (int i = 0; i < 1000; i++)
+            {
+               Thread.Sleep(100);
+            }
+         }
       }
 
       private int GetNumberReports()
@@ -686,7 +715,7 @@ namespace DPGPP
          else
          {
             // Everything completed normally.
-            lblStatus.Text = "Task Completed...";
+            lblStatus.Text = "Task Completed...Wow that was fun!";
          }
 
          //Change the status of the buttons on the UI accordingly
@@ -770,6 +799,12 @@ namespace DPGPP
 
             m_Worker.CancelAsync();
          }
+      }
+
+      private void btnExit_Click(object sender, EventArgs e)
+      {
+         this.Close();
+         Application.Exit();
       }
 
    }

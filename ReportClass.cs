@@ -1,4 +1,4 @@
-﻿//#define HARDWARE
+﻿#define HARDWARE
 
 using System;
 using System.Collections.Generic;
@@ -19,6 +19,9 @@ namespace DPGPP
    static class Constants
    {
       public const int PARENT_NODE = 0;
+      public const int RETURN_SUCCESS = 0;
+      public const int RETURN_FILE_ACCESS_ERROR = -1;
+      public const int STARTING = 1;
       public const int CHILD_NODE = 1;
       public const int OP__DOCID_INDEX = 0;
       public const int ADMISSIONKEY_INDEX = 0;
@@ -32,7 +35,7 @@ namespace DPGPP
       public const string DEFAULT_DB_NAME = "TIER_PVBH";
       public const string DEFAULT_DB_USER = "TIER";
       public const string DEFAULT_DB_PASSWORD = "38$bH125";
-      public const string REPORT_BASE_PATH = @"\\srvcosad1\share\DPGPP\Reports";
+      public const string REPORT_BASE_PATH = @"\\srvcosad1\Share\DPGPP-2.0\Reports";
 
    }
 
@@ -173,7 +176,7 @@ namespace DPGPP
       {
          mPath = inPath;
       }
-      abstract public void PrintCrystalReport();
+      abstract public int PrintCrystalReport(ref string errorString);
    }
 
    public class GeneralRpt : ReportClass
@@ -231,8 +234,9 @@ namespace DPGPP
          cri2.paramval = 0;
          param.Add(cri2);
       }
-      public override void PrintCrystalReport()
+      public override int PrintCrystalReport(ref string errorString)
       {
+         int returnCode = Constants.RETURN_SUCCESS;
          Tables CrTables;
          ReportDocument cryRpt = new ReportDocument();
          ConnectionInfo crConnectionInfo = new ConnectionInfo();
@@ -243,40 +247,62 @@ namespace DPGPP
          crConnectionInfo.UserID = Constants.DEFAULT_DB_USER;
          crConnectionInfo.Password = Constants.DEFAULT_DB_PASSWORD;
 
-         cryRpt.Load(Path);
-         foreach (var crystalParameter in param)
+         errorString = "";
+
+         try
          {
-            cryRpt.SetParameterValue(crystalParameter.name, crystalParameter.GetParamValue());
-         }
+            cryRpt.Load(Path);
+            foreach (var crystalParameter in param)
+            {
+               cryRpt.SetParameterValue(crystalParameter.name, crystalParameter.GetParamValue());
+            }
 
-         CrTables = cryRpt.Database.Tables;
+            CrTables = cryRpt.Database.Tables;
 
-         foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
-         {
-            crtablelogoninfo = CrTable.LogOnInfo;
-            crtablelogoninfo.ConnectionInfo = crConnectionInfo;
-            CrTable.ApplyLogOnInfo(crtablelogoninfo);
-         }
+            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
+            {
+               crtablelogoninfo = CrTable.LogOnInfo;
+               crtablelogoninfo.ConnectionInfo = crConnectionInfo;
+               CrTable.ApplyLogOnInfo(crtablelogoninfo);
+            }
 
-         // Select the printer and print
-         cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
-         cryRpt.PrintOptions.PrinterName = Globals.Printername;
+            // Select the printer and print
+            cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
+            cryRpt.PrintOptions.PrinterName = Globals.Printername;
 
 #if(HARDWARE)
-         cryRpt.PrintToPrinter(1, false, 0, 0);
+            cryRpt.PrintToPrinter(1, false, 0, 0);
 #else
-         for (int i = 0; i < 100; i++)
-         {
-            Thread.Sleep(100);
-         }
+            for (int i = 0; i < 100; i++)
+            {
+               Thread.Sleep(100);
+            }
 #endif
 
-         cryRpt.Close();
-         cryRpt.Clone();
-         cryRpt.Dispose();
-         cryRpt = null;
-         GC.Collect();
-         GC.WaitForPendingFinalizers();
+            cryRpt.Close();
+            cryRpt.Clone();
+            cryRpt.Dispose();
+            cryRpt = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+         }
+         catch(CrystalReportsException engEx)
+         {
+            string localErrorString;
+            string exceptionString = engEx.ToString();
+            localErrorString = string.Format("File Not found.. " + Path.Substring(0, 50) + "... " + exceptionString.Substring(0, 20));
+            errorString = localErrorString;
+            cryRpt.Close();
+            cryRpt.Clone();
+            cryRpt.Dispose();
+            cryRpt = null;
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            returnCode = Constants.RETURN_FILE_ACCESS_ERROR;
+
+         }
+         return (returnCode);
 
       }
       public static GeneralRpt CreatePrintObject(string inPath, CRYSTALREPORTS reportType, int OP__DOCID, int nodeType)
