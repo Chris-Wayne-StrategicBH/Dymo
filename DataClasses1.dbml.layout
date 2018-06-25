@@ -233,5 +233,11 @@
         <elementListCompartment Id="4099586f-7806-466f-bc8a-0ea1298d7412" absoluteBounds="3.1399999999999997, 6.335, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="88a4b763-03ca-4312-b48d-2c847f23c3d5" isExpanded="false" absoluteBounds="6.625, 6.125, 2, 0.45">
+      <DataClassMoniker Name="/DataClasses1DataContext/BLU_Program" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18da8ea5-f226-48d1-85e8-be3017b06978" absoluteBounds="6.64, 6.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

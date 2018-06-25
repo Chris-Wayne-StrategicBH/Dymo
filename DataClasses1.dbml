@@ -2190,4 +2190,19 @@
       <Column Name="Phone" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.BLU_Programs" Member="BLU_Programs">
+    <Type Name="BLU_Program">
+      <Column Name="PgmKey" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PgmName" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="PgmNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DeptKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LocCode" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="BatchType" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="FacesheetName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="TableName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Beds" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ServiceTypeKey" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Inactive" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

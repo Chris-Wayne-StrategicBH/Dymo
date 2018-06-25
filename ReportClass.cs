@@ -25,8 +25,9 @@ namespace DPGPP
       public const int CHILD_NODE = 1;
       public const int OP__DOCID_INDEX = 0;
       public const int ADMISSIONKEY_INDEX = 0;
-      public const int STARTDATE_INDEX = 1; 
-      public const int ENDDATE_INDEX = 2; 
+      public const int PROGRAMNAME_INDEX = 1;
+      public const int STARTDATE_INDEX = 2; 
+      public const int ENDDATE_INDEX = 3; 
       public const int FULLNAME_INDEX = 2;
       public const int NOT_USED = 9999;
       public const PrinterDuplex DEFAULT_PRINTER_DUPLEX = PrinterDuplex.Simplex;
@@ -286,12 +287,14 @@ namespace DPGPP
             GC.Collect();
             GC.WaitForPendingFinalizers();
          }
-         catch(CrystalReportsException engEx)
+
+         catch(Exception engEx)
          {
             string localErrorString;
             string exceptionString = engEx.ToString();
-            localErrorString = string.Format("File Not found.. " + Path.Substring(0, 50) + "... " + exceptionString.Substring(0, 20));
-            errorString = localErrorString;
+                //localErrorString = string.Format("File Not found.. " + Path.Substring(0, 50) + "... " + exceptionString.Substring(0, 20));
+                localErrorString = string.Format(exceptionString.Substring(0, 150));
+                errorString = localErrorString;
             cryRpt.Close();
             cryRpt.Clone();
             cryRpt.Dispose();

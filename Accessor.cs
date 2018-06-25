@@ -13,17 +13,19 @@ namespace DPGPP
    public class ProgramClientResult
    {
       public System.Int32 AdmissionKey
-      { get; set; }
+         { get; set; }
+      public System.String ProgramName
+         { get; set; }
       public System.Nullable<System.DateTime> StartDate
-      { get; set; }
+         { get; set; }
       public System.Nullable<System.DateTime> EndDate
-      { get; set; }
+         { get; set; }
    }
 
    public class Result
    {
       public System.Int32 OP__DOCID
-      { get; set; }
+      { get; set;}
       public System.Nullable<System.DateTime> Date_Doc
       { get; set; }
       public System.Nullable<System.DateTime> Time_Doc
@@ -81,9 +83,9 @@ namespace DPGPP
        {
 
           DataClasses1DataContext dc = new DataClasses1DataContext();
-          var results = from e in dc.GetTable<FD__CLIENT>()
-                        where (e.NameL.StartsWith(LName) && e.NameF.StartsWith(FName))
-                        select e;
+          var results = from c in dc.GetTable<FD__CLIENT>()
+                        where (c.NameL.StartsWith(LName) && c.NameF.StartsWith(FName))
+                        select c;
 
 
           return results.ToList<FD__CLIENT>();
@@ -100,13 +102,15 @@ namespace DPGPP
        {
 
           DataClasses1DataContext dc = new DataClasses1DataContext();
-          var results = (from e in dc.GetTable<FD__PROGRAM_CLIENT>()
-                        where (e.ClientKey == clientkey)
-                        select new ProgramClientResult
+          var results = (from pc in dc.GetTable<FD__PROGRAM_CLIENT>()
+                         join p in dc.GetTable<BLU_Program>() on pc.PgmKey equals p.PgmKey
+                         where (pc.ClientKey == clientkey)
+                         select new ProgramClientResult
                         {
-                           AdmissionKey = (Int32) e.AdmissionKey,
-                           StartDate = e.Create_Date,
-                           EndDate = e.Date_Discharged_Program
+                           AdmissionKey = (Int32) pc.AdmissionKey,
+                           ProgramName = p.PgmName,
+                           StartDate = pc.Create_Date,
+                           EndDate = pc.Date_Discharged_Program
                         });
 
 
@@ -450,8 +454,7 @@ namespace DPGPP
                          where (e.AdmissionKey == admissionkey)
                          select new Result { OP__DOCID = (int)e.MTPKey, Date_Doc = e.DateDoc });
 
-
-          return results.ToList<Result>();
+         return results.ToList<Result>();
        }
 
        public static List<Result> GetCognitiveAssessments(int admissionkey)

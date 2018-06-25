@@ -257,10 +257,17 @@ namespace DPGPP
                   AddChildNodes(resultList.Count, resultList, rpt, parentNode);
                   break;
                case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
-                  resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
+                  try
+                  {
+                     resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
+                     parentNode = new TreeNode();
+                     AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
+                     AddChildNodes(resultList.Count, resultList, rpt, parentNode);
+                  }
+                  catch(Exception ex)
+                  {
+                     Console.WriteLine(ex.ToString());
+                  }
                   break;
                case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
                   resultList = new List<Result>(Accessor.GetCognitiveAssessments(Globals.mAdmissionKey));
