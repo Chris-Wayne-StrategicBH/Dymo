@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+//using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Reflection;
+//using System.Reflection;
 using System.IO;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
+using DYMO.Label.Framework;
 using System.Deployment.Application;
 using System.Drawing.Printing;
 using System.Threading;
+using Color = System.Drawing.Color;
 
-namespace DPGPP
+namespace RPGPP
 {
 
    public partial class Form1 : Form
@@ -23,13 +23,16 @@ namespace DPGPP
 
       PrinterSettings printerSettings = new PrinterSettings();
       BackgroundWorker m_Worker;
+      Library.SortableBindingList<ClientResult> mClients;
+      //private ILabel _label;
+
 
       public Form1()
       {
          InitializeComponent();
          if (ApplicationDeployment.IsNetworkDeployed)
          {
-            this.Text = string.Format("Daniel's Pretty Good Printing Program - v{0}", ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4));
+            this.Text = string.Format("Regime Prescription Printing Program - v{0}", ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString(4));
          }
 
          m_Worker = new BackgroundWorker();
@@ -46,378 +49,335 @@ namespace DPGPP
          m_Worker.WorkerSupportsCancellation = true;
       }
 
-      private void BTN_Tree_Click(object sender, EventArgs e)
-      {
-         PrepareTree();
-      }
-
       private void BTN_Search_Click(object sender, EventArgs e)
       {
-         String NameL = TB_LastName.Text;
-         String NameF = TB_FirstName.Text;
-         List<FD__CLIENT> clients = new List<FD__CLIENT>(Accessor.GetClientByName(NameL, NameF));
-         dataGridView1.DataSource = clients;
-         LBL_Rows.Text = clients.Count().ToString();
+         SearchClients();
       }
 
 
-      private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+      private void DGV_Clients_SelectionChanged(object sender, EventArgs e)
       {
          int row;
 
-         row = dataGridView1.CurrentCell.RowIndex;
-         LBL_SelectedRow.Text = row.ToString();
-         LBL_Client_OP__DOCID.Text = dataGridView1.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value.ToString();
-         LBL_Client_FullName.Text = dataGridView1.Rows[row].Cells[Constants.FULLNAME_INDEX].Value.ToString();
-         Globals.mClientKey = (int)dataGridView1.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value;
+         if (DGV_Clients.CurrentCell != null)
+         {
+
+            row = DGV_Clients.CurrentCell.RowIndex;
+            LBL_SelectedRow.Text = row.ToString();
+            LBL_Client_OP__DOCID.Text = DGV_Clients.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value.ToString();
+            LBL_Client_FullName.Text = DGV_Clients.Rows[row].Cells[Constants.FULLNAME_INDEX].Value.ToString();
+            Globals.mClientKey = (int)DGV_Clients.Rows[row].Cells[Constants.OP__DOCID_INDEX].Value;
+
+            Image image;
+            image = Accessor.GetClientPhoto(Globals.mClientKey);
+            if (image != null)
+               PB_Client.Image = Accessor.GetClientPhoto(Globals.mClientKey);
+            else
+            {
+               if (DGV_Clients.Rows[row].Cells[Constants.GENDER_INDEX].Value.ToString() == "M")
+                  PB_Client.ImageLocation = Constants.DEFAULTMALEIMAGE;
+               else
+                  PB_Client.ImageLocation = Constants.DEFAULTFEMALEIMAGE;
+            }
 
 
-         List<ProgramClientResult> admissions = new List<ProgramClientResult>(Accessor.GetAdmissionsFromClientKey(Globals.mClientKey));
-         dataGridView2.DataSource = admissions;
+            List<ProgramClientResult> admissions = new List<ProgramClientResult>(Accessor.GetAdmissionsFromClientKey(Globals.mClientKey));
+            DGV_Admissions.DataSource = admissions;
+         }
       }
 
       private void BTN_Print_Click(object sender, EventArgs e)
       {
-         if (Globals.Printername == Constants.DEFAULT_PRINTER_NAME)
-            MessageBox.Show("Invalid Printer Name.. Please select printer or Contact the Great Gazoo");
-         else
-         {
-            //Change the status of the buttons on the UI accordingly
-            //The start button is disabled as soon as the background operation is started
-            //The Cancel button is enabled so that the user can stop the operation 
-            //at any point of time during the execution
-            BTN_Print.Enabled = false;
-            btnCancel.Enabled = true;
-            // Kickoff the worker thread to begin it's DoWork function.
-            m_Worker.RunWorkerAsync();
-         }
+         //Change the status of the buttons on the UI accordingly
+         //The start button is disabled as soon as the background operation is started
+         //The Cancel button is enabled so that the user can stop the operation 
+         //at any point of time during the execution
+         BTN_Print.Enabled = false;
+         btnCancel.Enabled = true;
+         // Kickoff the worker thread to begin it's DoWork function.
+         m_Worker.RunWorkerAsync();
+
+         //Print_Reports();
+
+         //BTN_Print.Enabled = true;
+         //btnCancel.Enabled = false;
+
+
       }
 
-      private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+      private void DGV_Admissions_SelectionChanged(object sender, EventArgs e)
       {
          int row;
+         string status;
 
-         row = dataGridView2.CurrentCell.RowIndex;
-         LBL_AdmissionKey.Text = dataGridView2.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value.ToString();
-         Globals.mAdmissionKey = (int)dataGridView2.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value;
-         if (dataGridView2.Rows[row].Cells[Constants.STARTDATE_INDEX].Value == null)
+         row = DGV_Admissions.CurrentCell.RowIndex;
+         LBL_AdmissionKey.Text = DGV_Admissions.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value.ToString();
+         LBL_Program.Text = DGV_Admissions.Rows[row].Cells[Constants.PROGRAMNAME_INDEX].Value.ToString();
+         Globals.mAdmissionKey = (int)DGV_Admissions.Rows[row].Cells[Constants.ADMISSIONKEY_INDEX].Value;
+         if (DGV_Admissions.Rows[row].Cells[Constants.STARTDATE_INDEX].Value == null)
             Globals.mStartDate = DateTime.Now;
          else
-            Globals.mStartDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.STARTDATE_INDEX].Value;
+            Globals.mStartDate = (DateTime)DGV_Admissions.Rows[row].Cells[Constants.STARTDATE_INDEX].Value;
 
-         if (dataGridView2.Rows[row].Cells[Constants.ENDDATE_INDEX].Value == null)
+         if (DGV_Admissions.Rows[row].Cells[Constants.ENDDATE_INDEX].Value == null)
             Globals.mEndDate = DateTime.Now;
          else
-            Globals.mEndDate = (DateTime)dataGridView2.Rows[row].Cells[Constants.ENDDATE_INDEX].Value;
-         PrepareTree();
+            Globals.mEndDate = (DateTime)DGV_Admissions.Rows[row].Cells[Constants.ENDDATE_INDEX].Value;
 
-      }
+         // Prescription Grid
+         List<PrescriptionResult> prescriptions = new List<PrescriptionResult>(Accessor.GetPrescriptions(Globals.mAdmissionKey));
+         DGV_Prescriptions.DataSource = prescriptions;
+         DGV_Prescriptions.AutoResizeColumns();
 
-      private void PrepareTree()
-      {
-         TreeNode RootNode = new TreeNode();
-         GeneralRpt gp;
-         List<Result> resultList;
-         // chop the tree down
-         treeView1.Nodes.Clear();
 
-         foreach (CRYSTALREPORTS rpt in Enum.GetValues(typeof(CRYSTALREPORTS)))
+         foreach (DataGridViewRow currentrow in DGV_Admissions.Rows)
          {
-            int val = (int)rpt;
-            Console.WriteLine(rpt + " " + val.ToString());
-            string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
-
-            switch (rpt)
-            {
-               case CRYSTALREPORTS.ROOT:
-                  AddRootNode(rpt.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), "Admission : " + Globals.mAdmissionKey.ToString(), RootNode);
-                  break;
-               case CRYSTALREPORTS.FACESHEET:
-                  TreeNode parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  break;
-               case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  break;
-               case CRYSTALREPORTS.HISTORY_PHYSICAL:
-                  resultList = new List<Result>(Accessor.GetHistoryAndPhysicals(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
-                  resultList = new List<Result>(Accessor.GetPsychEvals(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
-                  resultList = new List<Result>(Accessor.GetPsychoSocials(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.NURSING_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetNursingAssessments(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.DISCHARGE_SUMMARY:
-                  resultList = new List<Result>(Accessor.GetDischargeSummaries(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
-                  resultList = new List<Result>(Accessor.GetDischargeAftercarePlans(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
-                  resultList = new List<Result>(Accessor.GetPhysicianDischargeSummary(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.NURSING_EVALUATION:
-                  resultList = new List<Result>(Accessor.GetNursingEvaluations(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
-                  resultList = new List<Result>(Accessor.GetInitialContactNotes(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
-                  resultList = new List<Result>(Accessor.GetPsychiatricProgressNotes(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.GENERAL_NOTE:
-                  resultList = new List<Result>(Accessor.GetGeneralNotes(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.SOAP_NOTE:
-                  resultList = new List<Result>(Accessor.GetSoapNotes(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.CONTACT_NOTE:
-                  resultList = new List<Result>(Accessor.GetContactNotes(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.GENERAL_ORDER:
-                  resultList = new List<Result>(Accessor.GetGeneralOrders(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
-                  resultList = new List<Result>(Accessor.GetMedicationOrdersHistory(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetUpdatedComprehensiveAssessment(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.EVALUATION_OF_RISK:
-                  resultList = new List<Result>(Accessor.GetEvaluationOfRisk(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-                  resultList = new List<Result>(Accessor.GetFallRiskEval(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  gp = GeneralRpt.CreatePrintObject(reportPath, rpt, Constants.NOT_USED, Constants.PARENT_NODE);
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, gp);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
-                  try
-                  {
-                     resultList = new List<Result>(Accessor.GetMasterTreatmentPlan(Globals.mAdmissionKey));
-                     parentNode = new TreeNode();
-                     AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                     AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  }
-                  catch(Exception ex)
-                  {
-                     Console.WriteLine(ex.ToString());
-                  }
-                  break;
-               case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
-                  resultList = new List<Result>(Accessor.GetCognitiveAssessments(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
-                  resultList = new List<Result>(Accessor.GetBodyAssessmentChecklist(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.ALLERGIES:
-                  resultList = new List<Result>(Accessor.GetAllergies(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.PAIN_EVALUATION:
-                  resultList = new List<Result>(Accessor.GetPainEvaluations(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
-                  resultList = new List<Result>(Accessor.GetComprehensiveMentalStatus(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.MINI_MENTAL_STATUS:
-                  resultList = new List<Result>(Accessor.GetMiniMentalStatus(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-               case CRYSTALREPORTS.FOLLOWUP_APPOINTMENT:
-                  resultList = new List<Result>(Accessor.GetFollowupAppointments(Globals.mAdmissionKey));
-                  parentNode = new TreeNode();
-                  AddNode(rpt.ToString(), rpt, RootNode, parentNode, null);
-                  AddChildNodes(resultList.Count, resultList, rpt, parentNode);
-                  break;
-            }
-
+            status = currentrow.Cells[Constants.STATUS_INDEX].Value.ToString();
+            if (status.Contains('A'))
+               currentrow.DefaultCellStyle.BackColor = System.Drawing.Color.Green;
+            else
+               currentrow.DefaultCellStyle.BackColor = System.Drawing.Color.Red;
          }
 
+         DGV_Admissions.AutoResizeColumns();
+
+
       }
 
-      private void PrintRecursive(TreeNode treeNode)
+      /*
+      private void SetupLabelObject()
       {
-         int errorCode;
-         string errorString = "";
-         GeneralRpt rptObj;
-         // Print the node.
-         //System.Diagnostics.Debug.WriteLine(treeNode.Text);
-         //MessageBox.Show(treeNode.Text);
-         // Print each node recursively.
-         foreach (TreeNode tn in treeNode.Nodes)
+         // clear Printers list
+         CB_Printers.Items.Clear();
+
+         if (_label == null)
+            return;
+
+         foreach (string objName in _label.ObjectNames)
+            if (!string.IsNullOrEmpty(objName))
+               CB_Printers.Items.Add(objName);
+
+         if (CB_Printers.Items.Count > 0)
+            CB_Printers.SelectedIndex = 0;
+      }
+      private void SetupLabelWriterSelection()
+      {
+         // clear all items first
+         CB_Printers.Items.Clear();
+
+         foreach (IPrinter printer in Framework.GetPrinters())
+            CB_Printers.Items.Add(printer.Name);
+
+         if (CB_Printers.Items.Count > 0)
+            CB_Printers.SelectedIndex = 0;
+
+         CB_Printers.Enabled = CB_Printers.Items.Count > 0;
+      }
+      */
+
+
+      private void PopulateLabelClass(DataGridViewRow currentrow, ref ILabel _label)
+      {
+         MedPrescriptionResult prescription;
+         int OP__DOCID = (int)currentrow.Cells[Constants.PRESCRIPTION_OP__DOCID].Value;
+
+         prescription = Accessor.GetPrescription(OP__DOCID);
+
+         foreach (DYMOLABEL textObject in Enum.GetValues(typeof(DYMOLABEL)))
          {
-            if(tn.Checked)
+            int val = (int)textObject;
+            Console.WriteLine(textObject + " " + val.ToString());
+
+            switch (textObject)
             {
-               rptObj = (GeneralRpt)tn.Tag;
-               if(rptObj != null)
-                  errorCode = rptObj.PrintCrystalReport(ref errorString);
+               case DYMOLABEL.PATIENT_NAME:
+                  _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Patient);
+                  break;
+               case DYMOLABEL.PATIENT_DOB:
+                  if (prescription.Dob == null)
+                  {
+                     DateTime Dob = DateTime.Now;
+                     prescription.Dob = Dob;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Dob.ToString());
+                  }
+                  else
+                  {
+                     DateTime Dob = prescription.Dob.Value;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), Dob.ToString("MM.dd.yyyy"));
+                  }
+                  break;
+               case DYMOLABEL.PATIENT_ADDRESS:
+                  _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Address);
+                  break;
+               case DYMOLABEL.DATE_PRESCRIBED:
+                  if (prescription.DatePrescribed == null)
+                  {
+                     DateTime DatePrescribed = DateTime.Now;
+                     prescription.DatePrescribed = DatePrescribed;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.DatePrescribed.ToString());
+                  }
+                  else
+                  {
+                     DateTime DatePrescribed = prescription.DatePrescribed.Value;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), DatePrescribed.ToString("MM.dd.yyyy"));
+                  }
+                  break;
+               case DYMOLABEL.TIME_PRESCRIBED:
+                  if (prescription.TimePrescribed == null)
+                  {
+                     DateTime TimePrescribed = DateTime.Now;
+                     prescription.TimePrescribed = TimePrescribed;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.TimePrescribed.ToString());
+                  }
+                  else
+                  {
+                     DateTime TimePrescribed = prescription.TimePrescribed.Value;
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), TimePrescribed.ToString("HH:MM"));
+                  }
+                  break;
+               case DYMOLABEL.PRESCRIBER:
+                  _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Prescriber);
+                  break;
+               case DYMOLABEL.NPI:
+                  _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.PrescriberNPI);
+                  break;
+               case DYMOLABEL.DEA:
+                  _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.PrescriberDEA);
+                  break;
+               case DYMOLABEL.SUPERVISOR_LABEL:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), "Supervisor");
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.SUPERVISOR:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Supervisor);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.SUPERVISOR_NPI_LABEL:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), "NPI:");
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.SUPERVISOR_NPI:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.SupervisorNPI);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.SUPERVISOR_DEA_LABEL:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), "DEA:");
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.SUPERVISOR_DEA:
+                  if (prescription.Supervisor != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.SupervisorDEA);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.DRUG:
+                  if (prescription.Drug != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Drug);
+                  break;
+               case DYMOLABEL.GENERIC:
+                  if (prescription.Generic != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Generic);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.STRENGTH:
+                  if (prescription.Strength != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Strength);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.QUANTITY:
+                  if (prescription.Quantity != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Quantity.ToString());
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.DOSE:
+                  if (prescription.Dose != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Dose);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.FREQUENCY:
+                  if (prescription.Frequency != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Frequency);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.RATIONALE:
+                  if (prescription.Rationale != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Rationale);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.REFILLS:
+                  if (prescription.Refills != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Refills);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
+               case DYMOLABEL.INSTRUCTIONS:
+                  if (prescription.Instructions != null)
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), prescription.Instructions);
+                  else
+                     _label.SetObjectText(Translation.GetEnumDescription(textObject), " ");
+                  break;
             }
-            PrintRecursive(tn);
+
          }
       }
 
       private void m_Worker_Print_Reports(object sender, DoWorkEventArgs e)
       {
-         string rootString;
-         TreeNode  rootNode;
-         bool printedParent = false;
-         GeneralRpt rptObj;
          int i = 0;
-         int childNodes = 0;
          int numReports = 0;
-         int childIndex = 0;
          int errorCode = 0;
          string errorString = "";
-         // Walk through Parent Nodes
+         ILabel _label;
+         string localPrinter = "";
 
-         UpdateDisplay(0, 0, "", "", Constants.STARTING, "");
-
-         numReports = GetNumberReports();
-
-         rootString = CRYSTALREPORTS.ROOT.ToString(); 
-         rootNode = FindRootNode(rootString, treeView1.Nodes);
-         TreeNodeCollection nodes = treeView1.Nodes;
-         foreach (TreeNode parentNode in rootNode.Nodes)
+         if (zedilabs.com.PrinterOffline.GetDymoPrinter())
          {
-            printedParent = false;
-            if (parentNode.Checked)
+
+            foreach (IPrinter localprinterlist in Framework.GetPrinters())
+               localPrinter = localprinterlist.Name;
+
+            if (localPrinter != "")
             {
-               rptObj = (GeneralRpt)parentNode.Tag;
-               if (rptObj != null)
+               _label = Framework.Open(Constants.LABEL_PATH);
+
+               UpdateDisplay(0, 0, Constants.STARTING, "");
+               numReports = GetNumberReports();
+
+               foreach (DataGridViewRow currentrow in DGV_Prescriptions.Rows)
                {
-                  errorCode = rptObj.PrintCrystalReport(ref errorString);
-                  childNodes = GetChildNodesChecked(parentNode);
-                  if (childNodes == 0)
-                     i++; // parent report no children like Facesheet
-                  else
-                     i += childNodes;
-
-                  UpdateDisplay(i, numReports, parentNode.Text, "", errorCode, errorString);
-
-                  printedParent = true;
-
-                  if (m_Worker.CancellationPending)
+                  bool selected = (bool)currentrow.Cells[Constants.CHECK_INDEX].Value;
+                  if (selected)
                   {
-                     // Set the e.Cancel flag so that the WorkerCompleted event
-                     // knows that the process was cancelled.
-                     e.Cancel = true;
-                     m_Worker.ReportProgress(0);
-                     return;
-                  }
-
-               }
-            }
-            if (!printedParent)
-            {
-               childIndex = 0;
-               foreach (TreeNode childNode in parentNode.Nodes)
-               {
-                  if (childNode.Checked)
-                  {
-                     rptObj = (GeneralRpt)childNode.Tag;
-                     if (rptObj != null)
-                     {
-                        childIndex++;
-                        errorCode = rptObj.PrintCrystalReport(ref errorString);
-                        i++;
-                        UpdateDisplay(i, numReports, parentNode.Text, childNode.Text, errorCode, errorString);
-
-                        if (m_Worker.CancellationPending)
-                        {
-                           // Set the e.Cancel flag so that the WorkerCompleted event
-                           // knows that the process was cancelled.
-                           e.Cancel = true;
-                           m_Worker.ReportProgress(0);
-                           return;
-                        }
-                     }
+                     PopulateLabelClass(currentrow, ref _label);
+                     _label.Print(localPrinter);
+                     UpdateDisplay(i++, numReports, errorCode, errorString);
                   }
                }
             }
+            else
+               UpdateDisplay(0, 0, Constants.NO_PRINTER, "No Printer Detected..");
          }
-         UpdateDisplay(i, numReports, "", "", errorCode, errorString);
+         else
+         {
+            UpdateDisplay(0, 0, Constants.NO_PRINTER, "No Printer Detected..");
+            e.Result = "No Printer Detected..";
+         }
       }
       private int GetProgress(int completed, int total)
       {
@@ -431,13 +391,51 @@ namespace DPGPP
          else
          {
             fProgress = (float)completed / total;
-            progress = (int) (fProgress * 100);
+            progress = (int)(fProgress * 100);
 
          }
          return (progress);
       }
 
-      private void UpdateDisplay(int reportNumber, int totalReports, string parentName, string childName, int returnCode, string errorString)
+      /*
+      private void Print_Reports()
+      {
+         int i = 0;
+         int numReports = 0;
+         int errorCode = 0;
+         string errorString = "";
+         int selectCount = 0;
+
+         IPrinter printer = Framework.GetPrinters()[CB_Printers.Text];
+         if (printer is ILabelWriterPrinter)
+         {
+            ILabelWriterPrintParams printParams = null;
+            ILabelWriterPrinter labelWriterPrinter = printer as ILabelWriterPrinter;
+
+
+            UpdateDisplay(0, 0, "", "", Constants.STARTING, "");
+            numReports = GetNumberReports();
+
+            foreach (DataGridViewRow currentrow in DGV_Prescriptions.Rows)
+            {
+               UpdateDisplay(i++, numReports, "", "", errorCode, errorString);
+               bool selected = (bool)currentrow.Cells[Constants.CHECK_INDEX].Value;
+               if (selected)
+               {
+                  //PopulateLabelClass(currentrow, _label);
+                  foreach (string objName in _label.ObjectNames)
+                     Console.WriteLine(objName.ToString());
+
+                  _label.Print(printer, printParams);
+
+               }
+            }
+            UpdateDisplay(i, numReports, "", "", errorCode, errorString);
+         }
+      }
+      */
+
+      private void UpdateDisplay(int reportNumber, int totalReports, int returnCode, string errorString)
       {
          string[] workerResult = new string[2];
          int progress;
@@ -445,16 +443,34 @@ namespace DPGPP
          if (returnCode == Constants.RETURN_SUCCESS)
          {
             workerResult[0] = string.Format("Report Number {0}  Out of {1} ", reportNumber, totalReports);
-            workerResult[1] = string.Format("Parent: {0}  Child {1} ", parentName, childName);
+            workerResult[1] = string.Format("Smooth Sailing...");
             progress = GetProgress(reportNumber, totalReports);
             m_Worker.ReportProgress(progress, workerResult);
 
             System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
          }
-         else if(returnCode == Constants.STARTING)
+         else if (returnCode == Constants.STARTING)
          {
             workerResult[0] = string.Format("Preparing to Print...");
             workerResult[1] = string.Format("This is gonna be cool!");
+            m_Worker.ReportProgress(0, workerResult);
+
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
+
+         }
+         else if (returnCode == Constants.DEBUGGING)
+         {
+            workerResult[0] = string.Format("Got this Far...");
+            workerResult[1] = string.Format("in the debugging process!");
+            m_Worker.ReportProgress(0, workerResult);
+
+            System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
+
+         }
+         else if (returnCode == Constants.NO_PRINTER)
+         {
+            workerResult[0] = string.Format("No printer detected...");
+            workerResult[1] = string.Format("Are drivers installed? Is USB cable connected?");
             m_Worker.ReportProgress(0, workerResult);
 
             System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", workerResult[0], workerResult[1]));
@@ -469,158 +485,36 @@ namespace DPGPP
 
             System.Diagnostics.Debug.WriteLine(string.Format(" {0} {1}", workerResult[0], workerResult[1]));
 
-            for (int i = 0; i < 1000; i++)
+            /*
+            for (int i = 0; i < 10; i++)
             {
-               Thread.Sleep(100);
+               Thread.Sleep(10);
             }
+            */
          }
       }
 
       private int GetNumberReports()
       {
-         string rootString;
-         TreeNode rootNode;
-         bool checkedParent = false;
-         int childNodesChecked = 0;
          int totalNumberOfReports = 0;
-         GeneralRpt rptObj;
-         // Walk through Parent Nodes
 
-         rootString = CRYSTALREPORTS.ROOT.ToString();
-         rootNode = FindRootNode(rootString, treeView1.Nodes);
-         TreeNodeCollection nodes = treeView1.Nodes;
-         foreach (TreeNode parentNode in rootNode.Nodes)
+         foreach (DataGridViewRow currentrow in DGV_Prescriptions.Rows)
          {
-            checkedParent = false;
-            if (parentNode.Checked)
+            bool selected = (bool)currentrow.Cells[Constants.CHECK_INDEX].Value;
+            if (selected)
             {
-               rptObj = (GeneralRpt)parentNode.Tag;
-               if (rptObj != null)
-                  checkedParent = true;
-            }
-            childNodesChecked = 0;
-            foreach (TreeNode childNode in parentNode.Nodes)
-            {
-               if (childNode.Checked)
-               {
-                  childNodesChecked++;
-               }
-            }
-            if (childNodesChecked > 0)
-               totalNumberOfReports += childNodesChecked;
-            else if (checkedParent)
                totalNumberOfReports++;
+            }
          }
          return (totalNumberOfReports);
       }
 
-      private int GetChildNodesChecked(TreeNode parentNode)
-      {
-         int childNodesChecked = 0;
-       
-         foreach (TreeNode childNode in parentNode.Nodes)
-         {
-            if (childNode.Checked)
-            {
-               childNodesChecked++;
-            }
-         }
-
-         return (childNodesChecked);
-      }
-
-      private TreeNode FindNode(string search_str, TreeNode tn)
-      {
-         TreeNode treenode = null;
-         foreach (TreeNode node in tn.Nodes)
-         {
-            if (node.Name.Equals(search_str))
-            {
-               treenode = node;
-            }
-            else
-               Console.WriteLine("Searching for " + search_str + "...  Found " + node.Name);
-         }
-         return (treenode);
-      }
-
-      private TreeNode FindRootNode(string search_str, TreeNodeCollection tnc)
-      {
-         TreeNode tn = null;
-         foreach (TreeNode node in tnc)
-         {
-            if (node.Name.Equals(search_str))
-            {
-               tn = node;
-            }
-            else
-               Console.WriteLine("Searching for " + search_str + "...  Found " + node.Name);
-         }
-         return (tn);
-      }
-
-      private void AddNode(string inName, CRYSTALREPORTS rptEnum, TreeNode parentNode, TreeNode childNode, GeneralRpt gp)
-      {
-         childNode.Name = inName;
-         childNode.Text = inName;
-         childNode.Tag = gp;
-         childNode.ForeColor = Color.Black;
-         childNode.BackColor = Color.White;
-         childNode.ImageIndex = 0;
-         childNode.SelectedImageIndex = 0;
-         parentNode.Nodes.Add(childNode);
-      }
-
-      private void AddRootNode(string name, string text, string tag, TreeNode rootNode)
-      {
-         //Root node just display admissionkey
-         rootNode.Name = name;
-         rootNode.Text = text;
-         rootNode.Tag = tag;
-         rootNode.ForeColor = Color.Black;
-         rootNode.BackColor = Color.White;
-         rootNode.ImageIndex = 0;
-         rootNode.SelectedImageIndex = 0;
-         treeView1.Nodes.Add(rootNode);           //Root node in TreeView
-
-      }
-
-      private void AddChildNodes(int count, List<Result> resultList, CRYSTALREPORTS rpt, TreeNode parentNode)
-      {
-         TreeNode childNode = null;
-         string nodestr;
-         DateTime datestr;
-         GeneralRpt gp;
-         string reportPath = Path.Combine(Constants.REPORT_BASE_PATH, ReportTranslation.GetFileName(rpt));
-
-         if (count > 0)
-         {
-            // Each individual OP__DOCID
-            foreach (Result result in resultList)
-            {
-               childNode = new TreeNode();
-               if (result.Date_Doc.HasValue)
-                  datestr = result.Date_Doc.Value;
-               else
-                  datestr = new DateTime(1900, 1, 1);
-
-               nodestr = result.OP__DOCID.ToString() + " --- " + datestr.ToShortDateString();
-
-               gp = GeneralRpt.CreatePrintObject(reportPath, rpt, result.OP__DOCID, Constants.CHILD_NODE);
-               AddNode(nodestr, rpt, parentNode, childNode, gp);
-            }
-         }
-      }
 
       private void TB_LastName_KeyDown(object sender, KeyEventArgs e)
       {
          if (e.KeyData == Keys.Enter)
          {
-            String NameL = TB_LastName.Text;
-            String NameF = TB_FirstName.Text;
-            List<FD__CLIENT> clients = new List<FD__CLIENT>(Accessor.GetClientByName(NameL, NameF));
-            dataGridView1.DataSource = clients;
-            LBL_Rows.Text = clients.Count().ToString();
+            SearchClients();
          }
       }
 
@@ -628,61 +522,7 @@ namespace DPGPP
       {
          if (e.KeyData == Keys.Enter)
          {
-            String NameL = TB_LastName.Text;
-            String NameF = TB_FirstName.Text;
-            List<FD__CLIENT> clients = new List<FD__CLIENT>(Accessor.GetClientByName(NameL, NameF));
-            dataGridView1.DataSource = clients;
-            LBL_Rows.Text = clients.Count().ToString();
-         }
-      }
-
-      private void printerToolStripMenuItem_Click(object sender, EventArgs e)
-      {
-         PrintDialog printDialog = new PrintDialog();
-         printDialog.PrinterSettings = printerSettings;
-         printDialog.AllowPrintToFile = false;
-         printDialog.AllowSomePages = true;
-         printDialog.UseEXDialog = true;
-
-         DialogResult result = printDialog.ShowDialog();
-
-         if (result == DialogResult.Cancel)
-         {
-            return;
-         }
-         else
-         {
-            Globals.duplex = (PrinterDuplex)printDialog.PrinterSettings.Duplex;
-            Globals.Printername = (string)printDialog.PrinterSettings.PrinterName;
-         }
-
-      }
-
-      // Updates all child tree nodes recursively.
-      private void CheckAllChildNodes(TreeNode treeNode, bool nodeChecked)
-      {
-         foreach (TreeNode node in treeNode.Nodes)
-         {
-            node.Checked = nodeChecked;
-            if (node.Nodes.Count > 0)
-            {
-               // If the current node has child nodes, call the CheckAllChildsNodes method recursively.
-               this.CheckAllChildNodes(node, nodeChecked);
-            }
-         }
-      }
-
-      private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
-      {
-         // The code only executes if the user caused the checked state to change.
-         if (e.Action != TreeViewAction.Unknown)
-         {
-            if (e.Node.Nodes.Count > 0)
-            {
-               /* Calls the CheckAllChildNodes method, passing in the current 
-               Checked value of the TreeNode whose checked state changed. */
-               this.CheckAllChildNodes(e.Node, e.Node.Checked);
-            }
+            SearchClients();
          }
       }
 
@@ -696,6 +536,16 @@ namespace DPGPP
       {
          this.TB_FirstName.SelectionStart = 0;
          this.TB_FirstName.SelectionLength = TB_FirstName.Text.Length;
+      }
+
+      private void SearchClients()
+      {
+         String NameL = TB_LastName.Text;
+         String NameF = TB_FirstName.Text;
+         mClients = new Library.SortableBindingList<ClientResult>(Accessor.GetClientByName(NameL, NameF, CB_Active.Checked));
+         DGV_Clients.DataSource = mClients;
+         DGV_Clients.AutoResizeColumns();
+         LBL_Rows.Text = mClients.Count().ToString();
       }
 
       /// <summary>
@@ -715,9 +565,10 @@ namespace DPGPP
 
          // Check to see if an error occurred in the background process.
 
-         else if (e.Error != null)
+         else if (e.Result != null)
          {
-            lblStatus.Text = "Error while performing background operation.";
+            //lblStatus.Text = "Error while performing background operation.";
+            //lblStatus.Text = e.ToString();
          }
          else
          {
@@ -812,6 +663,63 @@ namespace DPGPP
       {
          this.Close();
          Application.Exit();
+      }
+
+      private void DGV_Prescriptions_OnCellValueChanged(object sender, DataGridViewCellEventArgs e)
+      {
+
+         if (e.ColumnIndex == 0 && e.RowIndex > -1)
+         {
+            bool selected = (bool)DGV_Prescriptions[e.ColumnIndex, e.RowIndex].Value;
+            DGV_Prescriptions.Rows[e.RowIndex].DefaultCellStyle.BackColor = selected ? Color.LightBlue : Color.White;
+         }
+
+         int selectCount = 0;
+         foreach (DataGridViewRow currentrow in DGV_Prescriptions.Rows)
+         {
+            bool selected = (bool)currentrow.Cells[Constants.CHECK_INDEX].Value;
+            if (selected)
+               selectCount++;
+         }
+
+         LBL_Selected.Text = selectCount.ToString();
+      }
+
+      private void DGV_Prescriptions_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+      {
+         DGV_Prescriptions.EndEdit();
+      }
+
+      private void BTN_SelectAll_Click(object sender, EventArgs e)
+      {
+         bool selectall = false;
+         int selectCount = 0;
+
+         if (BTN_SelectAll.Text.Contains("UnSelect All"))
+         {
+            BTN_SelectAll.Text = "Select All";
+         }
+         else
+         {
+            selectall = true;
+            BTN_SelectAll.Text = "UnSelect All";
+         }
+
+         foreach (DataGridViewRow currentrow in DGV_Prescriptions.Rows)
+         {
+            if (selectall)
+            {
+               currentrow.Cells[Constants.CHECK_INDEX].Value = true;
+               selectCount++;
+            }
+            else
+            {
+               currentrow.Cells[Constants.CHECK_INDEX].Value = false;
+               selectCount = 0;
+            }
+
+            LBL_Selected.Text = selectCount.ToString();
+         }
       }
 
    }

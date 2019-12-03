@@ -1,4 +1,4 @@
-﻿namespace DPGPP
+﻿namespace RPGPP
 {
    partial class loginForm
    {
@@ -106,7 +106,7 @@
          // 
          // pictureBox1
          // 
-         this.pictureBox1.Image = global::DPGPP.Properties.Resources.logingazoo;
+         this.pictureBox1.Image = global::RPGPP.Properties.Resources.logingazoo;
          this.pictureBox1.Location = new System.Drawing.Point(13, 20);
          this.pictureBox1.Name = "pictureBox1";
          this.pictureBox1.Size = new System.Drawing.Size(134, 194);

@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DPGPP.Properties {
+namespace RPGPP.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,10 +26,11 @@ namespace DPGPP.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SRVCOSTIER;Initial Catalog=TIER_Development;Integrated Security=True")]
-        public string TIER_DevelopmentConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SRVCOSTIER;Initial Catalog=TIER_DEV2;Persist Security Info=True;User " +
+            "ID=RPPP;Password=RPPP#7353")]
+        public string TIER_DEV2ConnectionString {
             get {
-                return ((string)(this["TIER_DevelopmentConnectionString"]));
+                return ((string)(this["TIER_DEV2ConnectionString"]));
             }
         }
         
@@ -40,6 +41,16 @@ namespace DPGPP.Properties {
         public string TIER_PVBHConnectionString {
             get {
                 return ((string)(this["TIER_PVBHConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SRVCOSTIER;Initial Catalog=TIER_PVBH;User ID=TIER")]
+        public string TIER_PVBHConnectionString1 {
+            get {
+                return ((string)(this["TIER_PVBHConnectionString1"]));
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Data.Linq.Mapping;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DPGPP
+namespace RPGPP
 {
    static class Program
    {

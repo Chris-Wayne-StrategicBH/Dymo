@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DPGPP
+namespace RPGPP
 {
    public partial class loginForm : Form
    {
@@ -31,7 +31,7 @@ namespace DPGPP
 
       private void CheckUserNamePassword()
       {
-         if (TB_UserName.Text == "dpgpp" && TB_Password.Text == "7353")
+         if (TB_UserName.Text == "rppp" && TB_Password.Text == "7353")
          {
             this.DialogResult = DialogResult.OK;
             this.Close();

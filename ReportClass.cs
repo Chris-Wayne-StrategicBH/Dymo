@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Reflection;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using System.Threading;
+using DYMO.Label.Framework;
+using System.IO;
 
-namespace DPGPP
+namespace RPGPP
 {
 
    static class Constants
@@ -21,28 +21,45 @@ namespace DPGPP
       public const int PARENT_NODE = 0;
       public const int RETURN_SUCCESS = 0;
       public const int RETURN_FILE_ACCESS_ERROR = -1;
+
+
       public const int STARTING = 1;
+      public const int DEBUGGING = 999;
+      public const int NO_PRINTER = 888;
+
+
       public const int CHILD_NODE = 1;
-      public const int OP__DOCID_INDEX = 0;
-      public const int ADMISSIONKEY_INDEX = 0;
-      public const int PROGRAMNAME_INDEX = 1;
+      public const int OP__DOCID_INDEX = 6;
+      public const int GENDER_INDEX = 3;
+      public const int ADMISSIONKEY_INDEX = 4;
+      public const int PROGRAMNAME_INDEX = 0;
       public const int STARTDATE_INDEX = 2; 
-      public const int ENDDATE_INDEX = 3; 
-      public const int FULLNAME_INDEX = 2;
+      public const int ENDDATE_INDEX = 3;
+      public const int STATUS_INDEX = 1;
+      public const int FULLNAME_INDEX = 0;
+
+      public const int CHECK_INDEX = 0;
+      public const int PRESCRIPTION_OP__DOCID = 10;
+
+
       public const int NOT_USED = 9999;
-      public const PrinterDuplex DEFAULT_PRINTER_DUPLEX = PrinterDuplex.Simplex;
       public const string DEFAULT_PRINTER_NAME = "\\DEFAULT";
       public const string DEFAULT_DB_SERVER_NAME = "srvcostier";
       public const string DEFAULT_DB_NAME = "TIER_PVBH";
       public const string DEFAULT_DB_USER = "TIER";
       public const string DEFAULT_DB_PASSWORD = "38$bH125";
-      public const string REPORT_BASE_PATH = @"\\srvcosad1\Share\DPGPP-2.0\Reports";
+      public const string REPORT_BASE_PATH = @"\\srvcostierx\RPGPP\Reports";
+      public const string LABEL_PATH = @"H:\tier-work\c#\PrescriptionPrinting\Labels\prescription.label";
+      public const string DEFAULTFEMALEIMAGE = @"H:\tier-work\c#\PrescriptionPrinting\Images\Minnie.jpg";
+      public const string DEFAULTMALEIMAGE = @"H:\tier-work\c#\PrescriptionPrinting\Images\Mickey.jpg";
+
+      public const string DB_CONNECTION_TEST = @"global::RPGPP.Properties.Settings.Default.TIER_DEV2ConnectionString";
+      public const string DB_CONNECTION_PROD = @"global::RPGPP.Properties.Settings.Default.TIER_DEV2ConnectionString";
 
    }
 
    public static class Globals
    {
-      public static PrinterDuplex duplex = Constants.DEFAULT_PRINTER_DUPLEX;
       public static string Printername = Constants.DEFAULT_PRINTER_NAME;
       public static int mClientKey;
       public static int mAdmissionKey;
@@ -51,72 +68,61 @@ namespace DPGPP
 
    // using the enum name itself to identify nodes in treeview
    // using the description to provide the report file name
-   public enum CRYSTALREPORTS
+   public enum DYMOLABEL
    {
-      ROOT,
-      [Description("SD - Face Sheet.rpt")]
-      FACESHEET,
-      [Description("SD - Discharge Summary 20121011.rpt")]
-      DISCHARGE_SUMMARY,
-      [Description("SD - Physician Discharge Summary 20120813.rpt")]
-      PHYSICIAN_DISCHARGE_SUMMARY,
-      [Description("SD - Discharge Aftercare Plan 20141121.rpt")]
-      DISCHARGE_AFTERCARE_PLAN,
-      [Description("SD - History and Physical.rpt")]
-      HISTORY_PHYSICAL,
-      [Description("SD - Psychiatric Evaluation 20130201.rpt")]
-      PSYCHIATRIC_EVALUATION,
-      [Description("SD - Comprehensive PsychoSocial Assesment 20120520.rpt")]
-      COMPREHENSIVE_PSYCHOSOCIAL,
-      [Description("SD - Nursing Assessment 20120606.rpt")]
-      NURSING_ASSESSMENT,
-      [Description("SD - NursingEvaluation.rpt")]
-      NURSING_EVALUATION,
-      [Description("SD - Initial Contact Note 20120512.rpt")]
-      INITIAL_CONTACT_NOTE,
-      [Description("SD - Psychiatric Progress Note 20150505PROD.rpt")]
-      PSYCHIATRIC_PROGRESS_NOTE,
-      [Description("SD - General Note 20160802.rpt")]
-      GENERAL_NOTE,
-      [Description("SD - Soap Note.rpt")]
-      SOAP_NOTE,
-      [Description("SD - Contact Note 20150506.rpt")]
-      CONTACT_NOTE,
-      [Description("SD - General Order 20120524.rpt")]
-      GENERAL_ORDER,
-      [Description("SD - Medication History 20120607.rpt")]
-      MEDICATION_ORDERS_HISTORY,
-      [Description("SD - Administered Meds History.rpt")]
-      ADMINISTERED_MEDICATION_HISTORY,
-      [Description("SD - Psychosocial Plan 20120521.rpt")]
-      UPDATED_COMPREHENSIVE_ASSESSMENT,
-      [Description("SD - Initial Assesment of Risk 20120806.rpt")]
-      EVALUATION_OF_RISK,
-      [Description("SD - Fall Risk  Assessment 20160609.rpt")]
-      FALL_RISK_EVALUATION,
-      [Description("SD - Master Treatment Plan-08-18-15.rpt")]
-      MASTER_TREATMENT_PLAN,
-      [Description("Cognitive Assessment.rpt")]
-      COGNITIVE_ASSESSMENT,
-      [Description("SD - Body Assessment Checklist 20120606.rpt")]
-      BODY_ASSESSMENT_CHECKLIST,
-      [Description("SD - Allergies.rpt")]
-      ALLERGIES,
-      [Description("SD - Pain Evaluation 20160414.rpt")]
-      PAIN_EVALUATION,
-      [Description("SD - Comprehensive Mental  Status 20120519.rpt")]
-      COMPREHENSIVE_MENTAL_STATUS,
-      [Description("SD - Mini Mental Status Exam 20120902.rpt")]
-      MINI_MENTAL_STATUS,
-      [Description("FollowupAppointment.rpt")]
-      FOLLOWUP_APPOINTMENT
+      [Description("TEXT_PatientName")]
+      PATIENT_NAME,
+      [Description("TEXT_PatientDOB")]
+      PATIENT_DOB,
+      [Description("TEXT_Address")]
+      PATIENT_ADDRESS,
+      [Description("TEXT_DatePrescribed")]
+      DATE_PRESCRIBED,
+      [Description("TEXT_TimePrescribed")]
+      TIME_PRESCRIBED,
+      [Description("TEXT_Credentials")]
+      PRESCRIBER,
+      [Description("TEXT_NPI")]
+      NPI,
+      [Description("TEXT_DEA")]
+      DEA,
+      [Description("TEXT_LBL_Supervisor")]
+      SUPERVISOR_LABEL,
+      [Description("TEXT_SupervisorCred")]
+      SUPERVISOR,
+      [Description("TEXT_LBL_Supervisor_NPI")]
+      SUPERVISOR_NPI_LABEL,
+      [Description("TEXT_SupervisorNPI")]
+      SUPERVISOR_NPI,
+      [Description("TEXT_LBL_SupervisorDEA")]
+      SUPERVISOR_DEA_LABEL,
+      [Description("TEXT_SupervisorDEA")]
+      SUPERVISOR_DEA,
+      [Description("TEXT_Drug")]
+      DRUG,
+      [Description("TEXT_Generic")]
+      GENERIC,
+      [Description("TEXT_Strength")]
+      STRENGTH,
+      [Description("TEXT_Quantity")]
+      QUANTITY,
+      [Description("TEXT_Dose")]
+      DOSE,
+      [Description("TEXT_Frequency")]
+      FREQUENCY,
+      [Description("TEXT_Rationale")]
+      RATIONALE,
+      [Description("TEXT_Refills")]
+      REFILLS,
+      [Description("TEXT_Instructions")]
+      INSTRUCTIONS
    }
 
 
    // using reflection to get description values of enums
-   public static class ReportTranslation
+   public static class Translation
    {
-      public static string GetFileName(Enum value)
+      public static string GetEnumDescription(Enum value)
       {
          FieldInfo fi = value.GetType().GetField(value.ToString());
 
@@ -134,226 +140,99 @@ namespace DPGPP
       }
    }
 
-   public abstract class CrystalParamsGeneric
+
+   public class LabelClass : ILabel
    {
-      private string mName;
-      public string name
-      {
-         get { return this.mName; }
-         set { this.mName = value; }
-      }
-      public abstract object GetParamValue();
-   
-   }
+      public IEnumerable<ILabelObject> Objects => throw new NotImplementedException();
 
-   public class CrystalParams<T> : CrystalParamsGeneric
-   {
-      public T paramval {get; set;}
-      public override object GetParamValue()
+      public IEnumerable<string> ObjectNames => throw new NotImplementedException();
+
+      public int AddressObjectCount => throw new NotImplementedException();
+
+      public ILabelObject GetObjectByName(string objectName)
       {
-         return(paramval);
+         throw new NotImplementedException();
       }
 
-   }
-
-   public class CrystalParamsInt : CrystalParams<int>
-   {
-   }
-
-   public class CrystalParamsDate : CrystalParams<DateTime>
-   {  
-   }
-
-   public abstract class ReportClass
-   {
-      string mPath;
-      public string Path
+      public string GetObjectText(string objectName)
       {
-         get { return this.mPath; }
-         set { this.mPath = value; }
-      }
-      public List<CrystalParamsGeneric> param = new List<CrystalParamsGeneric>();
-      public ReportClass(string inPath)
-      {
-         mPath = inPath;
-      }
-      abstract public int PrintCrystalReport(ref string errorString);
-   }
-
-   public class GeneralRpt : ReportClass
-   {
-      //This type of report requires 2 integer parameters
-      private GeneralRpt(string inPath, string paramstring1, int param1, string paramstring2, int param2)
-         : base(inPath)
-      {
-         CrystalParamsInt cri1 = new CrystalParamsInt();
-         cri1.name = paramstring1;
-         cri1.paramval = param1;
-         param.Add(cri1);
-         CrystalParamsInt cri2 = new CrystalParamsInt();
-         cri2.name = paramstring2;
-         cri2.paramval = param2;
-         param.Add(cri2);
+         throw new NotImplementedException();
       }
 
-      //This type of report requires an AdmissionKey, startdate and enddate for parameters
-      private GeneralRpt(string inPath, int admissionKey, DateTime startDate, DateTime endDate)
-         : base(inPath)
+      public void Print(IPrinter printer)
       {
-         CrystalParamsInt cri = new CrystalParamsInt();
-         cri.name = "AdmissionKey";
-         cri.paramval = admissionKey;
-         param.Add(cri);
-         CrystalParamsDate crd1 = new CrystalParamsDate();
-         crd1.name = "StartDate";
-         crd1.paramval = startDate;
-         param.Add(crd1);
-         CrystalParamsDate crd2 = new CrystalParamsDate();
-         crd2.name = "EndDate";
-         crd2.paramval = endDate;
-         param.Add(crd2);
+         throw new NotImplementedException();
       }
-      //This type of report requires 1 integer parameter
-      private GeneralRpt(string inPath, string paramstring, int paramint)
-         : base(inPath)
+
+      public void Print(string printerName)
       {
-         CrystalParamsInt cri = new CrystalParamsInt();
-         cri.name = paramstring;
-         cri.paramval = paramint;
-         param.Add(cri);
+         throw new NotImplementedException();
       }
-      //This type of report requires an OP__DOCID and AdmissionKey = 0
-      private GeneralRpt(string inPath, int OP__DOCID, string dummy = "WTF")
-         : base(inPath)
+
+      public void Print(IPrinter printer, IPrintParams printParams)
       {
-         CrystalParamsInt cri1 = new CrystalParamsInt();
-         cri1.name = "OP__DOCID";
-         cri1.paramval = OP__DOCID;
-         param.Add(cri1);
-         CrystalParamsInt cri2 = new CrystalParamsInt();
-         cri2.name = "AdmissionKey";
-         cri2.paramval = 0;
-         param.Add(cri2);
+         throw new NotImplementedException();
       }
-      public override int PrintCrystalReport(ref string errorString)
+
+      public void Print(string printerName, IPrintParams printParams)
       {
-         int returnCode = Constants.RETURN_SUCCESS;
-         Tables CrTables;
-         ReportDocument cryRpt = new ReportDocument();
-         ConnectionInfo crConnectionInfo = new ConnectionInfo();
-         TableLogOnInfo crtablelogoninfo = new TableLogOnInfo();
-
-         crConnectionInfo.ServerName = Constants.DEFAULT_DB_SERVER_NAME;
-         crConnectionInfo.DatabaseName = Constants.DEFAULT_DB_NAME;
-         crConnectionInfo.UserID = Constants.DEFAULT_DB_USER;
-         crConnectionInfo.Password = Constants.DEFAULT_DB_PASSWORD;
-
-         errorString = "";
-
-         try
-         {
-            cryRpt.Load(Path);
-            foreach (var crystalParameter in param)
-            {
-               cryRpt.SetParameterValue(crystalParameter.name, crystalParameter.GetParamValue());
-            }
-
-            CrTables = cryRpt.Database.Tables;
-
-            foreach (CrystalDecisions.CrystalReports.Engine.Table CrTable in CrTables)
-            {
-               crtablelogoninfo = CrTable.LogOnInfo;
-               crtablelogoninfo.ConnectionInfo = crConnectionInfo;
-               CrTable.ApplyLogOnInfo(crtablelogoninfo);
-            }
-
-            // Select the printer and print
-            cryRpt.PrintOptions.PrinterDuplex = Globals.duplex;
-            cryRpt.PrintOptions.PrinterName = Globals.Printername;
-
-#if(HARDWARE)
-            cryRpt.PrintToPrinter(1, false, 0, 0);
-#else
-            for (int i = 0; i < 100; i++)
-            {
-               Thread.Sleep(100);
-            }
-#endif
-
-            cryRpt.Close();
-            cryRpt.Clone();
-            cryRpt.Dispose();
-            cryRpt = null;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-         }
-
-         catch(Exception engEx)
-         {
-            string localErrorString;
-            string exceptionString = engEx.ToString();
-                //localErrorString = string.Format("File Not found.. " + Path.Substring(0, 50) + "... " + exceptionString.Substring(0, 20));
-                localErrorString = string.Format(exceptionString.Substring(0, 150));
-                errorString = localErrorString;
-            cryRpt.Close();
-            cryRpt.Clone();
-            cryRpt.Dispose();
-            cryRpt = null;
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            returnCode = Constants.RETURN_FILE_ACCESS_ERROR;
-
-         }
-         return (returnCode);
-
+         throw new NotImplementedException();
       }
-      public static GeneralRpt CreatePrintObject(string inPath, CRYSTALREPORTS reportType, int OP__DOCID, int nodeType)
+
+      public void Print(IPrinter printer, IPrintParams printParams, string labelSetXml)
       {
-         switch(reportType)
-         {
-            case CRYSTALREPORTS.FACESHEET:
-               return new GeneralRpt(inPath, "ClientKey", Globals.mClientKey, "AdmissionKey", Globals.mAdmissionKey);
-            case CRYSTALREPORTS.COMPREHENSIVE_PSYCHOSOCIAL:
-            case CRYSTALREPORTS.DISCHARGE_AFTERCARE_PLAN:
-            case CRYSTALREPORTS.DISCHARGE_SUMMARY:
-            case CRYSTALREPORTS.HISTORY_PHYSICAL:
-            case CRYSTALREPORTS.INITIAL_CONTACT_NOTE:
-            case CRYSTALREPORTS.NURSING_ASSESSMENT:
-            case CRYSTALREPORTS.PHYSICIAN_DISCHARGE_SUMMARY:
-            case CRYSTALREPORTS.PSYCHIATRIC_EVALUATION:
-            case CRYSTALREPORTS.MEDICATION_ORDERS_HISTORY:
-            case CRYSTALREPORTS.UPDATED_COMPREHENSIVE_ASSESSMENT:
-            case CRYSTALREPORTS.EVALUATION_OF_RISK:
-            case CRYSTALREPORTS.COGNITIVE_ASSESSMENT:
-            case CRYSTALREPORTS.BODY_ASSESSMENT_CHECKLIST:
-            case CRYSTALREPORTS.PAIN_EVALUATION:
-            case CRYSTALREPORTS.COMPREHENSIVE_MENTAL_STATUS:
-            case CRYSTALREPORTS.MINI_MENTAL_STATUS:
-            case CRYSTALREPORTS.FOLLOWUP_APPOINTMENT:
-               return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID);
-            case CRYSTALREPORTS.NURSING_EVALUATION:
-            case CRYSTALREPORTS.PSYCHIATRIC_PROGRESS_NOTE:
-            case CRYSTALREPORTS.GENERAL_NOTE:
-            case CRYSTALREPORTS.SOAP_NOTE:
-            case CRYSTALREPORTS.CONTACT_NOTE:
-            case CRYSTALREPORTS.GENERAL_ORDER:
-            case CRYSTALREPORTS.FALL_RISK_EVALUATION:
-               if (nodeType == Constants.CHILD_NODE)
-                  return new GeneralRpt(inPath, "OP__DOCID", OP__DOCID, "AdmissionKey", 0);
-               else
-                  return new GeneralRpt(inPath, "OP__DOCID", 0, "AdmissionKey", Globals.mAdmissionKey);
+         throw new NotImplementedException();
+      }
 
-            case CRYSTALREPORTS.ADMINISTERED_MEDICATION_HISTORY:
-               return new GeneralRpt(inPath, Globals.mAdmissionKey, Globals.mStartDate, Globals.mEndDate);
-            case CRYSTALREPORTS.MASTER_TREATMENT_PLAN:
-               return new GeneralRpt(inPath, "MTPkey", OP__DOCID);
-            case CRYSTALREPORTS.ALLERGIES:
-               return new GeneralRpt(inPath, "ClientKey", Globals.mClientKey);
-            default:
-               return null;
+      public void Print(string printerName, IPrintParams printParams, string labelSetXml)
+      {
+         throw new NotImplementedException();
+      }
 
-         }
+      public byte[] RenderAsPng(IPrinter printer, ILabelRenderParams renderParams)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SaveToFile(string fileName)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SaveToStream(Stream stream)
+      {
+         throw new NotImplementedException();
+      }
+
+      public string SaveToXml()
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SetAddressText(int index, string text)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SetImagePngData(string imageName, Stream pngStream)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SetImageUri(string imageName, string uri)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SetObjectText(string objectName, string text)
+      {
+         throw new NotImplementedException();
+      }
+
+      public void SetPostnetBarcodePosition(int index, PostnetBarcodePosition position)
+      {
+         throw new NotImplementedException();
       }
    }
+
 }
